@@ -40,6 +40,8 @@ export var Config = (function () {
         callback(initializedSuccessfully);
       }
     );
+
+    FaceTecSDK.configureLocalization(FaceTecStrings);
   }
 
   // This app can modify the customization to demonstrate different look/feel preferences

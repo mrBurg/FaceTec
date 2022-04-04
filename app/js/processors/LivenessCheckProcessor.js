@@ -6,7 +6,7 @@
 // You may choose to further componentize parts of this in your own Apps based on your specific requirements.
 //
 var LivenessCheckProcessor = /** @class */ (function () {
-  function LivenessCheckProcessor(sessionToken, sampleAppControllerReference) {
+  function LivenessCheckProcessor(sessionToken, AppControllerReference) {
     var _this = this;
     this.latestNetworkRequest = new XMLHttpRequest();
     //
@@ -18,7 +18,7 @@ var LivenessCheckProcessor = /** @class */ (function () {
       // Calling a custom function on the Sample App Controller is done for demonstration purposes to show you that here is where you get control back from the FaceTec SDK.
       //
       _this.success = _this.latestSessionResult.isCompletelyDone;
-      _this.sampleAppControllerReference.onComplete(
+      _this.AppControllerReference.onComplete(
         _this.latestSessionResult,
         null,
         _this.latestNetworkRequest.status
@@ -36,7 +36,7 @@ var LivenessCheckProcessor = /** @class */ (function () {
     // In the code in your own App, you can pass around signals, flags, intermediates, and results however you would like.
     //
     this.success = false;
-    this.sampleAppControllerReference = sampleAppControllerReference;
+    this.AppControllerReference = AppControllerReference;
     this.latestSessionResult = null;
     //
     // Part 1:  Starting the FaceTec Session

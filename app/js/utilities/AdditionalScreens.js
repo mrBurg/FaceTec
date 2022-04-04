@@ -42,22 +42,22 @@ var AdditionalScreens = /** @class */ (function () {
     )[0].style.visibility = 'hidden';
     document.getElementById('additional-screen').style.opacity = '0';
     document.getElementById('additional-screen').style.display = 'flex';
-    (0, SampleAppUIFunctions)('.wrapping-box-container').fadeOut(1);
-    (0, SampleAppUIFunctions)('#theme-transition-overlay').fadeOut(200);
-    (0, SampleAppUIFunctions)('#additional-screen').fadeOut(200, function () {
-      (0, SampleAppUIFunctions)(
+    (0, AppUIFunctions)('.wrapping-box-container').fadeOut(1);
+    (0, AppUIFunctions)('#theme-transition-overlay').fadeOut(200);
+    (0, AppUIFunctions)('#additional-screen').fadeOut(200, function () {
+      (0, AppUIFunctions)(
         '#' + AdditionalScreens.elementToCopyStylesFrom
       ).fadeOut(1);
-      (0, SampleAppUIFunctions)('#additional-screen').fadeIn(700, function () {
-        (0, SampleAppUIFunctions)('.wrapping-box-container').show();
+      (0, AppUIFunctions)('#additional-screen').fadeIn(700, function () {
+        (0, AppUIFunctions)('.wrapping-box-container').show();
       });
     });
   };
   // Exit the Server Upgrade View and return to the normal UI view
   AdditionalScreens.exitAdditionalScreen = function (fadeInMainUIFunction) {
-    (0, SampleAppUIFunctions)('#additional-screen').fadeOut(100, function () {
-      (0, SampleAppUIFunctions)('.loading-session-token-container').fadeOut(1);
-      (0, SampleAppUIFunctions)('#controls').fadeIn(400, function () {
+    (0, AppUIFunctions)('#additional-screen').fadeOut(100, function () {
+      (0, AppUIFunctions)('.loading-session-token-container').fadeOut(1);
+      (0, AppUIFunctions)('#controls').fadeIn(400, function () {
         fadeInMainUIFunction();
         document.getElementsByClassName(
           'loading-session-token-container'

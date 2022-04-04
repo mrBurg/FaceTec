@@ -1,5 +1,5 @@
 // UI Convenience Functions
-var SampleAppUIFunctions = function (elementString) {
+var AppUIFunctions = function (elementString) {
   // Get the element(s) for ui operations from the elementString;
   var currentElements = document.querySelectorAll(elementString);
   // Save the original display property of the element before hiding it
@@ -121,4 +121,3 @@ var SampleAppUIFunctions = function (elementString) {
     },
   };
 };
-SampleAppUIFunctions = SampleAppUIFunctions;

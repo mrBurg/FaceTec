@@ -1,6 +1,5 @@
-SampleAppUtilities = (function () {
-  var vocalGuidanceSoundFilesDirectory =
-    '../../sample-app-resources/Vocal_Guidance_Audio_Files/';
+const AppUtilities = (function () {
+  var vocalGuidanceSoundFilesDirectory = 'audio/';
   var VocalGuidanceMode;
   (function (VocalGuidanceMode) {
     VocalGuidanceMode[(VocalGuidanceMode['MINIMAL'] = 0)] = 'MINIMAL';
@@ -84,17 +83,17 @@ SampleAppUtilities = (function () {
     document.getElementById('status').innerHTML = message;
   }
   function fadeInMainUIContainer() {
-    (0, SampleAppUIFunctions)('.loading-session-token-container').fadeOut(1);
-    (0, SampleAppUIFunctions)('#theme-transition-overlay').fadeOut(800);
-    (0, SampleAppUIFunctions)('.wrapping-box-container').fadeIn(800);
+    (0, AppUIFunctions)('.loading-session-token-container').fadeOut(1);
+    (0, AppUIFunctions)('#theme-transition-overlay').fadeOut(800);
+    (0, AppUIFunctions)('.wrapping-box-container').fadeIn(800);
   }
   function fadeInMainUIControls(callback) {
     if (isLikelyMobileDevice()) {
-      (0, SampleAppUIFunctions)('footer').fadeIn(800);
-      (0, SampleAppUIFunctions)('#custom-logo-container').fadeIn(800);
-      (0, SampleAppUIFunctions)('#vocal-icon-container').fadeIn(800);
+      (0, AppUIFunctions)('footer').fadeIn(800);
+      (0, AppUIFunctions)('#custom-logo-container').fadeIn(800);
+      (0, AppUIFunctions)('#vocal-icon-container').fadeIn(800);
     }
-    (0, SampleAppUIFunctions)('#controls').fadeIn(800, function () {
+    (0, AppUIFunctions)('#controls').fadeIn(800, function () {
       enableControlButtons();
       enableVocalGuidanceButtons();
       if (callback) {
@@ -106,20 +105,20 @@ SampleAppUtilities = (function () {
   function fadeOutMainUIAndPrepareForSession() {
     disableControlButtons();
     if (isLikelyMobileDevice()) {
-      (0, SampleAppUIFunctions)('footer').fadeOut(800);
-      (0, SampleAppUIFunctions)('#custom-logo-container').fadeOut(800);
-      (0, SampleAppUIFunctions)('#vocal-icon-container').fadeOut(800);
+      (0, AppUIFunctions)('footer').fadeOut(800);
+      (0, AppUIFunctions)('#custom-logo-container').fadeOut(800);
+      (0, AppUIFunctions)('#vocal-icon-container').fadeOut(800);
       disableVocalGuidanceButtons();
     }
-    (0, SampleAppUIFunctions)('#controls').fadeOut(800);
-    (0, SampleAppUIFunctions)('.wrapping-box-container').fadeOut(800);
-    (0, SampleAppUIFunctions)('#theme-transition-overlay').fadeIn(800);
+    (0, AppUIFunctions)('#controls').fadeOut(800);
+    (0, AppUIFunctions)('.wrapping-box-container').fadeOut(800);
+    (0, AppUIFunctions)('#theme-transition-overlay').fadeIn(800);
   }
   function showLoadingSessionToken() {
-    (0, SampleAppUIFunctions)('.loading-session-token-container').fadeIn(300);
+    (0, AppUIFunctions)('.loading-session-token-container').fadeIn(300);
   }
   function hideLoadingSessionToken() {
-    (0, SampleAppUIFunctions)('.loading-session-token-container').fadeOut(800);
+    (0, AppUIFunctions)('.loading-session-token-container').fadeOut(800);
   }
   function disableControlButtons() {
     document.querySelectorAll('#controls > button').forEach(function (button) {
@@ -233,26 +232,26 @@ SampleAppUtilities = (function () {
       if (windowWidth <= 360) {
         footerFontSize = '7px';
       }
-      (0, SampleAppUIFunctions)('footer').css({
+      (0, AppUIFunctions)('footer').css({
         'font-size': footerFontSize,
         'line-height': '9px',
       });
-      (0, SampleAppUIFunctions)('footer span p').css({
+      (0, AppUIFunctions)('footer span p').css({
         'font-size': 'inherit',
       });
-      (0, SampleAppUIFunctions)('footer span, footer span p').css({
+      (0, AppUIFunctions)('footer span, footer span p').css({
         margin: 0,
       });
       document.querySelector('hr').classList.remove('display-none');
       var computedFooterFontSize = window.getComputedStyle(
         document.querySelector('footer span p')
       ).fontSize;
-      (0, SampleAppUIFunctions)('#copy-right-length').css({
+      (0, AppUIFunctions)('#copy-right-length').css({
         'font-size': computedFooterFontSize,
       });
       var copyRightStringLength =
         document.getElementById('copy-right-length').clientWidth;
-      (0, SampleAppUIFunctions)('hr').css({
+      (0, AppUIFunctions)('hr').css({
         width: copyRightStringLength + 'px',
       });
       // Allow time for the UI to fully load before fading in the body
@@ -269,8 +268,8 @@ SampleAppUtilities = (function () {
     document.querySelectorAll('button').forEach(function (element) {
       element.classList.add('button-transitions');
     });
-    (0, SampleAppUIFunctions)('footer').fadeIn(800);
-    (0, SampleAppUIFunctions)('body').fadeIn(800);
+    (0, AppUIFunctions)('footer').fadeIn(800);
+    (0, AppUIFunctions)('body').fadeIn(800);
   }
   function disableVocalGuidanceButtons() {
     document.querySelectorAll('.vocal-icon').forEach(function (button) {
@@ -391,23 +390,23 @@ SampleAppUtilities = (function () {
     document.getElementById('controls').append(auditTrailOverlay);
   }
   return {
-    setVocalGuidanceSoundFiles: setVocalGuidanceSoundFiles,
-    setVocalGuidanceMode: setVocalGuidanceMode,
-    setOCRLocalization: setOCRLocalization,
-    displayStatus: displayStatus,
-    fadeInMainUIContainer: fadeInMainUIContainer,
-    fadeInMainUIControls: fadeInMainUIControls,
-    fadeOutMainUIAndPrepareForSession: fadeOutMainUIAndPrepareForSession,
-    disableControlButtons: disableControlButtons,
-    enableControlButtons: enableControlButtons,
-    generateUUId: generateUUId,
-    formatUIForDevice: formatUIForDevice,
-    showMainUI: showMainUI,
-    hideLoadingSessionToken: hideLoadingSessionToken,
-    showLoadingSessionToken: showLoadingSessionToken,
-    isLikelyMobileDevice: isLikelyMobileDevice,
-    UI: SampleAppUIFunctions,
-    showAuditTrailImages: showAuditTrailImages,
-    handleErrorGettingServerSessionToken: handleErrorGettingServerSessionToken,
+    setVocalGuidanceSoundFiles,
+    setVocalGuidanceMode,
+    setOCRLocalization,
+    displayStatus,
+    fadeInMainUIContainer,
+    fadeInMainUIControls,
+    fadeOutMainUIAndPrepareForSession,
+    disableControlButtons,
+    enableControlButtons,
+    generateUUId,
+    formatUIForDevice,
+    showMainUI,
+    hideLoadingSessionToken,
+    showLoadingSessionToken,
+    isLikelyMobileDevice,
+    showAuditTrailImages,
+    handleErrorGettingServerSessionToken,
+    UI: AppUIFunctions,
   };
 })();

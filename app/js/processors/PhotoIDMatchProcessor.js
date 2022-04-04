@@ -6,7 +6,7 @@
 // You may choose to further componentize parts of this in your own Apps based on your specific requirements.
 //
 var PhotoIDMatchProcessor = /** @class */ (function () {
-  function PhotoIDMatchProcessor(sessionToken, sampleAppControllerReference) {
+  function PhotoIDMatchProcessor(sessionToken, AppControllerReference) {
     var _this = this;
     this.latestNetworkRequest = new XMLHttpRequest();
     //
@@ -23,9 +23,9 @@ var PhotoIDMatchProcessor = /** @class */ (function () {
       }
       // If enrollment was not successful, clear the enrollment identifier
       if (!_this.success) {
-        _this.sampleAppControllerReference.clearLatestEnrollmentIdentifier();
+        _this.AppControllerReference.clearLatestEnrollmentIdentifier();
       }
-      _this.sampleAppControllerReference.onComplete(
+      _this.AppControllerReference.onComplete(
         _this.latestSessionResult,
         _this.latestIDScanResult,
         _this.latestNetworkRequest.status
@@ -43,7 +43,7 @@ var PhotoIDMatchProcessor = /** @class */ (function () {
     // In the code in your own App, you can pass around signals, flags, intermediates, and results however you would like.
     //
     this.success = false;
-    this.sampleAppControllerReference = sampleAppControllerReference;
+    this.AppControllerReference = AppControllerReference;
     this.latestSessionResult = null;
     this.latestIDScanResult = null;
     // In v9.2.2+, configure the messages that will be displayed to the User in each of the possible cases.
@@ -104,7 +104,7 @@ var PhotoIDMatchProcessor = /** @class */ (function () {
         lowQualityAuditTrailImage: sessionResult.lowQualityAuditTrail[0],
         sessionId: sessionResult.sessionId,
         externalDatabaseRefID:
-          this.sampleAppControllerReference.getLatestEnrollmentIdentifier(),
+          this.AppControllerReference.getLatestEnrollmentIdentifier(),
       };
       //
       // Part 5:  Make the Networking Call to Your Servers.  Below is just example code, you are free to customize based on how your own API works.
@@ -216,7 +216,7 @@ var PhotoIDMatchProcessor = /** @class */ (function () {
         idScan: idScanResult.idScan,
         sessionId: idScanResult.sessionId,
         externalDatabaseRefID:
-          this.sampleAppControllerReference.getLatestEnrollmentIdentifier(),
+          this.AppControllerReference.getLatestEnrollmentIdentifier(),
         minMatchLevel: MinMatchLevel,
       };
       //

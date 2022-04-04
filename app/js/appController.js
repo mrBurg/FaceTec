@@ -208,17 +208,17 @@ const App = (function () {
   }
 
   return {
-    onLivenessCheckPressed: onLivenessCheckPressed,
-    onEnrollUserPressed: onEnrollUserPressed,
-    onAuthenticateUserPressed: onAuthenticateUserPressed,
-    onPhotoIDMatchPressed: onPhotoIDMatchPressed,
-    onDesignShowcasePressed: onDesignShowcasePressed,
-    onComplete: onComplete,
-    getLatestEnrollmentIdentifier: getLatestEnrollmentIdentifier,
-    clearLatestEnrollmentIdentifier: clearLatestEnrollmentIdentifier,
-    onVocalGuidanceSettingsButtonPressed: onVocalGuidanceSettingsButtonPressed,
-    onViewAuditTrailPressed: onViewAuditTrailPressed,
-    latestSessionResult: latestSessionResult,
-    latestIDScanResult: latestIDScanResult,
+    onLivenessCheckPressed,
+    onEnrollUserPressed,
+    onAuthenticateUserPressed,
+    onPhotoIDMatchPressed,
+    onDesignShowcasePressed,
+    onComplete,
+    getLatestEnrollmentIdentifier,
+    clearLatestEnrollmentIdentifier,
+    onVocalGuidanceSettingsButtonPressed,
+    onViewAuditTrailPressed,
+    latestSessionResult,
+    latestIDScanResult,
   };
 })();

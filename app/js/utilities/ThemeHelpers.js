@@ -1,7 +1,7 @@
 var ThemeHelpers = (function () {
   // Set the default theme
   var currentTheme = 'FaceTec Theme';
-  var themeResourceDirectory = '../../sample-app-resources/images/themes/';
+  var themeResourceDirectory = 'images/themes/';
   function setAppTheme(theme) {
     Config.currentCustomization = getCustomizationForTheme(theme);
     Config.currentLowLightCustomization =
@@ -2088,7 +2088,7 @@ var ThemeHelpers = (function () {
     currentTheme = themes[currentThemeIndex];
     setAppTheme(currentTheme);
     updateThemeTransitionView();
-    SampleAppUtilities.displayStatus('Theme set to: ' + currentTheme);
+    AppUtilities.displayStatus('Theme set to: ' + currentTheme);
   }
   function updateThemeTransitionView() {
     var transitionViewImage = '';
@@ -2096,7 +2096,7 @@ var ThemeHelpers = (function () {
       Config.currentCustomization.guidanceCustomization.foregroundColor;
     var transitionViewClass = 'theme-transition-overlay__';
     var deviceType = 'desktop';
-    if (SampleAppUtilities.isLikelyMobileDevice()) {
+    if (AppUtilities.isLikelyMobileDevice()) {
       deviceType = 'mobile';
     }
     switch (currentTheme) {

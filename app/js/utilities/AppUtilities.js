@@ -21,6 +21,7 @@ const AppUtilities = (function () {
     enableVocalGuidanceButtons();
   };
   var vocalGuidanceMode = VocalGuidanceMode.MINIMAL;
+
   function setVocalGuidanceMode() {
     disableVocalGuidanceButtons();
     if (!vocalGuidanceOnPlayer.paused || !vocalGuidanceOffPlayer.paused) {
@@ -66,6 +67,7 @@ const AppUtilities = (function () {
     }
     FaceTecSDK.setCustomization(Config.currentCustomization);
   }
+
   function setVocalGuidanceSoundFiles() {
     var soundFileUtilities = new SoundFileUtilities();
     Config.currentCustomization = soundFileUtilities.setVocalGuidanceSoundFiles(
@@ -73,17 +75,21 @@ const AppUtilities = (function () {
     );
     FaceTecSDK.setCustomization(Config.currentCustomization);
   }
+
   function setOCRLocalization() {
     FaceTecSDK.configureOCRLocalization(ocrLocalizationJSON);
   }
+
   function displayStatus(message) {
     document.getElementById('status').innerHTML = message;
   }
+
   function fadeInMainUIContainer() {
     (0, AppUIFunctions)('.loading-session-token-container').fadeOut(1);
     (0, AppUIFunctions)('#theme-transition-overlay').fadeOut(800);
     (0, AppUIFunctions)('.wrapping-box-container').fadeIn(800);
   }
+
   function fadeInMainUIControls(callback) {
     if (isLikelyMobileDevice()) {
       (0, AppUIFunctions)('footer').fadeIn(800);
@@ -111,17 +117,21 @@ const AppUtilities = (function () {
     (0, AppUIFunctions)('.wrapping-box-container').fadeOut(800);
     (0, AppUIFunctions)('#theme-transition-overlay').fadeIn(800);
   }
+
   function showLoadingSessionToken() {
     (0, AppUIFunctions)('.loading-session-token-container').fadeIn(300);
   }
+
   function hideLoadingSessionToken() {
     (0, AppUIFunctions)('.loading-session-token-container').fadeOut(800);
   }
+
   function disableControlButtons() {
     document.querySelectorAll('#controls > button').forEach(function (button) {
       button.setAttribute('disabled', 'true');
     });
   }
+
   function enableControlButtons() {
     document.querySelectorAll('#controls > button').forEach(function (button) {
       button.removeAttribute('disabled');
@@ -130,16 +140,19 @@ const AppUtilities = (function () {
       icon.removeAttribute('disabled');
     });
   }
+
   function showMainUI() {
     fadeInMainUIContainer();
     fadeInMainUIControls();
   }
+
   function handleErrorGettingServerSessionToken() {
     showMainUI();
     displayStatus(
       'Session could not be started due to an unexpected issue during the network request.'
     );
   }
+
   function generateUUId() {
     return ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, function (c) {
       return (
@@ -148,6 +161,7 @@ const AppUtilities = (function () {
       ).toString(16);
     });
   }
+
   function formatUIForDevice() {
     if (isLikelyMobileDevice()) {
       var windowWidth = window.innerWidth;
@@ -260,6 +274,7 @@ const AppUtilities = (function () {
       displayElementsAfterStyling();
     }
   }
+
   function displayElementsAfterStyling() {
     document.querySelectorAll('button').forEach(function (element) {
       element.classList.add('button-transitions');
@@ -267,16 +282,19 @@ const AppUtilities = (function () {
     (0, AppUIFunctions)('footer').fadeIn(800);
     (0, AppUIFunctions)('body').fadeIn(800);
   }
+
   function disableVocalGuidanceButtons() {
     document.querySelectorAll('.vocal-icon').forEach(function (button) {
       button.setAttribute('disabled', 'true');
     });
   }
+
   function enableVocalGuidanceButtons() {
     document.querySelectorAll('.vocal-icon').forEach(function (button) {
       button.removeAttribute('disabled');
     });
   }
+
   function isLikelyMobileDevice() {
     var isMobileDeviceUA =
       !!/Android|iPhone|iPad|iPod|IEMobile|Mobile|mobile/i.test(
@@ -298,6 +316,7 @@ const AppUtilities = (function () {
       return false;
     }
   }
+
   function disableAllButtons() {
     document.getElementById('enroll-button').setAttribute('disabled', 'true');
     document.getElementById('id-scan-button').setAttribute('disabled', 'true');
@@ -305,14 +324,17 @@ const AppUtilities = (function () {
       .getElementById('audit-trail-button')
       .setAttribute('disabled', 'true');
   }
+
   function enableAllButtons() {
     document.getElementById('enroll-button').removeAttribute('disabled');
     document.getElementById('id-scan-button').removeAttribute('disabled');
     document.getElementById('audit-trail-button').removeAttribute('disabled');
   }
+
   function fadeInBlurOverlay() {
     document.getElementById('controls').classList.add('blur-content');
   }
+
   function fadeOutBlurOverlay() {
     if (
       document.getElementById('controls').classList.contains('blur-content')
@@ -320,6 +342,7 @@ const AppUtilities = (function () {
       document.getElementById('controls').classList.remove('blur-content');
     }
   }
+
   function showAuditTrailImages(sessionResult, idScanResult) {
     var auditTrailImages = [];
     if (
@@ -350,9 +373,11 @@ const AppUtilities = (function () {
       displayStatus('No Audit Trail Images');
     }
   }
+
   function addDismissibleImagePopUp(img) {
     var auditTrailOverlay = document.createElement('div');
     var auditTrailImage = new Image();
+
     auditTrailImage.src = img;
     auditTrailImage.classList.add('audit-trail-image');
     auditTrailOverlay.classList.add('audit-trail-overlay');
@@ -373,6 +398,7 @@ const AppUtilities = (function () {
     auditTrailOverlay.append(auditTrailImage);
     document.getElementById('controls').append(auditTrailOverlay);
   }
+
   return {
     setVocalGuidanceSoundFiles,
     setVocalGuidanceMode,

@@ -1,24 +1,23 @@
-// UI Convenience Functions
 var AppUIFunctions = function (elementString) {
   // Get the element(s) for ui operations from the elementString;
   var currentElements = document.querySelectorAll(elementString);
   // Save the original display property of the element before hiding it
-  var saveDisplayForElement = function (el) {
+  function saveDisplayForElement(el) {
     var display = window.getComputedStyle(el).display;
     if (display && display !== 'none') {
       el.setAttribute('displaytype', display);
     }
-  };
+  }
   // Set the display of the element to either block or restore it's original value
-  var setDisplayForElement = function (el) {
+  function setDisplayForElement(el) {
     var display = 'block';
     if (el.getAttribute('displaytype')) {
       display = el.getAttribute('displaytype');
     }
     el.style.display = display;
-  };
+  }
   // Fade in the element to opacity over duration ms with an optional callback
-  var fadeIn = function (el, opacity, duration, callback) {
+  function fadeIn(el, opacity, duration, callback) {
     if (!el) {
       return;
     }
@@ -31,11 +30,8 @@ var AppUIFunctions = function (elementString) {
     el.style.visibility = 'visible';
     saveDisplayForElement(el);
     setDisplayForElement(el);
-    //@ts-ignore
     el.style['-webkit-transition'] = 'opacity ' + duration + 'ms';
-    //@ts-ignore
     el.style['-moz-transition'] = 'opacity ' + duration + 'ms';
-    //@ts-ignore
     el.style['-o-transition'] = 'opacity ' + duration + 'ms';
     el.style['transition'] = 'opacity ' + duration + 'ms';
     // Allow JS to clear execution stack
@@ -50,20 +46,17 @@ var AppUIFunctions = function (elementString) {
         callback();
       }
     }, duration);
-  };
+  }
   // Fade out the element to opacity over duration ms with an optional callback
-  var fadeOut = function (el, opacity, duration, callback) {
+  function fadeOut(el, opacity, duration, callback) {
     if (!el) {
       return;
     }
     saveDisplayForElement(el);
     opacity = opacity || '0';
     duration = duration || 1;
-    //@ts-ignore
     el.style['-webkit-transition'] = 'opacity ' + duration + 'ms';
-    //@ts-ignore
     el.style['-moz-transition'] = 'opacity ' + duration + 'ms';
-    //@ts-ignore
     el.style['-o-transition'] = 'opacity ' + duration + 'ms';
     el.style['transition'] = 'opacity ' + duration + 'ms';
     // Allow JS to clear execution stack
@@ -78,7 +71,8 @@ var AppUIFunctions = function (elementString) {
         callback();
       }
     }, duration);
-  };
+  }
+
   return {
     fadeOut: function (duration, callback) {
       currentElements.forEach(function (element) {
@@ -110,11 +104,9 @@ var AppUIFunctions = function (elementString) {
     css: function (styleProperTies) {
       if (typeof styleProperTies !== 'object') {
         throw new Error('UI.css must be called with an object');
-        return;
       }
       currentElements.forEach(function (element) {
         Object.keys(styleProperTies).map(function (style) {
-          //@ts-ignore
           element.style[style] = styleProperTies[style];
         });
       });

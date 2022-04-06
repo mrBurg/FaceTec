@@ -19,8 +19,8 @@
       content="Browser SDK - Sample App"
     />
 
-    <script type="text/javascript" src="js/FaceTecStrings.js"></script>
     <script type="text/javascript" src="js/very-old-browser-check.js"></script>
+    <script type="text/javascript" src="js/FaceTecStrings.js"></script>
     <script src="js/FaceTecSDK.js"></script>
     <script type="module">
       import { Config } from '/js/Config.js';
@@ -44,10 +44,10 @@
         .then((response) => response.json())
         .then((data) => (window.ocrLocalizationJSON = data));
     </script>
-    <script
+    <!-- <script
       type="text/javascript"
       src="js/processors/EnrollmentProcessor.js"
-    ></script>
+    ></script> -->
     <script
       type="text/javascript"
       src="js/processors/PhotoIDMatchProcessor.js"
@@ -98,14 +98,14 @@
               />
             </div>
           </div>
-          <button
+          <!-- <button
             id="enroll-button"
             disabled
             onclick="App.onEnrollUserPressed()"
             class="big-button"
           >
             Enroll User
-          </button>
+          </button> -->
           <button
             id="id-scan-button"
             disabled
@@ -114,14 +114,14 @@
           >
             Photo ID Match
           </button>
-          <button
+          <!-- <button
             id="audit-trail-button"
             disabled
             onclick="App.onViewAuditTrailPressed()"
             class="medium-button"
           >
             View Audit Trail
-          </button>
+          </button> -->
           <p id="status">Initializing...</p>
         </div>
         <div id="additional-screen" display="flex">
@@ -142,7 +142,7 @@
         <img src="images/FaceTec_Logo.png" />
       </div>
     </div>
-    <footer>
+    <!-- <footer>
       <span id="copy-right-section">
         <p id="copy-right" class="footer-element-margin">
           &copy; 2021 FaceTec, Inc. &thinsp;&middot;&thinsp; Multiple US &
@@ -166,11 +166,11 @@
           >
         </p>
       </span>
-    </footer>
-    <div id="copy-right-length">
+    </footer> -->
+    <!-- <div id="copy-right-length">
       &copy; 2021 FaceTec, Inc. &thinsp;&middot;&thinsp; Multiple US &
       International Patents Granted&thinsp;&middot;&thinsp; All Rights Reserved
-    </div>
+    </div> -->
     <div class="loading-session-token-container">
       <p id="loading-session-token-text">Network Connection Slow...</p>
     </div>

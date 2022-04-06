@@ -24,8 +24,5 @@ export function getLocalIP() {
     }
   }
 
-  results.localIP = (results['Wireless network'] ||
-    results['Беспроводная сеть'])[0];
-
   return results;
 }

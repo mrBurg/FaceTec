@@ -1,10 +1,3 @@
-//
-// Welcome to the annotated FaceTec Device SDK core code for performing secure Photo ID Scan.
-//
-//
-// This is an example self-contained class to perform Photo ID Scans with the FaceTec SDK.
-// You may choose to further componentize parts of this in your own Apps based on your specific requirements.
-//
 var PhotoIDMatchProcessor = /** @class */ (function () {
   function PhotoIDMatchProcessor(sessionToken, AppControllerReference) {
     var _this = this;
@@ -317,6 +310,6 @@ var PhotoIDMatchProcessor = /** @class */ (function () {
       var jsonStringToUpload = JSON.stringify(parameters);
       this.latestNetworkRequest.send(jsonStringToUpload);
     };
+
   return PhotoIDMatchProcessor;
 })();
-var PhotoIDMatchProcessor = PhotoIDMatchProcessor;

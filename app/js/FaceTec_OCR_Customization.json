@@ -1,222 +1,224 @@
-{"groups": [
-  {
-    "groupFriendlyName": "Your Information",
-    "fields": [
-      {
-        "fieldKey": "firstName",
-        "fieldFriendlyName": "First Name",
-        "uiFieldDescriptionText": "First Name"
-      },
-      {
-        "fieldKey": "lastName",
-        "fieldFriendlyName": "Last Name",
-        "uiFieldDescriptionText": "Last Name"
-      },
-      {
-        "fieldKey": "placeOfBirth",
-        "fieldFriendlyName": "Place of Birth",
-        "uiFieldDescriptionText": "Place of Birth"
-      },
-      {
-        "fieldKey": "middleInitial",
-        "fieldFriendlyName": "Middle Initial",
-        "uiFieldDescriptionText": "Middle Initial"
-      },
-      {
-        "fieldKey": "nationality",
-        "fieldFriendlyName": "Nationality",
-        "uiFieldDescriptionText": "Nationality"
-      },
-      {
-        "fieldKey": "givenName",
-        "fieldFriendlyName": "Given Name",
-        "uiFieldDescriptionText": "Given Name"
-      },
-      {
-        "fieldKey": "fullName",
-        "fieldFriendlyName": "Full Name",
-        "uiFieldDescriptionText": "Full Name"
-      },
-      {
-        "fieldKey": "dateOfBirth",
-        "fieldFriendlyName": "Date of Birth",
-        "uiFieldDescriptionText": "Date of Birth"
-      },
-      {
-        "fieldKey": "middleName",
-        "fieldFriendlyName": "Middle Name",
-        "uiFieldDescriptionText": "Middle Name"
-      }
-    ],
-    "groupKey": "userInfo"
-  },
-  {
-    "groupFriendlyName": "Your Address",
-    "fields": [
-      {
-        "fieldKey": "zipCode",
-        "fieldFriendlyName": "Zip Code",
-        "uiFieldDescriptionText": "Zip Code"
-      },
-      {
-        "fieldKey": "country",
-        "fieldFriendlyName": "Country",
-        "uiFieldDescriptionText": "Country"
-      },
-      {
-        "fieldKey": "address3",
-        "fieldFriendlyName": "Address Line 3",
-        "uiFieldDescriptionText": "Address Line 3"
-      },
-      {
-        "fieldKey": "province",
-        "fieldFriendlyName": "Province",
-        "uiFieldDescriptionText": "Province"
-      },
-      {
-        "fieldKey": "address2",
-        "fieldFriendlyName": "Address Line 2",
-        "uiFieldDescriptionText": "Address Line 2"
-      },
-      {
-        "fieldKey": "city",
-        "fieldFriendlyName": "City",
-        "uiFieldDescriptionText": "City"
-      },
-      {
-        "fieldKey": "address1",
-        "fieldFriendlyName": "Address Line 1",
-        "uiFieldDescriptionText": "Address Line 1"
-      },
-      {
-        "fieldKey": "county",
-        "fieldFriendlyName": "County",
-        "uiFieldDescriptionText": "County"
-      },
-      {
-        "fieldKey": "state",
-        "fieldFriendlyName": "State",
-        "uiFieldDescriptionText": "State"
-      }
-    ],
-    "groupKey": "addressInfo"
-  },
-  {
-    "groupFriendlyName": "Physical Traits & Misc",
-    "fields": [
-      {
-        "fieldKey": "sex",
-        "fieldFriendlyName": "Sex",
-        "uiFieldDescriptionText": "Sex"
-      },
-      {
-        "fieldKey": "weight",
-        "fieldFriendlyName": "Weight",
-        "uiFieldDescriptionText": "Weight"
-      },
-      {
-        "fieldKey": "eyes",
-        "fieldFriendlyName": "Eyes",
-        "uiFieldDescriptionText": "Eyes"
-      },
-      {
-        "fieldKey": "height",
-        "fieldFriendlyName": "Height",
-        "uiFieldDescriptionText": "Height"
-      }
-    ],
-    "groupKey": "secondaryUserInfo"
-  },
-  {
-    "groupFriendlyName": "Additional Info",
-    "fields": [
-      {
-        "fieldKey": "customField5",
-        "fieldFriendlyName": "Custom Field 5",
-        "uiFieldDescriptionText": "Custom Field 5"
-      },
-      {
-        "fieldKey": "customField1",
-        "fieldFriendlyName": "Custom Field 1",
-        "uiFieldDescriptionText": "Custom Field 1"
-      },
-      {
-        "fieldKey": "customField2",
-        "fieldFriendlyName": "Custom Field 2",
-        "uiFieldDescriptionText": "Custom Field 2"
-      },
-      {
-        "fieldKey": "customField3",
-        "fieldFriendlyName": "Custom Field 3",
-        "uiFieldDescriptionText": "Custom Field 3"
-      },
-      {
-        "fieldKey": "customField4",
-        "fieldFriendlyName": "Custom Field 4",
-        "uiFieldDescriptionText": "Custom Field 4"
-      }
-    ],
-    "groupKey": "customFields"
-  },
-  {
-    "groupFriendlyName": "Photo ID Details",
-    "fields": [
-      {
-        "fieldKey": "issuingAuthority",
-        "fieldFriendlyName": "Issuing Authority",
-        "uiFieldDescriptionText": "Issuing Authority"
-      },
-      {
-        "fieldKey": "dateOfExpiration",
-        "fieldFriendlyName": "Expiration Date",
-        "uiFieldDescriptionText": "Expiration Date"
-      },
-      {
-        "fieldKey": "countryCode",
-        "fieldFriendlyName": "Country Code",
-        "uiFieldDescriptionText": "Country Code"
-      },
-      {
-        "fieldKey": "passportType",
-        "fieldFriendlyName": "Passport Type",
-        "uiFieldDescriptionText": "Passport Type"
-      },
-      {
-        "fieldKey": "idNumber",
-        "fieldFriendlyName": "Photo ID #",
-        "uiFieldDescriptionText": "Photo ID #"
-      },
-      {
-        "fieldKey": "dateOfIssue",
-        "fieldFriendlyName": "Issued Date",
-        "uiFieldDescriptionText": "Issued Date"
-      },
-      {
-        "fieldKey": "idNumber2",
-        "fieldFriendlyName": "Secondary ID #",
-        "uiFieldDescriptionText": "Secondary ID #"
-      },
-      {
-        "fieldKey": "mrzLine3",
-        "fieldFriendlyName": "MRZ 3",
-        "uiFieldDescriptionText": "MRZ 3"
-      },
-      {
-        "fieldKey": "barcode",
-        "fieldFriendlyName": "Barcode",
-        "uiFieldDescriptionText": "Barcode"
-      },
-      {
-        "fieldKey": "mrzLine1",
-        "fieldFriendlyName": "MRZ 1",
-        "uiFieldDescriptionText": "MRZ 1"
-      },
-      {
-        "fieldKey": "mrzLine2",
-        "fieldFriendlyName": "MRZ 2",
-        "uiFieldDescriptionText": "MRZ 2"
-      }
-    ],
-    "groupKey": "idInfo"
-  }
-]}
+{
+  "groups": [
+    {
+      "groupFriendlyName": "Ваша информация",
+      "fields": [
+        {
+          "fieldKey": "firstName",
+          "fieldFriendlyName": "Имя",
+          "uiFieldDescriptionText": "Имя"
+        },
+        {
+          "fieldKey": "lastName",
+          "fieldFriendlyName": "Фамилия",
+          "uiFieldDescriptionText": "Фамилия"
+        },
+        {
+          "fieldKey": "placeOfBirth",
+          "fieldFriendlyName": "Место рождения",
+          "uiFieldDescriptionText": "Место рождения"
+        },
+        {
+          "fieldKey": "middleInitial",
+          "fieldFriendlyName": "Второй инициал",
+          "uiFieldDescriptionText": "Второй инициал"
+        },
+        {
+          "fieldKey": "nationality",
+          "fieldFriendlyName": "Национальность",
+          "uiFieldDescriptionText": "Национальность"
+        },
+        {
+          "fieldKey": "givenName",
+          "fieldFriendlyName": "Собственное имя",
+          "uiFieldDescriptionText": "Собственное имя"
+        },
+        {
+          "fieldKey": "fullName",
+          "fieldFriendlyName": "Полное имя",
+          "uiFieldDescriptionText": "Полное имя"
+        },
+        {
+          "fieldKey": "dateOfBirth",
+          "fieldFriendlyName": "Дата рождения",
+          "uiFieldDescriptionText": "Дата рождения"
+        },
+        {
+          "fieldKey": "middleName",
+          "fieldFriendlyName": "Второе имя",
+          "uiFieldDescriptionText": "Второе имя"
+        }
+      ],
+      "groupKey": "userInfo"
+    },
+    {
+      "groupFriendlyName": "Ваш адрес",
+      "fields": [
+        {
+          "fieldKey": "zipCode",
+          "fieldFriendlyName": "Почтовый Индекс",
+          "uiFieldDescriptionText": "Почтовый Индекс"
+        },
+        {
+          "fieldKey": "country",
+          "fieldFriendlyName": "Страна",
+          "uiFieldDescriptionText": "Страна"
+        },
+        {
+          "fieldKey": "address3",
+          "fieldFriendlyName": "Адресная строка 3",
+          "uiFieldDescriptionText": "Адресная строка 3"
+        },
+        {
+          "fieldKey": "province",
+          "fieldFriendlyName": "Провинция",
+          "uiFieldDescriptionText": "Провинция"
+        },
+        {
+          "fieldKey": "address2",
+          "fieldFriendlyName": "Адресная строка 2",
+          "uiFieldDescriptionText": "Адресная строка 2"
+        },
+        {
+          "fieldKey": "city",
+          "fieldFriendlyName": "Город",
+          "uiFieldDescriptionText": "Город"
+        },
+        {
+          "fieldKey": "address1",
+          "fieldFriendlyName": "Адресная строка 1",
+          "uiFieldDescriptionText": "Адресная строка 1"
+        },
+        {
+          "fieldKey": "county",
+          "fieldFriendlyName": "Округ",
+          "uiFieldDescriptionText": "Округ"
+        },
+        {
+          "fieldKey": "state",
+          "fieldFriendlyName": "Штат",
+          "uiFieldDescriptionText": "Штат"
+        }
+      ],
+      "groupKey": "addressInfo"
+    },
+    {
+      "groupFriendlyName": "Физические черты и прочее",
+      "fields": [
+        {
+          "fieldKey": "sex",
+          "fieldFriendlyName": "Пол",
+          "uiFieldDescriptionText": "Пол"
+        },
+        {
+          "fieldKey": "weight",
+          "fieldFriendlyName": "Масса",
+          "uiFieldDescriptionText": "Масса"
+        },
+        {
+          "fieldKey": "eyes",
+          "fieldFriendlyName": "Глаза",
+          "uiFieldDescriptionText": "Глаза"
+        },
+        {
+          "fieldKey": "height",
+          "fieldFriendlyName": "Высота",
+          "uiFieldDescriptionText": "Высота"
+        }
+      ],
+      "groupKey": "secondaryUserInfo"
+    },
+    {
+      "groupFriendlyName": "Дополнительная информация",
+      "fields": [
+        {
+          "fieldKey": "customField5",
+          "fieldFriendlyName": "Пользовательское поле 5",
+          "uiFieldDescriptionText": "Пользовательское поле 5"
+        },
+        {
+          "fieldKey": "customField1",
+          "fieldFriendlyName": "Пользовательское поле 1",
+          "uiFieldDescriptionText": "Пользовательское поле 1"
+        },
+        {
+          "fieldKey": "customField2",
+          "fieldFriendlyName": "Пользовательское поле 2",
+          "uiFieldDescriptionText": "Пользовательское поле 2"
+        },
+        {
+          "fieldKey": "customField3",
+          "fieldFriendlyName": "Пользовательское поле 3",
+          "uiFieldDescriptionText": "Пользовательское поле 3"
+        },
+        {
+          "fieldKey": "customField4",
+          "fieldFriendlyName": "Пользовательское поле 4",
+          "uiFieldDescriptionText": "Пользовательское поле 4"
+        }
+      ],
+      "groupKey": "customFields"
+    },
+    {
+      "groupFriendlyName": "Детали удостоверения личности с фотографией",
+      "fields": [
+        {
+          "fieldKey": "issuingAuthority",
+          "fieldFriendlyName": "Орган, выдавший документ",
+          "uiFieldDescriptionText": "Орган, выдавший документ"
+        },
+        {
+          "fieldKey": "dateOfExpiration",
+          "fieldFriendlyName": "Срок годности",
+          "uiFieldDescriptionText": "Срок годности"
+        },
+        {
+          "fieldKey": "countryCode",
+          "fieldFriendlyName": "Код страны",
+          "uiFieldDescriptionText": "Код страны"
+        },
+        {
+          "fieldKey": "passportType",
+          "fieldFriendlyName": "Тип паспорта",
+          "uiFieldDescriptionText": "Тип паспорта"
+        },
+        {
+          "fieldKey": "idNumber",
+          "fieldFriendlyName": "Фото регистрационный документа",
+          "uiFieldDescriptionText": "Фото регистрационный документа"
+        },
+        {
+          "fieldKey": "dateOfIssue",
+          "fieldFriendlyName": "Дата выдачи",
+          "uiFieldDescriptionText": "Дата выдачи"
+        },
+        {
+          "fieldKey": "idNumber2",
+          "fieldFriendlyName": "Фото дополнительного регистрационного документа",
+          "uiFieldDescriptionText": "Фото дополнительного регистрационного документа"
+        },
+        {
+          "fieldKey": "mrzLine3",
+          "fieldFriendlyName": "МСЗ 3",
+          "uiFieldDescriptionText": "МСЗ 3"
+        },
+        {
+          "fieldKey": "barcode",
+          "fieldFriendlyName": "Штрих-код",
+          "uiFieldDescriptionText": "Штрих-код"
+        },
+        {
+          "fieldKey": "mrzLine1",
+          "fieldFriendlyName": "МСЗ 1",
+          "uiFieldDescriptionText": "МСЗ 1"
+        },
+        {
+          "fieldKey": "mrzLine2",
+          "fieldFriendlyName": "МСЗ 2",
+          "uiFieldDescriptionText": "МСЗ 2"
+        }
+      ],
+      "groupKey": "idInfo"
+    }
+  ]
+}

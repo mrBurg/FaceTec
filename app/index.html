@@ -18,31 +18,35 @@
       name="apple-mobile-web-app-title"
       content="Browser SDK - Sample App"
     />
+
     <script type="text/javascript" src="js/FaceTecStrings.js"></script>
     <script type="text/javascript" src="js/very-old-browser-check.js"></script>
+    <script src="js/FaceTecSDK.js"></script>
     <script type="module">
       import { Config } from '/js/Config.js';
+
       window.Config = Config;
     </script>
     <script>
+      const ServerUpgradeLogo = '/js/images/upgrade.png';
+      const FACESCAN_SUCCESSFUL_SOUND_FILE =
+        '/audio/facescan_successful_sound_file.mp3';
+      const PLEASE_FRAME_YOUR_FACE_SOUND_FILE =
+        '/audio/please_frame_your_face_sound_file.mp3';
+      const PLEASE_MOVE_CLOSER_SOUND_FILE =
+        '/audio/please_move_closer_sound_file.mp3';
+      const PLEASE_PRESS_BUTTON_SOUND_FILE =
+        '/audio/please_press_button_sound_file.mp3';
+      const PLEASE_RETRY_SOUND_FILE = '/audio/please_retry_sound_file.mp3';
+      const UPLOADING_SOUND_FILE = '/audio/uploading_sound_file.mp3';
+
       fetch('/js/FaceTec_OCR_Customization.json')
-        .then((response) => {
-          return response.json();
-        })
+        .then((response) => response.json())
         .then((data) => (window.ocrLocalizationJSON = data));
     </script>
-    <script src="js/FaceTecSDK.js"></script>
-    <script
-      type="text/javascript"
-      src="js/processors/AuthenticateProcessor.js"
-    ></script>
     <script
       type="text/javascript"
       src="js/processors/EnrollmentProcessor.js"
-    ></script>
-    <script
-      type="text/javascript"
-      src="js/processors/LivenessCheckProcessor.js"
     ></script>
     <script
       type="text/javascript"
@@ -56,26 +60,9 @@
     <script type="text/javascript" src="js/utilities/ThemeHelpers.js"></script>
     <script
       type="text/javascript"
-      src="js/utilities/AdditionalScreens.js"
-    ></script>
-    <script
-      type="text/javascript"
       src="js/utilities/SoundFileUtilities.js"
     ></script>
     <script type="text/javascript" src="js/appController.js?v1"></script>
-    <script>
-      const ServerUpgradeLogo = '/js/images/upgrade.png';
-      const FACESCAN_SUCCESSFUL_SOUND_FILE =
-        '/audio/facescan_successful_sound_file.mp3';
-      const PLEASE_FRAME_YOUR_FACE_SOUND_FILE =
-        '/audio/please_frame_your_face_sound_file.mp3';
-      const PLEASE_MOVE_CLOSER_SOUND_FILE =
-        '/audio/please_move_closer_sound_file.mp3';
-      const PLEASE_PRESS_BUTTON_SOUND_FILE =
-        '/audio/please_press_button_sound_file.mp3';
-      const PLEASE_RETRY_SOUND_FILE = '/audio/please_retry_sound_file.mp3';
-      const UPLOADING_SOUND_FILE = '/audio/uploading_sound_file.mp3';
-    </script>
   </head>
   <body>
     <!-- <a href="api">API</a> -->
@@ -112,28 +99,12 @@
             </div>
           </div>
           <button
-            id="liveness-button"
-            disabled
-            onclick="App.onLivenessCheckPressed()"
-            class="big-button"
-          >
-            3D Liveness Check
-          </button>
-          <button
             id="enroll-button"
             disabled
             onclick="App.onEnrollUserPressed()"
             class="big-button"
           >
             Enroll User
-          </button>
-          <button
-            id="authenticate-button"
-            disabled
-            onclick="App.onAuthenticateUserPressed()"
-            class="big-button"
-          >
-            Authenticate User
           </button>
           <button
             id="id-scan-button"
@@ -150,14 +121,6 @@
             class="medium-button"
           >
             View Audit Trail
-          </button>
-          <button
-            id="design-showcase-button"
-            disabled
-            onclick="App.onDesignShowcasePressed()"
-            class="medium-button"
-          >
-            Design Showcase
           </button>
           <p id="status">Initializing...</p>
         </div>

@@ -1,12 +1,5 @@
-//
-// Welcome to the annotated FaceTec Device SDK core code for performing secure Enrollment.
-//
-//
-// This is an example self-contained class to perform Enrollment with the FaceTec SDK.
-// You may choose to further componentize parts of this in your own Apps based on your specific requirements.
-//
 var EnrollmentProcessor = /** @class */ (function () {
-  function EnrollmentProcessor(sessionToken, sampleAppControllerReference) {
+  function EnrollmentProcessor(sessionToken, AppControllerReference) {
     var _this = this;
     this.latestNetworkRequest = new XMLHttpRequest();
     //
@@ -20,9 +13,9 @@ var EnrollmentProcessor = /** @class */ (function () {
       _this.success = _this.latestSessionResult.isCompletelyDone;
       // If enrollment was not successful, clear the enrollment identifier
       if (!_this.success) {
-        _this.sampleAppControllerReference.clearLatestEnrollmentIdentifier();
+        _this.AppControllerReference.clearLatestEnrollmentIdentifier();
       }
-      _this.sampleAppControllerReference.onComplete(
+      _this.AppControllerReference.onComplete(
         _this.latestSessionResult,
         null,
         _this.latestNetworkRequest.status
@@ -40,7 +33,7 @@ var EnrollmentProcessor = /** @class */ (function () {
     // In the code in your own App, you can pass around signals, flags, intermediates, and results however you would like.
     //
     this.success = false;
-    this.sampleAppControllerReference = sampleAppControllerReference;
+    this.AppControllerReference = AppControllerReference;
     this.latestSessionResult = null;
     //
     // Part 1:  Starting the FaceTec Session
@@ -84,7 +77,7 @@ var EnrollmentProcessor = /** @class */ (function () {
         lowQualityAuditTrailImage: sessionResult.lowQualityAuditTrail[0],
         sessionId: sessionResult.sessionId,
         externalDatabaseRefID:
-          this.sampleAppControllerReference.getLatestEnrollmentIdentifier(),
+          this.AppControllerReference.getLatestEnrollmentIdentifier(),
       };
       //
       // Part 5:  Make the Networking Call to Your Servers.  Below is just example code, you are free to customize based on how your own API works.
@@ -166,6 +159,6 @@ var EnrollmentProcessor = /** @class */ (function () {
         faceScanResultCallback.uploadMessageOverride('Still Uploading...');
       }, 6000);
     };
+
   return EnrollmentProcessor;
 })();
-var EnrollmentProcessor = EnrollmentProcessor;

@@ -74,9 +74,6 @@ const AppUtilities = (function () {
     FaceTecSDK.setCustomization(Config.currentCustomization);
   }
   function setOCRLocalization() {
-    // Set the strings to be used for group names, field names, and placeholder texts for the FaceTec ID Scan User OCR Confirmation Screen.
-    // DEVELOPER NOTE: For this demo, we are using the template json file, 'FaceTec_OCR_Customization.json,' as the parameter in calling teh configureOCRLocalization API.
-    // For the configureOCRLocalization API parameter, you may use any object that follows the same structure and key naming as the template json file, 'FaceTec_OCR_Customization.json'.
     FaceTecSDK.configureOCRLocalization(ocrLocalizationJSON);
   }
   function displayStatus(message) {
@@ -101,7 +98,7 @@ const AppUtilities = (function () {
       }
     });
   }
-  // Disable buttons to prevent hammering, fade out main interface elements, and reset the Session Review Screen data.
+
   function fadeOutMainUIAndPrepareForSession() {
     disableControlButtons();
     if (isLikelyMobileDevice()) {
@@ -144,7 +141,6 @@ const AppUtilities = (function () {
     );
   }
   function generateUUId() {
-    // @ts-ignore
     return ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, function (c) {
       return (
         c ^
@@ -305,26 +301,14 @@ const AppUtilities = (function () {
   function disableAllButtons() {
     document.getElementById('enroll-button').setAttribute('disabled', 'true');
     document.getElementById('id-scan-button').setAttribute('disabled', 'true');
-    document.getElementById('liveness-button').setAttribute('disabled', 'true');
-    document
-      .getElementById('authenticate-button')
-      .setAttribute('disabled', 'true');
     document
       .getElementById('audit-trail-button')
-      .setAttribute('disabled', 'true');
-    document
-      .getElementById('design-showcase-button')
       .setAttribute('disabled', 'true');
   }
   function enableAllButtons() {
     document.getElementById('enroll-button').removeAttribute('disabled');
     document.getElementById('id-scan-button').removeAttribute('disabled');
-    document.getElementById('liveness-button').removeAttribute('disabled');
-    document.getElementById('authenticate-button').removeAttribute('disabled');
     document.getElementById('audit-trail-button').removeAttribute('disabled');
-    document
-      .getElementById('design-showcase-button')
-      .removeAttribute('disabled');
   }
   function fadeInBlurOverlay() {
     document.getElementById('controls').classList.add('blur-content');

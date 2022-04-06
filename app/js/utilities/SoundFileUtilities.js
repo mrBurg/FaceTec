@@ -1,7 +1,5 @@
-// Load custom sound files
 var SoundFileUtilities = /** @class */ (function () {
   function SoundFileUtilities() {
-    // Return the customization object updated with custom sound files
     this.setVocalGuidanceSoundFiles = function (zoomCustomization) {
       zoomCustomization.vocalGuidanceCustomization.pleaseFrameYourFaceInTheOvalSoundFile =
         PLEASE_FRAME_YOUR_FACE_SOUND_FILE;
@@ -18,6 +16,7 @@ var SoundFileUtilities = /** @class */ (function () {
       return zoomCustomization;
     };
   }
+
   return SoundFileUtilities;
 })();
 var SoundFileUtilities = SoundFileUtilities;

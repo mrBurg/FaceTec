@@ -33,6 +33,7 @@ const App = (function () {
 
   function onEnrollUserPressed() {
     AppUtilities.fadeOutMainUIAndPrepareForSession();
+
     getSessionToken(function (sessionToken) {
       latestEnrollmentIdentifier =
         'browser_sample_app_' + AppUtilities.generateUUId();
@@ -57,6 +58,11 @@ const App = (function () {
   ) {
     latestSessionResult = sessionResult;
     latestIDScanResult = idScanResult;
+
+    console.log(latestSessionResult);
+    console.log(latestIDScanResult);
+    showAdditionalScreensServerIsDown();
+
     if (latestProcessor.isSuccess()) {
       AppUtilities.displayStatus('Success');
     } else {
@@ -68,6 +74,7 @@ const App = (function () {
         return;
       }
     }
+
     AppUtilities.showMainUI();
   }
 

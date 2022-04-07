@@ -1,0 +1,135 @@
+#main-interface {
+  width: 640px;
+  height: 430px;
+  margin: 0 auto;
+  border: 2px solid $blue-light;
+  border-radius: 20px;
+  overflow: hidden;
+  background-color: $white;
+}
+
+#controls {
+  height: 430px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  z-index: 0;
+  background-color: $white;
+}
+
+#liveness-button {
+  margin-top: 60px;
+}
+
+#design-showcase-button {
+  margin-top: 5px;
+  margin-bottom: 75px;
+}
+
+.big-button {
+  width: 50%;
+  max-width: 320px;
+  height: 50px;
+  margin: 5px auto 0;
+  color: $white;
+  background: $blue-light;
+  border-radius: 8px;
+  font-size: 20px;
+  font-weight: 500;
+  cursor: pointer;
+  outline: none;
+}
+
+.medium-button {
+  width: 50%;
+  max-width: 320px;
+  height: 40px;
+  margin: 10px auto 0;
+  color: $white;
+  background: $blue-light;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  outline: none;
+}
+
+.button-transitions {
+  transition: all 0.3s ease-out;
+}
+
+.big,
+.medium {
+  &-button {
+    &:disabled,
+    &[disabled] {
+      cursor: not-allowed;
+      background: $blue-dark !important;
+      color: $white !important;
+    }
+
+    @media (hover: hover) {
+      &:hover:enabled {
+        background-color: $blue;
+        color: $white !important;
+      }
+    }
+  }
+}
+
+#status {
+  display: block;
+  position: sticky;
+  width: auto;
+  min-width: 60%;
+  max-width: 90%;
+  bottom: 15px;
+  margin: 0px auto;
+  padding: 8px;
+  color: $blue-light;
+  font-size: 18px;
+  background-color: $blue-dark;
+  border-radius: 5px;
+}
+
+.wrapping-box-container {
+  position: fixed;
+  margin: 0 auto;
+  width: calc(100% - 20px);
+  height: auto;
+  color: $white;
+  padding: 10px;
+  z-index: 1;
+}
+
+#custom-logo-container {
+  margin: 20px auto;
+
+  img {
+    max-height: 50px;
+    width: auto;
+    height: auto;
+    text-align: center;
+    position: relative;
+    padding-right: 4px;
+  }
+}
+
+.display-none {
+  display: none;
+}
+
+.audit-trail {
+  &-overlay {
+    position: fixed;
+    width: inherit;
+    height: inherit;
+    z-index: 1000;
+    align-self: center;
+  }
+
+  &-image {
+    max-width: 200px;
+    max-height: auto;
+  }
+}

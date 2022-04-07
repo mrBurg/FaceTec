@@ -1,4 +1,47 @@
 {
+  "lang": "en",
+  "headData": {
+    "title": "Browser SDK - App",
+    "link": [
+      {
+        "rel": "icon",
+        "href": "favicon.ico"
+      },
+      {
+        "rel": "stylesheet",
+        "href": "css/style.css"
+      }
+    ],
+    "meta": [
+      {
+        "name": "viewport",
+        "content": "width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
+      },
+      {
+        "name": "apple-mobile-web-app-capable",
+        "content": "yes"
+      },
+      {
+        "name": "apple-mobile-web-app-status-bar-style",
+        "content": "black"
+      },
+      {
+        "name": "apple-mobile-web-app-title",
+        "content": "Browser SDK - App"
+      }
+    ],
+    "script": [
+      "js/FaceTecStrings.js",
+      "js/FaceTecSDK.js",
+      "js/processors/PhotoIDMatchProcessor.js",
+      "js/utilities/AppUIFunctions.js",
+      "js/utilities/AppUtilities.js",
+      "js/utilities/ThemeHelpers.js",
+      "js/utilities/AdditionalScreens.js",
+      "js/utilities/SoundFileUtilities.js",
+      "js/appController.js"
+    ]
+  },
   "protocol": {
     "http": "HTTP"
   },

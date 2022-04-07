@@ -1,0 +1,15 @@
+#copy-right {
+  &-section {
+    height: auto;
+    display: block;
+  }
+
+  &-length {
+    position: absolute;
+    visibility: hidden;
+    height: auto;
+    width: auto;
+    white-space: nowrap;
+    font-size: 7px;
+  }
+}

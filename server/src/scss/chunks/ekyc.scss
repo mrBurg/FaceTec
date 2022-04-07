@@ -1,0 +1,98 @@
+.ekyc {
+  &-activity-indicator-svg {
+    .circlePath1 {
+      fill: $red-misty;
+    }
+
+    .circlePath2 {
+      fill: $red-light;
+    }
+
+    .circlePath3 {
+      fill: $red;
+    }
+
+    .circlePath4 {
+      fill: $red-dark;
+    }
+  }
+
+  &__white {
+    border-radius: 50%;
+    transform: translateZ(0) scale(0, 0);
+    transform-origin: 50% 50%;
+    animation: ekyc-scale-to-default 0.5s cubic-bezier(0.65, 0, 0.45, 1) 0.3s
+      forwards;
+  }
+
+  .checkmarkPath__back,
+  &__white .checkmarkPath__back {
+    animation: ekyc-scale-and-fade-out-success 0.5s
+      cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards;
+  }
+
+  .crossPath1,
+  .crossPath2,
+  &__white .crossPath1,
+  &__white .crossPath2 {
+    &__back {
+      animation: ekyc-scale-and-fade-out-unsuccess 0.5s
+        cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards;
+    }
+  }
+
+  .checkmarkPath,
+  .crossPath1,
+  .crossPath2,
+  &__white .checkmarkPath,
+  &__white .crossPath1,
+  &__white .crossPath2 {
+    &__back,
+    &__front {
+      transform-origin: 50% 50%;
+      stroke-width: 8;
+      stroke-linecap: square;
+      fill: none;
+    }
+  }
+
+  .checkmarkPath,
+  .crossPath1,
+  .crossPath2 {
+    &__back,
+    &__front {
+      stroke: black;
+    }
+  }
+
+  &__white .checkmarkPath,
+  &__white .crossPath1,
+  &__white .crossPath2 {
+    &__back,
+    &__front {
+      stroke: $white;
+    }
+  }
+}
+
+@keyframes ekyc-scale-to-default {
+  100% {
+    transform: translateZ(0) scale(1, 1);
+  }
+}
+
+@keyframes ekyc-scale-and-fade-out-success {
+  100% {
+    transform: scale(1.5, 1.5);
+    opacity: 0;
+    stroke: rgb(28, 237, 125);
+  }
+}
+
+@keyframes ekyc-scale-and-fade-out-unsuccess {
+  100% {
+    transform: scale(1.5, 1.5);
+    opacity: 0;
+    stroke: rgb(237, 28, 36);
+  }
+}

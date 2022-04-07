@@ -1,13 +1,12 @@
 import express from 'express';
 import http from 'http';
 import path from 'path';
-import _ from 'lodash';
+import ejs from 'ejs';
 // import bodyParser from 'body-parser';
 
 import cfg from './config.json';
-import { getLocalIP } from './utils';
+import { getLocalIP, serverCallback } from './utils';
 import apiHandler from './routes/api';
-import { typeHosts, typeNetworkInterfaces } from './@types';
 
 const expressApp = express();
 // const textParser = [expressApp|bodyParser].text({ type: 'text/html' });
@@ -16,35 +15,18 @@ const expressApp = express();
 // const jsonParser = [expressApp|bodyParser].json({ type: 'application/*+json' });
 const httpServer = http.createServer(expressApp);
 
-const serverCallback = (
-  (err) =>
-  (protocol: string, hostsData: typeNetworkInterfaces, port: string) => {
-    const wrapper = (data: string) =>
-      `\n    \x1b[102m\x1b[30m${data}\x1b[0m\x1b[92m`;
-
-    let hosts = `${wrapper('["localhost"]')}`;
-
-    if (err) {
-      throw err;
-    }
-
-    for (let item in hostsData) {
-      hosts += `${wrapper(JSON.stringify(hostsData[item]))}\x1b[0m\t ${item}`;
-    }
-
-    console.log(
-      `\x1b[92m${protocol} App ready on =>\n  host ->${hosts}\n\x1b[92m  port ->${wrapper(
-        `["${port}"]`
-      )}\n\x1b[0m`
-    );
-
-    return _.noop;
-  }
-)();
-
 expressApp
+  .set('views', path.join(__dirname, './src/views'))
+  .set('view engine', '.ejs')
+  .engine('.ejs', ejs.renderFile)
   .use(express.static(path.join(__dirname, './../app')))
-  .use(cfg.urns.api, apiHandler);
+  .use(cfg.urns.api, apiHandler)
+  .use(cfg.urns.root, (_req, res) =>
+    res.render('./', {
+      lang: cfg.lang,
+      headData: cfg.headData,
+    })
+  );
 
 httpServer.listen(
   cfg.port,

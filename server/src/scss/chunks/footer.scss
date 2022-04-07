@@ -1,0 +1,23 @@
+footer {
+  position: absolute;
+  bottom: 4px;
+  width: 100%;
+  font-size: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+
+  span p {
+    margin: 0;
+    color: grey;
+
+    a:hover {
+      color: $blue-light;
+      text-decoration: underline;
+    }
+  }
+}
+
+.footer-element-margin {
+  margin: 5px 0 5px;
+}

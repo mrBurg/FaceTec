@@ -1,0 +1,122 @@
+#theme-transition-overlay {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: none;
+  pointer-events: none;
+
+  &-img {
+    display: block;
+    position: absolute;
+  }
+}
+
+.theme-transition-overlay {
+  &__default {
+    &__mobile {
+      > img {
+        height: 100% !important;
+        width: 100% !important;
+        top: 50%;
+        left: 50%;
+      }
+    }
+  }
+
+  &__well-rounded,
+  &__bitcoin-exchange,
+  &__ekyc,
+  &__sample-bank {
+    &__desktop {
+      > img {
+        height: inherit;
+      }
+    }
+
+    &__mobile {
+      > img {
+        height: 100% !important;
+        width: 100% !important;
+        top: 50%;
+        left: 50%;
+      }
+    }
+  }
+
+  &__default {
+    &__desktop,
+    &__mobile {
+      background-color: transparent;
+      transform: translate(-50%, -50%);
+    }
+
+    &__mobile {
+      > img {
+        height: 100% !important;
+        width: 100% !important;
+        top: 50%;
+        left: 50%;
+      }
+    }
+  }
+
+  &__well-rounded {
+    &__desktop,
+    &__mobile {
+      background-color: $turquoise;
+    }
+
+    &__mobile > img {
+      transform: translate(-50%, -25%) scale(-1, 1);
+    }
+
+    &__desktop > img {
+      transform: translate(-25%, 0) scale(1, -1);
+      left: 0;
+    }
+  }
+
+  &__bitcoin-exchange,
+  &__ekyc,
+  &__sample-bank {
+    &__desktop,
+    &__mobile {
+      background-color: $white;
+    }
+  }
+
+  &__bitcoin-exchange {
+    &__mobile > img {
+      transform: translate(-50%, -75%) scale(1, -1);
+    }
+
+    &__desktop > img {
+      transform: translate(-25%, 0) scale(1, 1);
+      left: 0;
+    }
+  }
+
+  &__ekyc {
+    &__mobile > img {
+      transform: translate(-50%, -55%) scale(1, -1);
+    }
+
+    &__desktop > img {
+      transform: translate(25%, 0) scale(-1, -1);
+      right: 0;
+    }
+  }
+
+  &__sample-bank {
+    &__mobile > img {
+      transform: translate(-50%, -55%) scale(-1, -1);
+    }
+
+    &__desktop > img {
+      transform: translate(25%, 0) scale(-1, 1);
+      right: 0;
+    }
+  }
+}

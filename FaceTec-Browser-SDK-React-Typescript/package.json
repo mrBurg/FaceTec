@@ -1,0 +1,29 @@
+{
+  "name": "facetec-react-sample",
+  "version": "9.2.0",
+  "description": "FaceTec Browser SDK React Sample",
+  "main": "BasicComponent.tsx",
+  "scripts": {
+    "build": "webpack-cli --watch",
+    "start": "webpack-dev-server --open --hot --port 4200"
+  },
+  "author": "FaceTec, Inc.",
+  "devDependencies": {
+    "babel-eslint": "^10.1.0",
+    "eslint-plugin-react": "^7.22.0",
+    "ts-loader": "^5.3.3",
+    "typescript": "^3.3.3",
+    "webpack": "^4.35.0",
+    "webpack-cli": "^3.3.4",
+    "webpack-dev-server": "^3.7.2"
+  },
+  "dependencies": {
+    "@types/react": "^16.8.7",
+    "@types/react-dom": "^16.8.2",
+    "onchange": "^5.2.0",
+    "react": "^16.8.4",
+    "react-dom": "^16.8.4",
+    "ts-loader": "^5.3.3",
+    "typescript": "^3.3.3333"
+  }
+}

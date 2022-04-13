@@ -1,5 +1,7 @@
 {
   "compilerOptions": {
+    "baseUrl": "./src/",
+    "rootDir": ".",
     "target": "ESNext",
     "jsx": "preserve",
     "experimentalDecorators": true,
@@ -14,8 +16,21 @@
     "noEmit": true,
     "incremental": true,
     "isolatedModules": true,
-    "strict": false
+    "strict": false,
+    "paths": {
+      "@component/*": ["component/*"],
+      "@scss/*": ["scss/*"],
+      "@store": ["store"],
+      "@util": ["util"],
+      "@root/*": ["*"]
+    }
   },
-  "include": ["next-env.d.ts", "declarations/*", "**/*.ts", "**/*.tsx"],
+  "include": [
+    "next-env.d.ts",
+    "declarations/*",
+    "pages/**/*.tsx",
+    "src/**/*.tsx",
+    "src/**/*.ts"
+  ],
   "exclude": ["node_modules"]
 }

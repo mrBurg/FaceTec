@@ -3,9 +3,9 @@ import Link from 'next/link';
 import Head from 'next/head';
 import { GetStaticPropsContext } from 'next';
 import axio from 'axios';
-import classNames from 'classnames';
+import { ReactElement } from 'react';
 
-import style from './../src/scss/index.module.scss';
+import { Test } from '@component/test';
 
 type typeDomains = Record<'domain' | 'defaultLocale', string> & {
   locales: string[];
@@ -22,17 +22,18 @@ type typePageProps = {
 
 type typeGridItem = Record<'href' | 'title' | 'text', string>;
 
-export default function Home(props: typePageProps) {
+function HomeComponent(props: typePageProps) {
   const { title, description, grid, footer } = props.static;
 
   return (
-    <div className={classNames('container', style.bgcolor)}>
+    <div className="container">
       <Head>
         <title>Create Next App</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <main>
+        <Test />
         <h1 className="title">{htmlParser(title)}</h1>
         <p className="description">{htmlParser(description)}</p>
 
@@ -54,7 +55,7 @@ export default function Home(props: typePageProps) {
         </a>
       </footer>
 
-      <style jsx>{`
+      {/* <style jsx>{`
         .container {
           min-height: 100vh;
           padding: 0 0.5rem;
@@ -183,9 +184,9 @@ export default function Home(props: typePageProps) {
             flex-direction: column;
           }
         }
-      `}</style>
+      `}</style> */}
 
-      <style jsx global>{`
+      {/* <style jsx global>{`
         html,
         body {
           padding: 0;
@@ -198,17 +199,24 @@ export default function Home(props: typePageProps) {
         * {
           box-sizing: border-box;
         }
-      `}</style>
+      `}</style> */}
     </div>
   );
 }
+
+HomeComponent.getLayout = (children: ReactElement) => {
+  // return <div className="outerWrapper">{children}</div>;
+  return children;
+};
+
+export default HomeComponent;
 
 export async function getStaticProps(context: GetStaticPropsContext) {
   const response = await axio.get('/api/static');
 
   if (response.status == 200) {
-    return { props: { context, static: response.data } };
+    return { props: { context, static: response.data } as typePageProps };
   }
 
-  return { props: {} };
+  return { props: {} as typePageProps };
 }

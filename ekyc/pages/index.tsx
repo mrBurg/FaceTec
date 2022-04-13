@@ -1,12 +1,32 @@
 import htmlParser from 'html-react-parser';
 import Link from 'next/link';
 import Head from 'next/head';
+import { GetStaticPropsContext } from 'next';
+import axio from 'axios';
+import classNames from 'classnames';
 
-export default function Home(props) {
-  const { title, description, grid, footer } = props;
+import style from './../src/scss/index.module.scss';
+
+type typeDomains = Record<'domain' | 'defaultLocale', string> & {
+  locales: string[];
+};
+
+type typePageProps = {
+  context: {
+    locales: string[];
+    defaultLocale: string;
+    domains: typeDomains[];
+  };
+  static: Record<string, ReturnType<typeof Object.create>>;
+};
+
+type typeGridItem = Record<'href' | 'title' | 'text', string>;
+
+export default function Home(props: typePageProps) {
+  const { title, description, grid, footer } = props.static;
 
   return (
-    <div className="container">
+    <div className={classNames('container', style.bgcolor)}>
       <Head>
         <title>Create Next App</title>
         <link rel="icon" href="/favicon.ico" />
@@ -17,7 +37,7 @@ export default function Home(props) {
         <p className="description">{htmlParser(description)}</p>
 
         <div className="grid">
-          {grid.map((item, index) => (
+          {grid.map((item: typeGridItem, index: number) => (
             <Link href={item.href} key={index}>
               <a href={item.href} className="card">
                 <h3>{item.title}</h3>
@@ -30,7 +50,7 @@ export default function Home(props) {
 
       <footer>
         <a href={footer.href} target="_blank" rel="noopener noreferrer">
-          {footer.text} <img src="/vercel.svg" alt="Vercel" className="logo" />
+          {footer.text} <img src="/logo.svg" alt="Vercel" className="logo" />
         </a>
       </footer>
 
@@ -183,37 +203,12 @@ export default function Home(props) {
   );
 }
 
-export const getStaticProps = async (context) => {
-  const props = {
-    title: 'Welcome to <a href="https://nextjs.org">Next.js!</a>',
-    description: 'Get started by editing <code>pages/index.js</code>',
-    grid: [
-      {
-        href: 'https://nextjs.org/docs',
-        title: 'Documentation &rarr;',
-        text: 'Documentation &rarr;',
-      },
-      {
-        href: 'https://nextjs.org/learn',
-        title: 'Learn &rarr;',
-        text: 'Learn about Next.js in an interactive course with quizzes!',
-      },
-      {
-        href: 'https://github.com/vercel/next.js/tree/master/examples',
-        title: 'Examples &rarr;',
-        text: 'Discover and deploy boilerplate example Next.js projects.',
-      },
-      {
-        href: 'https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app',
-        title: 'Deploy &rarr;',
-        text: 'Instantly deploy your Next.js site to a public URL with Vercel.',
-      },
-    ],
-    footer: {
-      href: 'https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app',
-      text: 'Powered by',
-    },
-  };
+export async function getStaticProps(context: GetStaticPropsContext) {
+  const response = await axio.get('/api/static');
 
-  return { props };
-};
+  if (response.status == 200) {
+    return { props: { context, static: response.data } };
+  }
+
+  return { props: {} };
+}

@@ -1,0 +1,23 @@
+{
+  "protocol": {
+    "http": "http",
+    "https": "https"
+  },
+  "urns": {
+    "all": "*",
+    "api": "/api",
+    "root": "/"
+  },
+  "versionIP": "IPv4",
+  "port": {
+    "http": 80,
+    "https": 443
+  },
+  "redirect": {
+    "ok": 200,
+    "movedPermanently": 301,
+    "badRequest": 400,
+    "unauthorized": 401,
+    "notFound": 404
+  }
+}

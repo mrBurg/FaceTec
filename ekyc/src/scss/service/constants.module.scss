@@ -1,0 +1,89 @@
+$font-family: Calibri, sans-serif;
+$font-size: 16px;
+
+$prefixes: -webkit-, -moz-, -ms-, -o-;
+$transiton: all 0.2s;
+
+$xxs: 320px;
+$xs: 480px;
+$sm: 640px;
+$md: 768px; // ^Device
+$lg: 960px;
+$xl: 1200px;
+$xxl: 1440px;
+
+$black: #040404;
+$white: #ffffff;
+
+$gray-dark: #373742;
+$gray: #707070;
+$gray-light: #e1e1e1;
+$gray-misty: #f6f7fb;
+
+$orange-dark: #dfa700;
+$orange: #fec601;
+$orange-light: #ffd174;
+$orange-misty: #fff69e;
+
+$blue-dark: #1256aa;
+$blue: #2a70c8; //#3175c9;
+$blue-light: #65a1ee;
+$blue-misty: #8bb5eb;
+
+$green-dark: #2d9031;
+$green: #4caf50;
+$green-light: #6bce6f;
+$green-misty: #b3ebaa;
+
+$red-dark: #af0008;
+$red: #ed1b22;
+$red-light: #ed3046;
+$red-misty: #eb7678;
+
+$yellow: #fdfac8;
+
+$border-radius: 3px;
+
+$box-shadow: 3px 3px 3px transparentize($black, 0.8);
+
+:export {
+  originalFontSize: $font-size;
+
+  xxs: $xxs;
+  xs: $xs;
+  sm: $sm;
+  md: $md;
+  lg: $lg;
+  xl: $xl;
+  xxl: $xxl;
+
+  black: $black;
+  white: $white;
+
+  gray-dark: $gray-dark;
+  gray: $gray;
+  gray-light: $gray-light;
+  gray-misty: $gray-misty;
+
+  orange-dark: $orange-dark;
+  orange: $orange;
+  orange-light: $orange-light;
+  orange-misty: $orange-misty;
+
+  blue-dark: $blue-dark;
+  blue: $blue;
+  blue-light: $blue-light;
+  blue-misty: $blue-misty;
+
+  green-dark: $green-dark;
+  green: $green;
+  green-light: $green-light;
+  green-misty: $green-misty;
+
+  red-dark: $red-dark;
+  red: $red;
+  red-light: $red-light;
+  red-misty: $red-misty;
+
+  yellow: $yellow;
+}

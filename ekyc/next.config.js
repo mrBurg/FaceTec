@@ -50,12 +50,13 @@ module.exports = {
     defaultLocale: 'en-US',
     domains: [
       {
-        domain: '/',
+        domain: 'http://localhost',
         defaultLocale: 'en-US',
-        locales: ['es'],
       },
     ],
+    localeDetection: false,
   },
+  // trailingSlash: true,
   webpack(baseConfig, _options) {
     // const { PO_PROJECT_HOST, PO_PROJECT_PORT } = this.env;
     const { module = {} } = baseConfig;

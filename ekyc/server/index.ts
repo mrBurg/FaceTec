@@ -1,4 +1,4 @@
-import https from 'https';
+// import https from 'https';
 import http from 'http';
 import express from 'express';
 import next from 'next';
@@ -28,10 +28,10 @@ const handle = nextApp.getRequestHandler();
     serverCallback(cfg.protocol.http, cfg.port.http)
   );
 
-  const httpsServer = https.createServer({ key: '', cert: '' }, server);
+  /* const httpsServer = https.createServer({ key: '', cert: '' }, server);
 
   httpsServer.listen(
     cfg.port.https,
     serverCallback(cfg.protocol.https, cfg.port.https)
-  );
+  ); */
 })();

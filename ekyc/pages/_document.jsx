@@ -1,9 +1,9 @@
 import React from 'react';
 import { Html, Head, Main, NextScript } from 'next/document';
 
-export default function Document() {
+function DocumentComponent() {
   return (
-    <Html lang="en">
+    <Html>
       {/* <Html lang="en"> */}
       <Head />
       <body>
@@ -13,3 +13,7 @@ export default function Document() {
     </Html>
   );
 }
+
+const Document = DocumentComponent;
+
+export default Document;

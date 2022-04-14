@@ -1,11 +1,12 @@
 import htmlParser from 'html-react-parser';
 import Link from 'next/link';
 import Head from 'next/head';
+import Image from 'next/image';
 import { GetStaticPropsContext } from 'next';
-import axio from 'axios';
+import axios from 'axios';
 import { ReactElement } from 'react';
 
-import { Test } from '@component/test';
+// import { Test } from '@component/test';
 
 type typeDomains = Record<'domain' | 'defaultLocale', string> & {
   locales: string[];
@@ -33,7 +34,7 @@ function HomeComponent(props: typePageProps) {
       </Head>
 
       <main>
-        <Test />
+        {/* <Test /> */}
         <h1 className="title">{htmlParser(title)}</h1>
         <p className="description">{htmlParser(description)}</p>
 
@@ -51,7 +52,14 @@ function HomeComponent(props: typePageProps) {
 
       <footer>
         <a href={footer.href} target="_blank" rel="noopener noreferrer">
-          {footer.text} <img src="/logo.svg" alt="Vercel" className="logo" />
+          {footer.text}{' '}
+          <Image
+            width={Math.round(100 * 1.618 * 100) / 100}
+            height={100}
+            src="/logo.svg"
+            alt="Vercel"
+            className="logo"
+          />
         </a>
       </footer>
 
@@ -205,14 +213,17 @@ function HomeComponent(props: typePageProps) {
 }
 
 HomeComponent.getLayout = (children: ReactElement) => {
-  // return <div className="outerWrapper">{children}</div>;
-  return children;
+  return (
+    // <div className="pageWrapper">
+    children
+    // </div>
+  );
 };
 
 export default HomeComponent;
 
 export async function getStaticProps(context: GetStaticPropsContext) {
-  const response = await axio.get('/api/static');
+  const response = await axios.get('/api/static');
 
   if (response.status == 200) {
     return { props: { context, static: response.data } as typePageProps };

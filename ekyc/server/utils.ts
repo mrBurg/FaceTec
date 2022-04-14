@@ -3,7 +3,7 @@ import _ from 'lodash';
 
 import cfg from './config.json';
 
-export function getLocalIP() {
+export function getNetworkInterface() {
   const interfaces = networkInterfaces();
   const results = {};
 
@@ -29,7 +29,7 @@ export function getLocalIP() {
 export const serverCallback = ((err) => (protocol: string, port: number) => {
   const wrapper = (data: string) =>
     `\n    \x1b[102m\x1b[30m${data}\x1b[0m\x1b[92m`;
-  const hostsData = getLocalIP();
+  const hostsData = getNetworkInterface();
   let hosts = `${wrapper('["localhost"]')}`;
 
   if (err) {

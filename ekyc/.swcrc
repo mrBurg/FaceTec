@@ -1,3 +1,23 @@
+/* {
+  "jsc": {
+    "parser": {
+      "syntax": "typescript",
+      "tsx": false
+    },
+    "loose": false,
+    "minify": {
+      "compress": false,
+      "mangle": false
+    }
+  },
+  "module": {
+    "type": "commonjs"
+  },
+  "minify": false,
+  "isModule": true,
+  "sourceMaps": "inline"
+} */
+
 // {
 //   "jsc": {
 //     /* "parser": {

@@ -1,0 +1,19 @@
+# /build/*
+# /certificates/*
+# /env/*
+# /plugins/*
+# /public/*
+
+# **/*.json
+# **/*.scss
+# **/*.po
+# **/*.svg
+# **/*.mdx
+
+next.config.js
+./next.config.js
+*/**/next.config.js
+**/next.config.js
+*/ekyc/next.config.js
+*/ekyc/**/next.config.js
+ekyc/next.config.js

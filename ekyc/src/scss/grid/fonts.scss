@@ -1,0 +1,144 @@
+$path: '/fonts';
+$fonts: (
+  CopperplateGothic: (
+    Light: (
+      weight: normal,
+      style: normal,
+      display: swap,
+    ),
+  ),
+  Corbel: (
+    Regular: (
+      weight: normal,
+      style: normal,
+      display: swap,
+    ),
+    Bold: (
+      weight: bold,
+      style: normal,
+      display: swap,
+    ),
+    Italic: (
+      weight: normal,
+      style: italic,
+      display: swap,
+    ),
+    BoldItalic: (
+      weight: bold,
+      style: italic,
+      display: swap,
+    ),
+  ),
+  NunitoSans: (
+    Regular: (
+      weight: normal,
+      style: normal,
+      display: swap,
+    ),
+    Bold: (
+      weight: bold,
+      style: normal,
+      display: swap,
+    ),
+    Italic: (
+      weight: normal,
+      style: italic,
+      display: swap,
+    ),
+    BoldItalic: (
+      weight: bold,
+      style: italic,
+      display: swap,
+    ),
+  ),
+  Calibri: (
+    Regular: (
+      weight: normal,
+      style: normal,
+      display: swap,
+    ),
+    Bold: (
+      weight: bold,
+      style: normal,
+      display: swap,
+    ),
+    Italic: (
+      weight: normal,
+      style: italic,
+      display: swap,
+    ),
+    BoldItalic: (
+      weight: bold,
+      style: italic,
+      display: swap,
+    ),
+    Light: (
+      weight: lighter,
+      style: normal,
+      display: swap,
+    ),
+    LightItalic: (
+      weight: lighter,
+      style: italic,
+      display: swap,
+    ),
+  ),
+);
+
+$formats: (
+  eot: embedded-opentype,
+  woff: woff,
+  woff2: woff2,
+  ttf: truetype,
+  svg: svg,
+);
+
+@function check-type($font-name, $format) {
+  $type: '';
+
+  @if ($format == 'eot') {
+    $type: $type + '?#iefix';
+  } @else if($format == 'svg') {
+    $type: '#{$type}##{$font-name}';
+  }
+
+  @return $type;
+}
+
+@function ie-font-url($font-name, $style-name) {
+  @return url('#{$path}/#{$font-name}/#{$font-name}-#{$style-name}.eot');
+}
+
+@function font-url($font-name, $style-name) {
+  $count: 0;
+  $urls: '';
+
+  @each $format, $type in $formats {
+    $str: if($count==0, '', ',');
+    $str: $str +
+      url('#{$path}/#{$font-name}/#{$font-name}-#{$style-name}.#{$format + check-type($font-name, $format)}');
+    $str: $str + if($type, ' ' + format('#{$type}'), '');
+
+    $urls: $urls + $str;
+    $count: $count + 1;
+  }
+
+  @return #{$urls};
+}
+
+@each $font-name, $styles in $fonts {
+  @each $style-name, $style in $styles {
+    @font-face {
+      font-family: $font-name;
+
+      @each $type, $data in $style {
+        font: {
+          #{$type}: $data;
+        }
+      }
+
+      src: ie-font-url($font-name, $style-name);
+      src: font-url($font-name, $style-name);
+    }
+  }
+}

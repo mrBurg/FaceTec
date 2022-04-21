@@ -3,9 +3,10 @@ import { Html, Head, Main, NextScript } from 'next/document';
 
 function DocumentComponent() {
   return (
-    <Html>
-      {/* <Html lang="en"> */}
-      <Head />
+    <Html lang="en">
+      <Head>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       <body>
         <Main />
         <NextScript />

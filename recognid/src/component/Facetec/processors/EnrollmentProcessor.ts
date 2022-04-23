@@ -1,4 +1,4 @@
-import { facetecSdkType } from '../@types';
+import { TFacetecSdk } from '../@types';
 import { Config } from '../Config';
 import { Controller } from '../Controller';
 import { FaceTecFaceScanProcessor } from '../declarations/FaceTecPublicApi';
@@ -10,7 +10,7 @@ export class EnrollmentProcessor
 {
   constructor(
     sessionToken: string,
-    sdk: facetecSdkType,
+    sdk: TFacetecSdk,
     cfg: Config,
     controller: Controller
   ) {

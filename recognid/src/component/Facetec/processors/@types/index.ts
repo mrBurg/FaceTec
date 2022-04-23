@@ -1,4 +1,4 @@
-export type latestNetworkRequestParamsType = Record<
+export type TLatestNetworkRequestParams = Record<
   | 'idScan'
   | 'sessionId'
   | 'externalDatabaseRefID'

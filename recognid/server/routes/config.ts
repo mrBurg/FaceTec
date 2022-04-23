@@ -2,7 +2,7 @@ import express from 'express';
 
 const router = express.Router();
 
-router.get('/facetec', async (_req, res, _next) =>
+router.post('/facetec', async (_req, res, _next) =>
   res.json({
     BaseURL: 'https://api.facetec.com/api/v3.1/biometrics',
     DeviceKeyIdentifier: 'd24ELvA8jZOV4c8HHb4WoP1MSxEX3s0U',

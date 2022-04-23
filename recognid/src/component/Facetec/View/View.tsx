@@ -1,11 +1,11 @@
 // import classNames from 'classnames';
 import Link from 'next/link';
 
-import { viewPropsType } from './@types';
+import { TViewProps } from './@types';
 
 // import style from './Facetec.module.scss';
 
-function ViewComponent(props: viewPropsType) {
+function ViewComponent(props: TViewProps) {
   const { controller } = props;
 
   return (
@@ -13,7 +13,7 @@ function ViewComponent(props: viewPropsType) {
       <main className="wrapping-box-container">
         <div id="main-interface">
           <div id="controls">
-            <div id="vocal-icon-container">
+            {/* <div id="vocal-icon-container">
               <div>
                 <img
                   id="vocal-guidance-icon-minimal"
@@ -53,7 +53,7 @@ function ViewComponent(props: viewPropsType) {
                   }}
                 />
               </div>
-            </div>
+            </div> */}
             <button
               id="enroll-button"
               // disabled
@@ -89,7 +89,7 @@ function ViewComponent(props: viewPropsType) {
             </button>
             <p id="status">Initializing...</p>
           </div>
-          <div id="additional-screen" /* display="flex" */>
+          {/* <div id="additional-screen" /* display="flex" * />
             <div id="additional-screen-image-and-text">
               <img id="additional-screen-logo" alt="additional-screen-logo" />
               <h2>Server Upgrade In Progress</h2>
@@ -101,13 +101,13 @@ function ViewComponent(props: viewPropsType) {
             >
               OK
             </button>
-          </div>
+          </div> */}
         </div>
-        <div id="custom-logo-container">
+        {/* <div id="custom-logo-container">
           <img src="/facetec/images/FaceTec_Logo.png" alt="FaceTec_Logo" />
-        </div>
+        </div> */}
       </main>
-      <footer>
+      {/* <footer>
         <span id="copy-right-section">
           <p id="copy-right" className="footer-element-margin">
             &copy; 2021 FaceTec, Inc. &thinsp;&middot;&thinsp; Multiple US &
@@ -129,16 +129,16 @@ function ViewComponent(props: viewPropsType) {
             </Link>
           </p>
         </span>
-      </footer>
-      <div id="copy-right-length">
+      </footer> */}
+      {/* <div id="copy-right-length">
         &copy; 2021 FaceTec, Inc. &thinsp;&middot;&thinsp; Multiple US &
         International Patents Granted&thinsp;&middot;&thinsp; All Rights
         Reserved
-      </div>
-      <div className="loading-session-token-container">
+      </div> */}
+      {/* <div className="loading-session-token-container">
         <p id="loading-session-token-text">Network Connection Slow...</p>
-      </div>
-      <div id="theme-transition-overlay">
+      </div> */}
+      {/* <div id="theme-transition-overlay">
         <img
           id="theme-transition-overlay-img"
           // onerror="this.style.display='none'"
@@ -146,10 +146,24 @@ function ViewComponent(props: viewPropsType) {
           src=""
           alt=""
         />
-      </div>
+      </div> */}
 
       {/* <style jsx>{``}</style> */}
       {/* <style jsx global>{``}</style> */}
+      <button
+        onClick={() => {
+          controller.SessionResult();
+        }}
+      >
+        SessionResult
+      </button>
+      <button
+        onClick={() => {
+          controller.getIDScanResult();
+        }}
+      >
+        IDScanResult
+      </button>
     </>
   );
 }

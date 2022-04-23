@@ -3,10 +3,10 @@ import _ from 'lodash';
 
 import style from './Home.module.scss';
 
-import { typeHomeComponentProps } from './@types';
+import { THomeComponentProps } from './@types';
 import { Facetec } from '@component/Facetec';
 
-function HomeComponent(props: typeHomeComponentProps) {
+function HomeComponent(props: THomeComponentProps) {
   const { title } = props.static;
 
   return (

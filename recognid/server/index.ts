@@ -7,6 +7,7 @@ import cors from 'cors';
 import { serverCallback } from './utils';
 import l10nHandler from './routes/l10n';
 import configHandler from './routes/config';
+import facetecHandler from './routes/facetec';
 
 import cfg from './config.json';
 
@@ -21,6 +22,7 @@ const handle = nextApp.getRequestHandler();
     .use(cors())
     .use('/api/config', configHandler)
     .use('/api/static', l10nHandler)
+    .use('/api/facetec', facetecHandler)
     .all('*', (req, res) => handle(req, res));
 
   const httpServer = http.createServer(server);

@@ -1,8 +1,8 @@
 import { ReactElement } from 'react';
 
-import { AppPropsWithLayout } from './@types';
+import { TAppPropsWithLayout } from './@types';
 
-function LayoutComponent(props: AppPropsWithLayout) {
+function LayoutComponent(props: TAppPropsWithLayout) {
   const { Component, pageProps } = props;
   const getLayout =
     Component.getLayout || ((children: ReactElement) => children);

@@ -1,4 +1,4 @@
-import { facetecSdkType } from '../@types';
+import { TFacetecSdk } from '../@types';
 import { Config } from '../Config';
 import { Controller } from '../Controller';
 import {
@@ -13,7 +13,7 @@ export class Processor {
 
   constructor(
     protected sessionToken: string,
-    protected sdk: facetecSdkType,
+    protected sdk: TFacetecSdk,
     protected cfg: Config,
     protected controller: Controller
   ) {}

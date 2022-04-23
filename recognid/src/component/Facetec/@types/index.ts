@@ -1,2 +1,2 @@
 export * from './config';
-export type facetecSdkType = typeof FaceTecSDK;
+export type TFacetecSdk = typeof FaceTecSDK;

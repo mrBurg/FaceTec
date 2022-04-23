@@ -1,1 +1,1 @@
-export type typePlainObject = ReturnType<typeof Object.create>;
+export type TJSON = ReturnType<typeof Object.create>;

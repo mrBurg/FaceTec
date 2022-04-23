@@ -3,6 +3,6 @@ import {
   PhotoIDMatchProcessor,
 } from '@component/Facetec/processors';
 
-export type latestProcessorType = PhotoIDMatchProcessor | EnrollmentProcessor;
-export type latestNetworkResponseStatusType = any;
-export type sessionTokenCallbackType = (token: string) => void;
+export type TlatestProcessor = PhotoIDMatchProcessor | EnrollmentProcessor;
+export type TlatestNetworkResponseStatus = any;
+export type TsessionTokenCallback = (token: string) => void;

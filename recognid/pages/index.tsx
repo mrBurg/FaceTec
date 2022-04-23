@@ -5,22 +5,22 @@ import Head from 'next/head';
 
 import { Home } from '@component/Home';
 import { Preloader } from '@component/Preloader';
-import { jsonType } from '@interface/common';
+import { TJSON } from '@interface/common';
 
-type typeDomains = Record<'domain' | 'defaultLocale', string> & {
+type TDomains = Record<'domain' | 'defaultLocale', string> & {
   locales: string[];
 };
 
-type typePageProps = {
+type TPageProps = {
   context: {
     locales: string[];
     defaultLocale: string;
-    domains: typeDomains[];
+    domains: TDomains[];
   };
-  static: jsonType;
+  static: TJSON;
 };
 
-function HomeComponent(props: typePageProps) {
+function HomeComponent(props: TPageProps) {
   if (props.static) {
     return <Home static={props.static} />;
   }

@@ -1,4 +1,4 @@
-import { facetecSdkType } from '../@types';
+import { TFacetecSdk } from '../@types';
 import { Config } from '../Config';
 import { Controller } from '../Controller';
 import {
@@ -7,7 +7,7 @@ import {
   FaceTecIDScanResult,
   FaceTecIDScanResultCallback,
 } from '../declarations/FaceTecPublicApi';
-import { latestNetworkRequestParamsType } from './@types';
+import { TLatestNetworkRequestParams } from './@types';
 import { Processor } from './Processor';
 
 export class PhotoIDMatchProcessor
@@ -18,7 +18,7 @@ export class PhotoIDMatchProcessor
 
   constructor(
     sessionToken: string,
-    sdk: facetecSdkType,
+    sdk: TFacetecSdk,
     cfg: Config,
     controller: Controller
   ) {
@@ -39,10 +39,7 @@ export class PhotoIDMatchProcessor
       'Processing'
     );
 
-    new this.sdk.FaceTecSession(
-      this as FaceTecFaceScanProcessor,
-      this.sessionToken
-    );
+    new this.sdk.FaceTecSession(this, this.sessionToken);
   }
 
   onFaceTecSDKCompletelyDone() {
@@ -82,7 +79,7 @@ export class PhotoIDMatchProcessor
       sessionId: idScanResult.sessionId,
       externalDatabaseRefID: this.controller.getLatestEnrollmentIdentifier(),
       minMatchLevel: MinMatchLevel,
-    } as latestNetworkRequestParamsType;
+    } as TLatestNetworkRequestParams;
 
     if (idScanResult.frontImages && idScanResult.frontImages[0]) {
       parameters.idScanFrontImage = idScanResult.frontImages[0];

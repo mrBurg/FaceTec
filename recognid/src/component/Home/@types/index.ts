@@ -1,5 +1,5 @@
-export type typeHomeComponentProps = {
-  static: Record<string, ReturnType<typeof Object.create>>;
-};
+import { TJSON } from '@interface/common';
 
-export type typeGridItem = Record<'href' | 'title' | 'text', string>;
+export type THomeComponentProps = {
+  static: TJSON;
+};

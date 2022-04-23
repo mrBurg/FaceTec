@@ -5,6 +5,7 @@ import Head from 'next/head';
 
 import { Home } from '@component/Home';
 import { Preloader } from '@component/Preloader';
+import { jsonType } from '@interface/common';
 
 type typeDomains = Record<'domain' | 'defaultLocale', string> & {
   locales: string[];
@@ -16,7 +17,7 @@ type typePageProps = {
     defaultLocale: string;
     domains: typeDomains[];
   };
-  static: Record<string, ReturnType<typeof Object.create>>;
+  static: jsonType;
 };
 
 function HomeComponent(props: typePageProps) {
@@ -39,7 +40,7 @@ HomeComponent.getLayout = (children: ReactElement) => (
 export default HomeComponent;
 
 export async function getStaticProps(context: GetStaticPropsContext) {
-  const response = await axios.get('/api/static');
+  const response = await axios.get('/api/static/home');
 
   if (response.status == 200) {
     return { props: { context, static: response.data } };

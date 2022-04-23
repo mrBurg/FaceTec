@@ -1,13 +1,13 @@
-* {
+/* * {
   font-size: 100%;
   color: white;
-}
+} */
 
-*,
+/* *,
 html,
 body {
   font-family: 'Roboto', sans-serif;
-}
+} */
 
 /* html,
 body {
@@ -29,10 +29,10 @@ body {
   opacity: 0;
 } */
 
-button {
+/* button {
   border: none;
   -webkit-tap-highlight-color: transparent;
-}
+} */
 
 /* start of styles for overlay rect that is placed on top of the Browser SDK, button and checkbox, and fancy background fade container */
 #theme-transition-overlay {
@@ -247,20 +247,20 @@ button {
   padding-right: 4px;
 }
 
-button:disabled {
+/* button:disabled {
   cursor: not-allowed;
   color: #ddd;
   border-color: #ddd;
-}
+} */
 
-button::-moz-focus-inner {
+/* button::-moz-focus-inner {
   border: 0;
-}
+} */
 
-a {
+/* a {
   text-decoration: none;
   color: inherit;
-}
+} */
 
 /** Pseudo-Fullscreen Custom Activity Indicator Styles **/
 
@@ -645,7 +645,7 @@ a {
 
 /* FOOTER STYLING */
 
-footer {
+/* footer {
   position: absolute;
   bottom: 4px;
   width: 100%;
@@ -653,21 +653,21 @@ footer {
   left: 50%;
   transform: translateX(-50%);
   opacity: 0;
-}
+} */
 
-footer span p {
+/* footer span p {
   margin: 0;
   color: grey;
-}
+} */
 
-.footer-element-margin {
+/* .footer-element-margin {
   margin: 5px 0 5px;
-}
+} */
 
-footer span p a:hover {
+/* footer span p a:hover {
   color: rgb(65, 127, 178);
   text-decoration: underline;
-}
+} */
 
 .hr {
   margin: 5px auto;

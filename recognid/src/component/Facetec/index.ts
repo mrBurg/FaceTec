@@ -1,0 +1,1 @@
+export { Facetec } from './Facetec';

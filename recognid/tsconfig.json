@@ -20,8 +20,9 @@
     "paths": {
       "@component/*": ["component/*"],
       "@scss/*": ["scss/*"],
-      "@store": ["store"],
-      "@util": ["util"],
+      "@interface/*": ["interface/*"],
+      // "@store": ["store"],
+      // "@util": ["util"],
       "@root/*": ["*"]
     }
   },

@@ -1,1 +1,1 @@
-declare const FaceTecSDK: typeof import('./facetec/FaceTecSDK').FaceTecSDK;
+/* declare const FaceTecSDK: typeof import('./facetec/FaceTecSDK').FaceTecSDK; */

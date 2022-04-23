@@ -42,7 +42,7 @@ body,
   position: fixed;
   top: 0;
   left: 0;
-  display: none;
+  /* display: none; */
   pointer-events: none;
 }
 
@@ -547,7 +547,7 @@ body,
 @keyframes ekyc-scale-and-fade-out-success {
   100% {
     transform: scale(1.5, 1.5);
-    opacity: 0;
+    /* opacity: 0; */
     stroke: rgb(28, 237, 125);
   }
 }
@@ -555,7 +555,7 @@ body,
 @keyframes ekyc-scale-and-fade-out-unsuccess {
   100% {
     transform: scale(1.5, 1.5);
-    opacity: 0;
+    /* opacity: 0; */
     stroke: rgb(237, 28, 36);
   }
 }
@@ -564,7 +564,7 @@ body,
   position: absolute;
   top: 185px;
   width: 100%;
-  display: none;
+  /* display: none; */
   z-index: 1;
 }
 
@@ -583,7 +583,7 @@ body,
 }
 
 .display-none {
-  display: none;
+  /* display: none; */
 }
 
 #vocal-icon-container {
@@ -615,8 +615,8 @@ body,
 }
 
 #additional-screen {
-  display: none;
-  opacity: 0;
+  /* display: none; */
+  /* opacity: 0; */
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;

@@ -1,10 +1,10 @@
 import { Layout } from '@component/Layout';
-import { AppPropsWithLayout } from '@component/Layout/@types';
+import { TAppPropsWithLayout } from '@component/Layout/@types';
 
 import 'normalize';
 import '@scss/index.scss';
 
-function AppComponent(props: AppPropsWithLayout) {
+function AppComponent(props: TAppPropsWithLayout) {
   return (
     <>
       <Layout {...props} />

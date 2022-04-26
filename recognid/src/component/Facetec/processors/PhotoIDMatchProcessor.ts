@@ -2,7 +2,6 @@ import { TFacetecSdk } from '../@types';
 import { Config } from '../Config';
 import { Controller } from '../Controller';
 import {
-  FaceTecFaceScanProcessor,
   FaceTecIDScanProcessor,
   FaceTecIDScanResult,
   FaceTecIDScanResultCallback,

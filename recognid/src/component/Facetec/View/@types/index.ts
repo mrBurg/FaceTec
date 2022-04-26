@@ -1,14 +1,11 @@
 import {
   FaceTecIDScanStatus,
   FaceTecSessionStatus,
-} from '@component/Facetec/declarations/FaceTecPublicApi';
-import { Dispatch, SetStateAction } from 'react';
+} from '../../declarations/FaceTecPublicApi';
 import { Controller } from './../../Controller';
 
 export type TViewProps = {
-  controller: Controller & {
-    setAuditTrail: Dispatch<SetStateAction<any>>;
-  } & any;
+  controller: Controller;
 };
 
 type TFaceTecIDScanResult = {
@@ -24,8 +21,12 @@ type TFaceTecSessionResult = {
   [key: string]: string | FaceTecSessionStatus | null | {};
 };
 
-export type TViewAuditTrailProps = {
+export type TauditTrail = {
   isCompletelyDone: boolean;
   status: FaceTecIDScanStatus;
   sessionId: string | null;
 } & (TFaceTecIDScanResult | TFaceTecSessionResult);
+
+export type TViewAuditTrailProps = {
+  auditTrail: TauditTrail;
+};

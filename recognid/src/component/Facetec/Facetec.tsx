@@ -8,13 +8,13 @@ import { View } from './View';
 import { Controller } from './Controller';
 import { Config } from './Config';
 import { ViewAuditTrail } from './View/ViewAuditTrail';
-import { TViewAuditTrailProps } from './View/@types';
+import { TauditTrail } from './View/@types';
 
 function FacetecComponent() {
   const [faceTecSDK, setFaceTecSDK] = useState(null as typeof FaceTecSDK);
   const [config, setConfig] = useState(null as Config);
   const [controller, setController] = useState(null as Controller);
-  const [auditTrail, setAuditTrail] = useState(null as TViewAuditTrailProps);
+  const [auditTrail, setAuditTrail] = useState(null as TauditTrail);
 
   useEffect(() => {
     const getConfig = async () => {
@@ -41,22 +41,28 @@ function FacetecComponent() {
 
   useEffect(() => {
     if (faceTecSDK && config) {
-      setController(new Controller(faceTecSDK, config));
+      setController(new Controller(faceTecSDK, config, { setAuditTrail }));
     }
   }, [config, faceTecSDK]);
+
+  const renderAuditTrail = useCallback(() => {
+    if (auditTrail) {
+      return <ViewAuditTrail auditTrail={auditTrail} />;
+    }
+  }, [auditTrail]);
 
   const renderFacetec = useCallback(() => {
     if (controller) {
       return (
         <>
-          <View controller={{ setAuditTrail, ...controller }} />
-          <ViewAuditTrail />
+          <View controller={controller} />
+          {renderAuditTrail()}
         </>
       );
     }
 
     return <Preloader />;
-  }, [controller]);
+  }, [controller, renderAuditTrail]);
 
   return (
     <>

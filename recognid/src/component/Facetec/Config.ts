@@ -32,37 +32,37 @@ export class Config {
     );
     sdk.configureLocalization(faceTecStrings);
     sdk.configureOCRLocalization(ocrLocalizationJSON);
+    // this.retrieveConfigurationWizardCustomization(sdk);
   }
 
   retrieveConfigurationWizardCustomization(sdk: TFacetecSdk) {
     const sdkImageDirectory = '/facetec/images/';
 
     // For Color Customization
-    const outerBackgroundColor = '#ffffff';
-    const frameColor = '#ffffff';
-    const borderColor = '#417FB2';
-    const ovalColor = '#417FB2';
-    const dualSpinnerColor = '#417FB2';
-    const textColor = '#417FB2';
-    const buttonAndFeedbackBarColor = '#417FB2';
-    const buttonAndFeedbackBarTextColor = '#ffffff';
-    const buttonColorHighlight = '#396E99';
-    const buttonColorDisabled = '#B9CCDE';
+    var outerBackgroundColor = '#ffffff';
+    var frameColor = '#ffffff';
+    var borderColor = '#417FB2';
+    var ovalColor = '#417FB2';
+    var dualSpinnerColor = '#417FB2';
+    var textColor = '#417FB2';
+    var buttonAndFeedbackBarColor = '#417FB2';
+    var buttonAndFeedbackBarTextColor = '#ffffff';
+    var buttonColorHighlight = '#396E99';
+    var buttonColorDisabled = '#B9CCDE';
 
     // For Frame Corner Radius Customization
     let frameCornerRadius = '20px';
 
     // For Cancel Button Customization
-    const cancelButtonImage = sdkImageDirectory + 'FaceTec_cancel.png';
-    const cancelButtonLocation = sdk.FaceTecCancelButtonLocation.TopLeft;
+    var cancelButtonImage = sdkImageDirectory + 'FaceTec_cancel.png';
+    var cancelButtonLocation = sdk.FaceTecCancelButtonLocation.TopLeft;
 
     // For image Customization
-    const yourAppLogoImage = sdkImageDirectory + 'logo.svg';
-    const securityWatermarkImage =
-      sdk.FaceTecSecurityWatermarkImage.FaceTec_ZoOm;
+    var yourAppLogoImage = sdkImageDirectory + 'logo.svg';
+    var securityWatermarkImage = sdk.FaceTecSecurityWatermarkImage.FaceTec_ZoOm;
 
     // Set a default customization
-    const defaultCustomization = new sdk.FaceTecCustomization();
+    var defaultCustomization = new sdk.FaceTecCustomization();
 
     // Set Frame Customization
     defaultCustomization.frameCustomization.borderCornerRadius =

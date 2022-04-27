@@ -69,7 +69,7 @@ export class Processor {
           );
           const scanResultBlob = responseJSON.scanResultBlob;
 
-          console.log(scanResultBlob);
+          // console.log(scanResultBlob);
 
           if (responseJSON.wasProcessed) {
             /* this.sdk.FaceTecCustomization.setOverrideResultScreenSuccessMessage(

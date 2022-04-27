@@ -1,3 +1,6 @@
+import _ from 'lodash';
+import axios from 'axios';
+
 import { Config } from '../Config';
 import { generateUUId } from './../utilities';
 import { EnrollmentProcessor, PhotoIDMatchProcessor } from '../processors';
@@ -12,8 +15,6 @@ import {
   FaceTecIDScanResult,
   FaceTecSessionResult,
 } from '../declarations/FaceTecPublicApi';
-import axios from 'axios';
-import _ from 'lodash';
 
 export class Controller {
   latestEnrollmentIdentifier = '';
@@ -89,74 +90,43 @@ export class Controller {
   async onViewAuditTrailPressed() {
     const result = [];
 
-    // try {
-    //   /* const sessionResultresponse = await axios.post(
-    //     '/api/facetec/SessionResult'
-    //   );
-    //   const idScanResultresponse = await axios.post(
-    //     '/api/facetec/IDScanResult'
-    //   ); */
-    //   Promise.all([
-    //     axios.post('/api/facetec/SessionResult'),
-    //     axios.post('/api/facetec/IDScanResult'),
-    //   ]).then((data) => {
-    //     _.reduce(
-    //       data,
-    //       (accum, item) => {
-    //         accum.push(item.data);
+    try {
+      const scanResultBlob = await axios.post('/api/facetec/scanResultBlob');
+      const SessionResult = await axios.post('/api/facetec/SessionResult');
+      const IDScanResult = await axios.post('/api/facetec/IDScanResult');
 
-    //         return accum;
-    //       },
-    //       result
-    //     );
-    //   });
+      this.controller.setAuditTrail({
+        scanResultBlob: scanResultBlob.data,
+        SessionResult: SessionResult.data,
+        IDScanResult: IDScanResult.data,
+      });
+      /* Promise.all([
+        axios.post('/api/facetec/scanResultBlob'),
+        axios.post('/api/facetec/SessionResult'),
+        axios.post('/api/facetec/IDScanResult'),
+      ]).then((data) => {
+        _.reduce(
+          data,
+          (accum, item) => {
+            accum.push(item.data);
 
-    //   console.log(result);
-    // } catch (err) {
-    //   console.log(err);
-    // }
+            return accum;
+          },
+          result
+        );
+
+        this.controller.setAuditTrail(result);
+      }); */
+    } catch (err) {
+      console.log(err);
+    }
 
     // console.log(this.latestSessionResult, this.latestIDScanResult);
     // AppUtilities.showAuditTrailImages(latestSessionResult, latestIDScanResult);
   }
 
-  async SessionResult() {
-    console.log('SessionResult');
-    try {
-      const response = await axios.post('/api/facetec/SessionResult');
-
-      if (response.status == 200) {
-        this.controller.setAuditTrail(response.data);
-      }
-    } catch (err) {
-      console.log(err);
-    }
-  }
-
-  async getIDScanResult() {
-    console.log('getIDScanResult');
-    try {
-      const response = await axios.post('/api/facetec/IDScanResult');
-
-      if (response.status == 200) {
-        this.controller.setAuditTrail(response.data);
-      }
-    } catch (err) {
-      console.log(err);
-    }
-  }
-
-  async getScanResultBlob() {
-    console.log('getIDScanResult');
-    try {
-      const response = await axios.post('/api/facetec/scanResultBlob');
-
-      if (response.status == 200) {
-        this.controller.setAuditTrail(response.data);
-      }
-    } catch (err) {
-      console.log(err);
-    }
+  closeAuditTrail() {
+    this.controller.setAuditTrail(null);
   }
 
   onComplete(

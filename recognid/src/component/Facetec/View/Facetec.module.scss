@@ -1,74 +1,91 @@
 @import '@scss/service';
 
-.wrappingBoxContainer {
-  /* position: fixed; */
-  margin: 0 auto;
-  width: calc(100% - 20px);
-  height: auto;
-  color: $white;
-  padding: 10px;
-  /* z-index: 1; */
-}
-
-.mainInterface {
-  width: 640px;
-  height: 430px;
-  margin: 0 auto;
-  border: 2px solid $blue-light;
-  border-radius: 20px;
-  overflow: hidden;
-  /* -webkit-mask-image: -webkit-radial-gradient(white, black); */
-  background-color: $white;
-}
-
-.controls {
-  height: 430px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  z-index: 0;
-  background-color: $white;
-}
-
-.button {
-  width: 50%;
-  max-width: 320px;
-  color: $white;
-  background: $blue-light;
-  border-radius: 8px;
-  font-weight: 500;
-  cursor: pointer;
-  outline: none;
-  transition: all 0.2s;
-
-  &:hover {
-    background-color: $blue-dark;
+.mainView {
+  .wrappingBoxContainer {
+    /* position: fixed; */
+    margin: 0 auto;
+    width: calc(100% - 20px);
+    height: auto;
+    color: $white;
+    padding: 10px;
+    /* z-index: 1; */
   }
 
-  &Big {
-    height: 50px;
-    margin: 5px auto 0;
-    font-size: 1.25em;
+  .mainInterface {
+    width: 640px;
+    height: 430px;
+    margin: 0 auto;
+    border: 2px solid $blue-light;
+    border-radius: 20px;
+    overflow: hidden;
+    /* -webkit-mask-image: -webkit-radial-gradient(white, black); */
+    background-color: $white;
   }
 
-  &Medium {
-    height: 40px;
-    margin: 10px auto 0;
-    font-size: 1em;
+  .controls {
+    height: 430px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    z-index: 0;
+    background-color: $white;
+  }
+
+  .button {
+    width: 50%;
+    max-width: 320px;
+    color: $white;
+    background: $blue-light;
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+    outline: none;
+    transition: all 0.2s;
+
+    &:hover {
+      background-color: $blue-dark;
+    }
+
+    &Big {
+      height: 50px;
+      margin: 5px auto 0;
+      font-size: 1.25em;
+    }
+
+    &Medium {
+      height: 40px;
+      margin: 10px auto 0;
+      font-size: 1em;
+    }
+  }
+
+  .status {
+    display: block;
+    position: sticky;
+    width: auto;
+    min-width: 60%;
+    max-width: 90%;
+    bottom: 15px;
+    margin: 0px auto;
+    padding: 8px;
+    color: $blue;
+    font-size: 18px;
+    background-color: transparentize($gray-dark, 0.85);
+    border-radius: 5px;
   }
 }
 
-.status {
-  display: block;
-  position: sticky;
-  width: auto;
-  min-width: 60%;
-  max-width: 90%;
-  bottom: 15px;
-  margin: 0px auto;
-  padding: 8px;
-  color: $blue;
-  font-size: 18px;
-  background-color: transparentize($gray-dark, 0.85);
-  border-radius: 5px;
+.auditTrail {
+  .descriptionList {
+    color: $white;
+  }
+  /* .resultTable {
+    border-collapse: collapse;
+    width: 100%;
+
+    td {
+      border: solid $white 1px;
+      padding: 0.5em;
+    }
+  } */
 }

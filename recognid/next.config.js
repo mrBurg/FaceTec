@@ -11,6 +11,11 @@ module.exports = {
   env: {
     // ENVIRONMENT: process.env.ENVIRONMENT,
   },
+  // inlineImageLimit: 16384,
+  // fileExtensions: ['jpg', 'jpeg', 'png', 'gif'],
+  /* images: {
+    deviceSizes: [320, 480, 640, 768, 960, 1200, 1440],
+  }, */
   /* async redirects() {
     return _.reduce(
       redirectPages,

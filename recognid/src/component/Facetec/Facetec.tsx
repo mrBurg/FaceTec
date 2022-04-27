@@ -47,9 +47,9 @@ function FacetecComponent() {
 
   const renderAuditTrail = useCallback(() => {
     if (auditTrail) {
-      return <ViewAuditTrail auditTrail={auditTrail} />;
+      return <ViewAuditTrail auditTrail={auditTrail} controller={controller} />;
     }
-  }, [auditTrail]);
+  }, [auditTrail, controller]);
 
   const renderFacetec = useCallback(() => {
     if (controller) {

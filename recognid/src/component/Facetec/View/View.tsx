@@ -7,7 +7,7 @@ function ViewComponent(props: TViewProps) {
   const { controller } = props;
 
   return (
-    <>
+    <div className={style.mainView}>
       <main className={style.wrappingBoxContainer}>
         <div id="main-interface" className={style.mainInterface}>
           <div id="controls" className={style.controls}>
@@ -91,28 +91,7 @@ function ViewComponent(props: TViewProps) {
 
       {/* <style jsx>{``}</style> */}
       {/* <style jsx global>{``}</style> */}
-      <button
-        onClick={() => {
-          controller.SessionResult();
-        }}
-      >
-        SessionResult
-      </button>
-      <button
-        onClick={() => {
-          controller.getIDScanResult();
-        }}
-      >
-        IDScanResult
-      </button>
-      <button
-        onClick={() => {
-          controller.getScanResultBlob();
-        }}
-      >
-        IDScanResult
-      </button>
-    </>
+    </div>
   );
 }
 

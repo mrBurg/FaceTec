@@ -21,12 +21,18 @@ type TFaceTecSessionResult = {
   [key: string]: string | FaceTecSessionStatus | null | {};
 };
 
-export type TauditTrail = {
+export type TFaceTecAuditTrail = {
   isCompletelyDone: boolean;
   status: FaceTecIDScanStatus;
   sessionId: string | null;
-} & (TFaceTecIDScanResult | TFaceTecSessionResult);
+};
 
-export type TViewAuditTrailProps = {
+export type TauditTrail = {
+  scanResultBlob: string;
+  SessionResult: TFaceTecAuditTrail & TFaceTecSessionResult;
+  IDScanResult: TFaceTecAuditTrail & TFaceTecIDScanResult;
+};
+
+export type TViewAuditTrailProps = TViewProps & {
   auditTrail: TauditTrail;
 };

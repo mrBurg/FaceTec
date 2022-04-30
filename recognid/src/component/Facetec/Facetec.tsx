@@ -5,45 +5,27 @@ import React, { useCallback, useEffect, useState } from 'react';
 
 import { Preloader } from '@component/Preloader';
 import { View } from './View';
-import { Controller } from './Controller';
-import { Config } from './Config';
+import { Controller } from './controllers';
 import { ViewAuditTrail } from './View/ViewAuditTrail';
 import { TauditTrail } from './View/@types';
+import { Config } from './config/Config';
+import { TFacetecProps } from './@types';
 
-function FacetecComponent() {
+function FacetecComponent(props: TFacetecProps) {
   const [faceTecSDK, setFaceTecSDK] = useState(null as typeof FaceTecSDK);
-  const [config, setConfig] = useState(null as Config);
   const [controller, setController] = useState(null as Controller);
   const [auditTrail, setAuditTrail] = useState(null as TauditTrail);
+  const [initialized, setInitialized] = useState(false);
 
   useEffect(() => {
-    const getConfig = async () => {
-      try {
-        const response = await axios.post('/api/config/facetec');
+    if (faceTecSDK && props.config) {
+      const config = new Config(faceTecSDK, props.config);
 
-        if (response.status == 200) {
-          return response.data;
-        }
-      } catch (err) {
-        console.log(err);
-      }
-    };
-
-    if (typeof FaceTecSDK != String(void 0)) {
-      getConfig().then((data) => {
-        if (data) {
-          setFaceTecSDK(FaceTecSDK);
-          setConfig(new Config(data));
-        }
-      });
+      setController(
+        new Controller(faceTecSDK, config, { setAuditTrail, setInitialized })
+      );
     }
-  }, [faceTecSDK]);
-
-  useEffect(() => {
-    if (faceTecSDK && config) {
-      setController(new Controller(faceTecSDK, config, { setAuditTrail }));
-    }
-  }, [config, faceTecSDK]);
+  }, [faceTecSDK, props.config]);
 
   const renderAuditTrail = useCallback(() => {
     if (auditTrail) {
@@ -55,18 +37,22 @@ function FacetecComponent() {
     if (controller) {
       return (
         <>
-          <View controller={controller} />
+          <View initialized={initialized} controller={controller} />
           {renderAuditTrail()}
         </>
       );
     }
 
     return <Preloader />;
-  }, [controller, renderAuditTrail]);
+  }, [controller, initialized, renderAuditTrail]);
 
   return (
     <>
-      <Script strategy="beforeInteractive" src="/facetec/FaceTecSDK.js" />
+      <Script
+        strategy="afterInteractive"
+        src="/facetec/FaceTecSDK.js"
+        onLoad={() => setFaceTecSDK(FaceTecSDK)}
+      />
       {renderFacetec()}
     </>
   );

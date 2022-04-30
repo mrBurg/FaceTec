@@ -7,4 +7,5 @@ export type TlatestNetworkResponseStatus = any;
 export type TsessionTokenCallback = (token: string) => void;
 export type TControllerProps = {
   setAuditTrail: Dispatch<SetStateAction<TauditTrail>>;
+  setInitialized: Dispatch<SetStateAction<boolean>>;
 };

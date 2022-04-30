@@ -17,12 +17,12 @@ type TPageProps = {
     defaultLocale: string;
     domains: TDomains[];
   };
-  static: TJSON;
+  staticData: TJSON;
 };
 
 function HomeComponent(props: TPageProps) {
-  if (props.static) {
-    return <Home static={props.static} />;
+  if (props.staticData) {
+    return <Home staticData={props.staticData} />;
   }
 
   return <Preloader />;
@@ -43,7 +43,7 @@ export async function getStaticProps(context: GetStaticPropsContext) {
   const response = await axios.get('/api/static/home');
 
   if (response.status == 200) {
-    return { props: { context, static: response.data } };
+    return { props: { context, staticData: response.data } };
   }
 
   return { props: {} };

@@ -1,9 +1,12 @@
 import express from 'express';
 
+import { generateUUId } from '../utilities';
+
 const router = express.Router();
 
 router.post('/facetec', async (_req, res, _next) =>
   res.json({
+    ProductionKey: '',
     BaseURL: 'https://api.facetec.com/api/v3.1/biometrics',
     DeviceKeyIdentifier: 'd24ELvA8jZOV4c8HHb4WoP1MSxEX3s0U',
     PublicFaceScanEncryptionKey: `-----BEGIN PUBLIC KEY-----
@@ -15,6 +18,9 @@ router.post('/facetec', async (_req, res, _next) =>
       ceUaqkL2DZUvgN0efEJjnWy5y1/Gkq5GGWCROI9XG/SwXJ30BbVUehTbVcD70+ZF
       8QIDAQAB
       -----END PUBLIC KEY-----`,
+    sessionId: generateUUId(),
+    idScanId: generateUUId(),
+    flow: 0, // 0 - Enroll User, 1 - Photo ID Match
   })
 );
 

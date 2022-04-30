@@ -59,6 +59,7 @@ function ViewComponent(props: TViewProps) {
                 controller.onEnrollUserPressed();
               }}
               className={classNames(style.button, style.buttonBig)}
+              disabled={!props.initialized}
             >
               Enroll User
             </button>
@@ -69,6 +70,7 @@ function ViewComponent(props: TViewProps) {
                 controller.onPhotoIDMatchPressed();
               }}
               className={classNames(style.button, style.buttonBig)}
+              disabled={!props.initialized}
             >
               Photo ID Match
             </button>
@@ -79,12 +81,13 @@ function ViewComponent(props: TViewProps) {
                 controller.onViewAuditTrailPressed();
               }}
               className={classNames(style.button, style.buttonMedium)}
+              disabled={!props.initialized}
             >
               View Audit Trail
             </button>
-            <p id="status" className={style.status}>
+            {/* <p id="status" className={style.status}>
               Initializing...
-            </p>
+            </p> */}
           </div>
         </div>
       </main>

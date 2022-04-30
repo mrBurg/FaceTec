@@ -1,7 +1,8 @@
 import { TFacetecSdk } from '../@types';
-import { Config } from '../Config';
-import { Controller } from '../Controller';
+import { Config } from '../config/Config';
+import { Controller } from '../controllers';
 import {
+  FaceTecFaceScanProcessor,
   FaceTecFaceScanResultCallback,
   FaceTecSessionResult,
 } from '../declarations/FaceTecPublicApi';
@@ -16,7 +17,12 @@ export class Processor {
     protected sdk: TFacetecSdk,
     protected cfg: Config,
     protected controller: Controller
-  ) {}
+  ) {
+    new this.sdk.FaceTecSession(
+      this as unknown as FaceTecFaceScanProcessor,
+      this.sessionToken
+    );
+  }
 
   isSuccess() {
     return this.success;

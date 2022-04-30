@@ -1,6 +1,6 @@
 import { TFacetecSdk } from '../@types';
-import { Config } from '../Config';
-import { Controller } from '../Controller';
+import { Config } from '../config/Config';
+import { Controller } from '../controllers';
 import { FaceTecFaceScanProcessor } from '../declarations/FaceTecPublicApi';
 import { Processor } from './Processor';
 
@@ -15,8 +15,6 @@ export class EnrollmentProcessor
     controller: Controller
   ) {
     super(sessionToken, sdk, cfg, controller);
-
-    new this.sdk.FaceTecSession(this, this.sessionToken);
   }
 
   onFaceTecSDKCompletelyDone() {

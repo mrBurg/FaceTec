@@ -37,8 +37,9 @@ function ViewAuditTrailComponent(props: TViewAuditTrailProps) {
             <dd>{SessionResult.faceScan.substring(0, 50)}...</dd>
             <dt>auditTrail</dt>
             <dd>
-              {_.map(SessionResult.auditTrail, (item) => (
+              {_.map(SessionResult.auditTrail, (item, index) => (
                 <Image
+                  key={index}
                   src={`data:image/jpeg;base64,${item}`}
                   alt={'faceScan'}
                   width={'100px'}
@@ -49,8 +50,9 @@ function ViewAuditTrailComponent(props: TViewAuditTrailProps) {
             </dd>
             <dt>lowQualityAuditTrail</dt>
             <dd>
-              {_.map(SessionResult.lowQualityAuditTrail, (item) => (
+              {_.map(SessionResult.lowQualityAuditTrail, (item, index) => (
                 <Image
+                  key={index}
                   src={`data:image/jpeg;base64,${item}`}
                   alt={'faceScan'}
                   width={'100px'}
@@ -79,8 +81,9 @@ function ViewAuditTrailComponent(props: TViewAuditTrailProps) {
             <dd>{IDScanResult.idScan.substring(0, 50)}...</dd>
             <dt>frontImages</dt>
             <dd>
-              {_.map(IDScanResult.frontImages, (item) => (
+              {_.map(IDScanResult.frontImages, (item, index) => (
                 <Image
+                  key={index}
                   src={`data:image/jpeg;base64,${item}`}
                   alt={'faceScan'}
                   width={'161px'}
@@ -91,8 +94,9 @@ function ViewAuditTrailComponent(props: TViewAuditTrailProps) {
             </dd>
             <dt>backImages</dt>
             <dd>
-              {_.map(IDScanResult.backImages, (item) => (
+              {_.map(IDScanResult.backImages, (item, index) => (
                 <Image
+                  key={index}
                   src={`data:image/jpeg;base64,${item}`}
                   alt={'faceScan'}
                   width={'161px'}

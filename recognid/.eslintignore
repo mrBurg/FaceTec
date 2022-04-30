@@ -1,13 +1,8 @@
 # /build/*
-# /certificates/*
-# /env/*
-# /plugins/*
 # /public/*
 
 # **/*.json
 # **/*.scss
-# **/*.po
 # **/*.svg
-# **/*.mdx
 
 next.config.js

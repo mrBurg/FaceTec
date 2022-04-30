@@ -2,24 +2,21 @@ import {
   FaceTecIDScanStatus,
   FaceTecSessionStatus,
 } from '../../declarations/FaceTecPublicApi';
-import { Controller } from './../../Controller';
+import { Controller } from '../../controllers';
 
 export type TViewProps = {
   controller: Controller;
+  initialized: boolean;
 };
 
 type TFaceTecIDScanResult = {
   idScan: string | null;
-  frontImages: string[];
-  backImages: string[];
-};
+} & Record<'frontImages' | 'backImages', string[]>;
 
 type TFaceTecSessionResult = {
   faceScan: string | null;
-  auditTrail: string[];
-  lowQualityAuditTrail: string[];
   [key: string]: string | FaceTecSessionStatus | null | {};
-};
+} & Record<'auditTrail' | 'lowQualityAuditTrail', string[]>;
 
 export type TFaceTecAuditTrail = {
   isCompletelyDone: boolean;
@@ -33,6 +30,6 @@ export type TauditTrail = {
   IDScanResult: TFaceTecAuditTrail & TFaceTecIDScanResult;
 };
 
-export type TViewAuditTrailProps = TViewProps & {
+export type TViewAuditTrailProps = Pick<TViewProps, 'controller'> & {
   auditTrail: TauditTrail;
 };

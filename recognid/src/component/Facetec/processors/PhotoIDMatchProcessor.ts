@@ -1,6 +1,6 @@
 import { TFacetecSdk } from '../@types';
-import { Config } from '../Config';
-import { Controller } from '../Controller';
+import { Config } from '../config/Config';
+import { Controller } from '../controllers';
 import {
   FaceTecIDScanProcessor,
   FaceTecIDScanResult,
@@ -37,8 +37,6 @@ export class PhotoIDMatchProcessor
       'Upload Complete',
       'Processing'
     );
-
-    new this.sdk.FaceTecSession(this, this.sessionToken);
   }
 
   onFaceTecSDKCompletelyDone() {

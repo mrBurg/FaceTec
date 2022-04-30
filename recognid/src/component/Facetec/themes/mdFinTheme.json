@@ -1,0 +1,64 @@
+{
+  "frameCustomization": {
+    "borderCornerRadius": "20px",
+    "backgroundColor": "#fe6c01",
+    "borderColor": "#dcfc5f"
+  },
+  "overlayCustomization": {
+    "brandingImage": "/facetec/images/logo.svg",
+    "backgroundColor": "#ff0000"
+  },
+  "guidanceCustomization": {
+    "backgroundColors": "#fe6c01",
+    "foregroundColor": "#0562ed",
+    "buttonBackgroundNormalColor": "#3f03ef",
+    "buttonBackgroundDisabledColor": "#e8e1b0",
+    "buttonBackgroundHighlightColor": "#9d3562",
+    "buttonTextNormalColor": "#fc185c",
+    "buttonTextDisabledColor": "#fc185c",
+    "buttonTextHighlightColor": "#fc185c",
+    "retryScreenImageBorderColor": "#dcfc5f",
+    "retryScreenOvalStrokeColor": "#dcfc5f"
+  },
+  "ovalCustomization": {
+    "strokeColor": "#3ef002",
+    "progressColor1": "#01f1a9",
+    "progressColor2": "#01f1a9"
+  },
+  "feedbackCustomization": {
+    "backgroundColor": "#3f03ef",
+    "textColor": "#fc185c"
+  },
+  "cancelButtonCustomization": {
+    "customImage": "/facetec/images/FaceTec_cancel.png"
+  },
+  "resultScreenCustomization": {
+    "backgroundColors": "#fe6c01",
+    "foregroundColor": "#0562ed",
+    "activityIndicatorColor": "#3f03ef",
+    "resultAnimationBackgroundColor": "#3f03ef",
+    "resultAnimationForegroundColor": "#fc185c",
+    "uploadProgressFillColor": "#3f03ef"
+  },
+  "idScanCustomization": {
+    "selectionScreenBackgroundColors": "#fe6c01",
+    "selectionScreenForegroundColor": "#0562ed",
+    "reviewScreenBackgroundColors": "#fe6c01",
+    "reviewScreenForegroundColor": "#fc185c",
+    "reviewScreenTextBackgroundColor": "#3f03ef",
+    "captureScreenForegroundColor": "#fc185c",
+    "captureScreenTextBackgroundColor": "#3f03ef",
+    "buttonBackgroundNormalColor": "#3f03ef",
+    "buttonBackgroundDisabledColor": "#e8e1b0",
+    "buttonBackgroundHighlightColor": "#9d3562",
+    "buttonTextNormalColor": "#fc185c",
+    "buttonTextDisabledColor": "#fc185c",
+    "buttonTextHighlightColor": "#fc185c",
+    "captureScreenBackgroundColor": "#fe6c01",
+    "captureFrameStrokeColor": "#dcfc5f"
+  },
+  "initialLoadingAnimationCustomization": {
+    "backgroundColor": "#fc185c",
+    "foregroundColor": "#3f03ef"
+  }
+}

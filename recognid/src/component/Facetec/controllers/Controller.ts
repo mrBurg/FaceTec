@@ -56,7 +56,7 @@ export class Controller {
     // AppUtilities.fadeOutMainUIAndPrepareForSession();
 
     this.getSessionToken((sessionToken: string) => {
-      this.latestEnrollmentIdentifier = `browser_app_${generateUUId()}`;
+      this.latestEnrollmentIdentifier = this.cfg.sessionId || generateUUId();
       this.latestProcessor = new EnrollmentProcessor(
         sessionToken,
         this.sdk,
@@ -70,7 +70,7 @@ export class Controller {
     // AppUtilities.fadeOutMainUIAndPrepareForSession();
 
     this.getSessionToken((sessionToken: string) => {
-      this.latestEnrollmentIdentifier = `browser_app_${generateUUId()}`;
+      this.latestEnrollmentIdentifier = this.cfg.idScanId || generateUUId();
       this.latestProcessor = new PhotoIDMatchProcessor(
         sessionToken,
         this.sdk,

@@ -12,6 +12,8 @@ export class Config {
   DeviceKeyIdentifier: string;
   BaseURL: string;
   PublicFaceScanEncryptionKey: string;
+  sessionId: string;
+  idScanId: string;
   flow: number;
 
   constructor(private sdk: TFacetecSdk, props: TConfigProps) {
@@ -19,6 +21,8 @@ export class Config {
     this.DeviceKeyIdentifier = props.DeviceKeyIdentifier;
     this.BaseURL = props.BaseURL;
     this.PublicFaceScanEncryptionKey = props.PublicFaceScanEncryptionKey;
+    this.sessionId = props.sessionId;
+    this.idScanId = props.idScanId;
     this.flow = props.flow;
 
     this.sdk.setResourceDirectory('/facetec/resources');

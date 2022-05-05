@@ -1,64 +1,64 @@
 {
   "frameCustomization": {
     "borderCornerRadius": "20px",
-    "backgroundColor": "#fe6c01",
-    "borderColor": "#dcfc5f"
+    "backgroundColor": "#fff",
+    "borderColor": "#fff"
   },
   "overlayCustomization": {
     "brandingImage": "/facetec/images/logo.svg",
-    "backgroundColor": "#ff0000"
+    "backgroundColor": "#fff"
   },
   "guidanceCustomization": {
-    "backgroundColors": "#fe6c01",
-    "foregroundColor": "#0562ed",
-    "buttonBackgroundNormalColor": "#3f03ef",
-    "buttonBackgroundDisabledColor": "#e8e1b0",
-    "buttonBackgroundHighlightColor": "#9d3562",
-    "buttonTextNormalColor": "#fc185c",
-    "buttonTextDisabledColor": "#fc185c",
-    "buttonTextHighlightColor": "#fc185c",
-    "retryScreenImageBorderColor": "#dcfc5f",
-    "retryScreenOvalStrokeColor": "#dcfc5f"
+    "backgroundColors": "#fff",
+    "foregroundColor": "rgb(65, 127, 178)",
+    "buttonBackgroundNormalColor": "rgb(65, 127, 178)",
+    "buttonBackgroundDisabledColor": "rgba(65, 127, 178, 0.4)",
+    "buttonBackgroundHighlightColor": "rgb(57, 110, 153)",
+    "buttonTextNormalColor": "#fff",
+    "buttonTextDisabledColor": "white",
+    "buttonTextHighlightColor": "#fff",
+    "retryScreenImageBorderColor": "rgb(65, 127, 178)",
+    "retryScreenOvalStrokeColor": "white"
   },
   "ovalCustomization": {
-    "strokeColor": "#3ef002",
-    "progressColor1": "#01f1a9",
-    "progressColor2": "#01f1a9"
+    "strokeColor": "rgb(65, 127, 178)",
+    "progressColor1": "rgba(65, 127, 178, 0.85)",
+    "progressColor2": "rgba(65, 127, 178, 0.85)"
   },
   "feedbackCustomization": {
-    "backgroundColor": "#3f03ef",
-    "textColor": "#fc185c"
+    "backgroundColor": "rgb(65, 127, 178)",
+    "textColor": "white"
   },
   "cancelButtonCustomization": {
     "customImage": "/facetec/images/FaceTec_cancel.png"
   },
   "resultScreenCustomization": {
-    "backgroundColors": "#fe6c01",
-    "foregroundColor": "#0562ed",
-    "activityIndicatorColor": "#3f03ef",
-    "resultAnimationBackgroundColor": "#3f03ef",
-    "resultAnimationForegroundColor": "#fc185c",
-    "uploadProgressFillColor": "#3f03ef"
+    "backgroundColors": "#fff",
+    "foregroundColor": "rgb(65, 127, 178)",
+    "activityIndicatorColor": "rgb(65, 127, 178)",
+    "resultAnimationBackgroundColor": "rgb(65, 127, 178)",
+    "resultAnimationForegroundColor": "#fff",
+    "uploadProgressFillColor": "rgb(65, 127, 178)"
   },
   "idScanCustomization": {
-    "selectionScreenBackgroundColors": "#fe6c01",
-    "selectionScreenForegroundColor": "#0562ed",
-    "reviewScreenBackgroundColors": "#fe6c01",
-    "reviewScreenForegroundColor": "#fc185c",
-    "reviewScreenTextBackgroundColor": "#3f03ef",
-    "captureScreenForegroundColor": "#fc185c",
-    "captureScreenTextBackgroundColor": "#3f03ef",
-    "buttonBackgroundNormalColor": "#3f03ef",
-    "buttonBackgroundDisabledColor": "#e8e1b0",
-    "buttonBackgroundHighlightColor": "#9d3562",
-    "buttonTextNormalColor": "#fc185c",
-    "buttonTextDisabledColor": "#fc185c",
-    "buttonTextHighlightColor": "#fc185c",
-    "captureScreenBackgroundColor": "#fe6c01",
-    "captureFrameStrokeColor": "#dcfc5f"
+    "selectionScreenBackgroundColors": "#fff",
+    "selectionScreenForegroundColor": "rgb(65, 127, 178)",
+    "reviewScreenBackgroundColors": "#fff",
+    "reviewScreenForegroundColor": "white",
+    "reviewScreenTextBackgroundColor": "rgb(65, 127, 178)",
+    "captureScreenForegroundColor": "#fff",
+    "captureScreenTextBackgroundColor": "rgb(65, 127, 178)",
+    "buttonBackgroundNormalColor": "rgb(65, 127, 178)",
+    "buttonBackgroundDisabledColor": "rgba(65, 127, 178, 0.4)",
+    "buttonBackgroundHighlightColor": "rgb(57, 110, 153)",
+    "buttonTextNormalColor": "#fff",
+    "buttonTextDisabledColor": "white",
+    "buttonTextHighlightColor": "#fff",
+    "captureScreenBackgroundColor": "white",
+    "captureFrameStrokeColor": "rgb(65, 127, 178)"
   },
   "initialLoadingAnimationCustomization": {
-    "backgroundColor": "#fc185c",
-    "foregroundColor": "#3f03ef"
+    "backgroundColor": "#f3f3f3",
+    "foregroundColor": "rgb(65, 127, 178)"
   }
 }

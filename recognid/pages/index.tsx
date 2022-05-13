@@ -1,24 +1,11 @@
 import { GetStaticPropsContext } from 'next';
 import axios from 'axios';
-import { ReactElement } from 'react';
+import React, { ReactElement } from 'react';
 import Head from 'next/head';
 
 import { Home } from '@component/Home';
 import { Preloader } from '@component/Preloader';
-import { TJSON } from '@interface/common';
-
-type TDomains = Record<'domain' | 'defaultLocale', string> & {
-  locales: string[];
-};
-
-type TPageProps = {
-  context: {
-    locales: string[];
-    defaultLocale: string;
-    domains: TDomains[];
-  };
-  staticData: TJSON;
-};
+import { TPageProps } from '@interface/page';
 
 function HomeComponent(props: TPageProps) {
   if (props.staticData) {
@@ -28,14 +15,18 @@ function HomeComponent(props: TPageProps) {
   return <Preloader />;
 }
 
-HomeComponent.getLayout = (children: ReactElement) => (
-  <>
-    <Head>
-      <title>Recognid:Home</title>
-    </Head>
-    {children}
-  </>
-);
+HomeComponent.getLayout = (children: ReactElement) => {
+  const { staticData } = children.props;
+
+  return (
+    <>
+      <Head>
+        <title>{staticData.title}</title>
+      </Head>
+      {children}
+    </>
+  );
+};
 
 export default HomeComponent;
 

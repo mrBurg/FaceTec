@@ -1,14 +1,13 @@
-import _ from 'lodash';
 import axios from 'axios';
 
-import { generateUUId } from '../utilities';
+import { generateUUId } from '../utils';
 import { EnrollmentProcessor, PhotoIDMatchProcessor } from '../processors';
 import { TFacetecSdk } from '../@types';
 import {
   TControllerProps,
-  TlatestNetworkResponseStatus,
-  TlatestProcessor,
-  TsessionTokenCallback,
+  TLatestNetworkResponseStatus,
+  TLatestProcessor,
+  TSessionTokenCallback,
 } from './@types';
 import {
   FaceTecIDScanResult,
@@ -20,7 +19,7 @@ export class Controller {
   latestEnrollmentIdentifier = '';
   latestSessionResult = null;
   latestIDScanResult = null;
-  latestProcessor: TlatestProcessor;
+  latestProcessor: TLatestProcessor;
 
   constructor(
     private sdk: TFacetecSdk,
@@ -87,8 +86,6 @@ export class Controller {
   }
 
   async onViewAuditTrailPressed() {
-    const result = [];
-
     try {
       const scanResultBlob = await axios.post('/api/facetec/scanResultBlob');
       const SessionResult = await axios.post('/api/facetec/SessionResult');
@@ -113,7 +110,7 @@ export class Controller {
   onComplete(
     sessionResult: FaceTecSessionResult,
     idScanResult: FaceTecIDScanResult,
-    latestNetworkResponseStatus: TlatestNetworkResponseStatus
+    latestNetworkResponseStatus: TLatestNetworkResponseStatus
   ) {
     this.latestSessionResult = sessionResult;
     this.latestIDScanResult = idScanResult;
@@ -136,7 +133,7 @@ export class Controller {
     // AppUtilities.showMainUI();
   }
 
-  getSessionToken(sessionTokenCallback: TsessionTokenCallback) {
+  getSessionToken(sessionTokenCallback: TSessionTokenCallback) {
     const controller = this;
     const XHR = new XMLHttpRequest();
     let sessionTokenErrorHasBeenHandled = false;
@@ -150,7 +147,8 @@ export class Controller {
 
     XHR.onreadystatechange = function () {
       if (this.readyState === XMLHttpRequest.DONE) {
-        var sessionToken = '';
+        let sessionToken = '';
+
         try {
           sessionToken = JSON.parse(this.responseText).sessionToken;
           if (typeof sessionToken !== 'string') {

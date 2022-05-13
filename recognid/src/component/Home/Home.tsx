@@ -1,7 +1,6 @@
-import { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import axios from 'axios';
 import classNames from 'classnames';
-import _ from 'lodash';
 
 import style from './Home.module.scss';
 
@@ -27,11 +26,15 @@ function HomeComponent(props: THomeComponentProps) {
       }
     };
 
-    getConfig().then((data) => {
-      if (data) {
-        setConfig(data);
-      }
-    });
+    getConfig()
+      .then((data) => {
+        if (data) {
+          setConfig(data);
+        }
+
+        return;
+      })
+      .catch((err) => console.log(err));
   }, []);
 
   const renderFacetec = useCallback(() => {
@@ -42,7 +45,7 @@ function HomeComponent(props: THomeComponentProps) {
 
   return (
     <>
-      <h1 className={classNames(style.title)}>{staticData.title}</h1>
+      <h1 className={classNames(style.title)}>{staticData.pageTitle}</h1>
       {renderFacetec()}
     </>
   );

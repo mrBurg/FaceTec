@@ -177,7 +177,7 @@ export interface FaceTecSessionResult {
   sessionId: string | null;
   status: FaceTecSessionStatus;
   isCompletelyDone: boolean;
-  [key: string]: string | FaceTecSessionStatus | null | {};
+  [key: string]: string | FaceTecSessionStatus | null | Record<string, unknown>;
 }
 /** Callback functions for the FaceTecFaceScanProcessor */
 export declare class FaceTecFaceScanResultCallback {

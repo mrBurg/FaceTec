@@ -1663,7 +1663,7 @@ export declare class FaceTecVocalGuidanceCustomization {
   pleasePressTheButtonToStartSoundFile: string;
   constructor();
 }
-export declare var FaceTecCustomizations: {
+export declare const FaceTecCustomizations: {
   idScanResultScreenMessageOverrides: {
     0?: string | null | undefined;
     1?: string | null | undefined;

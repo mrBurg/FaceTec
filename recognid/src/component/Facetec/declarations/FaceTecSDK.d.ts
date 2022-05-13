@@ -31,7 +31,7 @@ import {
   InitializeCallback,
   FaceTecAuditTrailImagesToReturn,
 } from './FaceTecPublicApi';
-export declare var FaceTecSDK: {
+export declare const FaceTecSDK: {
   /**
    * Initialize FaceTecSDK in development mode using a Device Identifier Key - HTTPS Log mode.
    **/

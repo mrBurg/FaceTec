@@ -1,5 +1,3 @@
-import axios from 'axios';
-import _ from 'lodash';
 import Script from 'next/script';
 import React, { useCallback, useEffect, useState } from 'react';
 

@@ -22,7 +22,14 @@
   },
   "plugins": ["react", "react-hooks", "@typescript-eslint"],
   "rules": {
-    "@next/next/no-img-element": "off"
+    "@next/next/no-img-element": "off",
+    "@typescript-eslint/no-this-alias": [
+      "error",
+      {
+        "allowDestructuring": false,
+        "allowedNames": ["controller"]
+      }
+    ]
   },
   "overrides": [
     {
@@ -32,6 +39,23 @@
       },
       "globals": {
         "process": "readonly"
+      }
+    },
+    {
+      "files": ["server/**/*.ts"],
+      "rules": {
+        "@typescript-eslint/no-unused-vars": "off"
+      }
+    },
+    {
+      "files": [
+        "server/utils.ts",
+        "declarations/*",
+        "src/component/Facetec/utils/utils.ts",
+        "src/component/Facetec/declarations/*"
+      ],
+      "rules": {
+        "@typescript-eslint/no-explicit-any": "off"
       }
     }
   ]

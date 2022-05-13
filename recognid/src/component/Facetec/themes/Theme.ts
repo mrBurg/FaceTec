@@ -4,7 +4,6 @@ import { getDefaultTheme } from './defaultTheme';
 // import { getCustomizationForTheme } from './customizationForTheme';
 // import { getLowLightCustomizationForTheme } from './lowLightCustomizationForTheme';
 // import { getDynamicDimmingCustomizationForTheme } from './dynamicDimmingCustomizationForTheme';
-import _ from 'lodash';
 
 export class Theme {
   currentCustomization = {} as FaceTecCustomization;

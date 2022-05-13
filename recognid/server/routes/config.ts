@@ -1,6 +1,6 @@
 import express from 'express';
 
-import { generateUUId } from '../utilities';
+import { generateUUId } from '../utils';
 
 const router = express.Router();
 
@@ -20,7 +20,7 @@ router.post('/facetec', async (_req, res, _next) =>
       -----END PUBLIC KEY-----`,
     sessionId: generateUUId(),
     idScanId: generateUUId(),
-    flow: 0, // 0 - Enroll User, 1 - Photo ID Match
+    flow: 1, // 0 - Enroll User, 1 - Photo ID Match
   })
 );
 

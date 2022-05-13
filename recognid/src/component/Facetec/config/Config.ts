@@ -5,8 +5,8 @@ import {
 } from '../@types';
 
 import faceTecStrings from './FaceTecStrings.json';
-import ocrLocalizationJSON from './FaceTec_OCR_Customization.json';
-import { Theme } from '../themes/Theme';
+import ocrLocalizationJSON from './FaceTecOCRCustomization.json';
+import { Theme } from '../themes';
 export class Config {
   ProductionKey: string;
   DeviceKeyIdentifier: string;

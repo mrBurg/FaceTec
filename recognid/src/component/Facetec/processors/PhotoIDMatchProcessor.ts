@@ -47,6 +47,7 @@ export class PhotoIDMatchProcessor
     if (!this.success) {
       this.controller.clearLatestEnrollmentIdentifier();
     }
+
     this.controller.onComplete(
       this.latestSessionResult,
       this.latestIDScanResult,
@@ -69,13 +70,11 @@ export class PhotoIDMatchProcessor
       return;
     }
 
-    var MinMatchLevel = 3;
-
-    var parameters = {
+    const parameters = {
       idScan: idScanResult.idScan,
       sessionId: idScanResult.sessionId,
       externalDatabaseRefID: this.controller.getLatestEnrollmentIdentifier(),
-      minMatchLevel: MinMatchLevel,
+      minMatchLevel: 3,
     } as TLatestNetworkRequestParams;
 
     if (idScanResult.frontImages && idScanResult.frontImages[0]) {
@@ -111,8 +110,10 @@ export class PhotoIDMatchProcessor
     this.latestNetworkRequest.onreadystatechange = () => {
       if (this.latestNetworkRequest.readyState === XMLHttpRequest.DONE) {
         try {
-          var responseJSON = JSON.parse(this.latestNetworkRequest.responseText);
-          var scanResultBlob = responseJSON.scanResultBlob;
+          const responseJSON = JSON.parse(
+            this.latestNetworkRequest.responseText
+          );
+          const scanResultBlob = responseJSON.scanResultBlob;
 
           if (responseJSON.wasProcessed === true) {
             this.sdk.FaceTecCustomization.setIDScanResultScreenMessageOverrides(
@@ -143,7 +144,8 @@ export class PhotoIDMatchProcessor
     };
 
     this.latestNetworkRequest.upload.onprogress = function (event) {
-      var progress = event.loaded / event.total;
+      const progress = event.loaded / event.total;
+
       callback.uploadProgress(progress);
     };
 

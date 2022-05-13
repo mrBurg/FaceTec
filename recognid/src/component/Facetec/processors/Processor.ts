@@ -100,7 +100,7 @@ export class Processor {
     };
 
     this.latestNetworkRequest.upload.onprogress = function (event) {
-      var progress = event.loaded / event.total;
+      const progress = event.loaded / event.total;
       callback.uploadProgress(progress);
     };
 

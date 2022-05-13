@@ -15,7 +15,7 @@ type TFaceTecIDScanResult = {
 
 type TFaceTecSessionResult = {
   faceScan: string | null;
-  [key: string]: string | FaceTecSessionStatus | null | {};
+  [key: string]: string | FaceTecSessionStatus | null | Record<string, unknown>;
 } & Record<'auditTrail' | 'lowQualityAuditTrail', string[]>;
 
 export type TFaceTecAuditTrail = {

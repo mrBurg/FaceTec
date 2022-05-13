@@ -82,6 +82,8 @@ export class Processor {
               'Liveness\nConfirmed'
             ); */
 
+            console.log(scanResultBlob);
+
             callback.proceedToNextStep(scanResultBlob);
           } else {
             console.log('Unexpected API response, cancelling out.');

@@ -19,7 +19,6 @@ router.post('/facetec', async (_req, res, _next) =>
       8QIDAQAB
       -----END PUBLIC KEY-----`,
     sessionId: generateUUId(),
-    idScanId: generateUUId(),
     flow: 1, // 0 - Enroll User, 1 - Photo ID Match
   })
 );

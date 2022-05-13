@@ -69,7 +69,7 @@ export class Controller {
     // AppUtilities.fadeOutMainUIAndPrepareForSession();
 
     this.getSessionToken((sessionToken: string) => {
-      this.latestEnrollmentIdentifier = this.cfg.idScanId || generateUUId();
+      this.latestEnrollmentIdentifier = this.cfg.sessionId || generateUUId();
       this.latestProcessor = new PhotoIDMatchProcessor(
         sessionToken,
         this.sdk,
@@ -116,6 +116,9 @@ export class Controller {
     this.latestIDScanResult = idScanResult;
 
     // showAdditionalScreensServerIsDown();
+
+    console.log(this.latestSessionResult);
+    console.log(this.latestIDScanResult);
 
     if (this.latestProcessor.isSuccess()) {
       // AppUtilities.displayStatus('Success');

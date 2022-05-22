@@ -3,6 +3,7 @@ import {
   FaceTecSessionStatus,
 } from '../../declarations/FaceTecPublicApi';
 import { Controller } from '../../controllers';
+import { TJSON } from '@interface/common';
 
 export type TViewProps = {
   controller: Controller;
@@ -25,9 +26,9 @@ export type TFaceTecAuditTrail = {
 };
 
 export type TauditTrail = {
-  scanResultBlob: string;
   SessionResult: TFaceTecAuditTrail & TFaceTecSessionResult;
   IDScanResult: TFaceTecAuditTrail & TFaceTecIDScanResult;
+  documentData: TJSON;
 };
 
 export type TViewAuditTrailProps = Pick<TViewProps, 'controller'> & {

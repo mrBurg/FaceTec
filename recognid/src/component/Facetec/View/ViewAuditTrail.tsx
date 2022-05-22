@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { Fragment, useCallback } from 'react';
 import Image from 'next/image';
 
 import style from './Facetec.module.scss';
@@ -8,20 +8,6 @@ import _ from 'lodash';
 
 function ViewAuditTrailComponent(props: TViewAuditTrailProps) {
   const { auditTrail, controller } = props;
-
-  console.log(auditTrail);
-  const renderScanResultBlob = useCallback(() => {
-    const { scanResultBlob } = auditTrail;
-
-    if (scanResultBlob) {
-      return (
-        <dl className={style.descriptionList}>
-          <dt>scanResultBlob</dt>
-          <dd>{scanResultBlob}</dd>
-        </dl>
-      );
-    }
-  }, [auditTrail]);
 
   const renderSessionResult = useCallback(() => {
     const { SessionResult } = auditTrail;
@@ -111,14 +97,40 @@ function ViewAuditTrailComponent(props: TViewAuditTrailProps) {
     }
   }, [auditTrail]);
 
+  const renderDocumentData = useCallback(() => {
+    const { documentData } = auditTrail;
+    const ocrResultsData = JSON.parse(documentData.ocrResults as string);
+
+    return _.map(
+      ocrResultsData.ocrResults.userConfirmed.groups,
+      (item, index) => (
+        <form key={index}>
+          <fieldset>
+            <legend>{item.groupFriendlyName}</legend>
+            {_.map(item.fields, (fieldItem, fieldIndex) => (
+              <div className={style.field} key={fieldIndex}>
+                <label htmlFor={fieldItem.fieldKey}>{fieldItem.fieldKey}</label>
+                <input
+                  id={fieldItem.fieldKey}
+                  type="text"
+                  defaultValue={fieldItem.value}
+                />
+              </div>
+            ))}
+          </fieldset>
+        </form>
+      )
+    );
+  }, [auditTrail]);
+
   return (
     <div className={style.auditTrail}>
       <button onClick={() => controller.closeAuditTrail()}>Close</button>
-      {renderScanResultBlob()}
-      <hr />
       {renderSessionResult()}
       <hr />
       {renderIDScanResult()}
+      <hr />
+      {renderDocumentData()}
     </div>
   );
 }

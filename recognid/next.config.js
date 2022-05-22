@@ -1,52 +1,20 @@
 const path = require('path');
-// const _ = require('lodash');
-
-// const { Sitemap } = require('./plugins');
-// const cfg = require('./config.json');
-
-// const redirectPages = ['/index', '/contacts'];
 
 module.exports = {
   distDir: 'build',
-  env: {
-    // ENVIRONMENT: process.env.ENVIRONMENT,
-  },
+  env: {},
   // inlineImageLimit: 16384,
   // fileExtensions: ['jpg', 'jpeg', 'png', 'gif'],
   /* images: {
     deviceSizes: [320, 480, 640, 768, 960, 1200, 1440],
   }, */
-  /* async redirects() {
-    return _.reduce(
-      redirectPages,
-      (accum, item) => {
-        accum.push({
-          source: `${item}(.x?html):slug*`,
-          destination: `${item}:slug*`,
-          permanent: true,
-          basePath: false,
-        });
-
-        return accum;
-      },
-      []
-    );
-  }, */
-  /* async headers() {
-    return [
-      {
-        source: '/(.*)',
-        headers: [],
-      },
-    ];
-  }, */
   i18n: {
-    locales: ['en-US'],
-    defaultLocale: 'en-US',
+    locales: ['ua-UA'],
+    defaultLocale: 'ua-UA',
     domains: [
       {
         domain: 'http://localhost',
-        defaultLocale: 'en-US',
+        defaultLocale: 'ua-UA',
       },
     ],
     localeDetection: false,
@@ -82,16 +50,7 @@ module.exports = {
       normalize: 'normalize.css/normalize.css',
     };
 
-    config.plugins = [
-      ...config.plugins,
-      /* new Sitemap({
-        baseUrl: !PO_PROJECT_PORT
-          ? PO_PROJECT_HOST
-          : `${PO_PROJECT_HOST}:${PO_PROJECT_PORT}`,
-        pagesDirectory: path.resolve(__dirname, 'pages'),
-        targetDirectory: './',
-      }), */
-    ];
+    config.plugins = [...config.plugins];
 
     // console.log(config, options);
     return config;

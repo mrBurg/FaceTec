@@ -5,14 +5,14 @@
   "license": "MIT",
   "scripts": {
     "npm:init": "yarn",
-    "npm:upgrade": "yarn upgrade --latest",
+    "npm:upgrade": "yarn upgrade --latest & npx npm-check-updates -u",
     "next:build": "next build",
     "next:lint": "next lint",
     ":server": "ts-node server",
     ":prebuild": "yarn next:build",
     ":dev": "yarn :server",
-    "lint": "eslint -c .eslintrc --ext js,ts,jsx",
-    "lint:fix": "eslint -c .eslintrc --fix --ext js,ts,jsx"
+    "lint": "eslint -c .eslintrc --ext js,jsx,ts,tsx",
+    "lint:fix": "eslint -c .eslintrc --fix --ext js,jsx,ts,tsx"
   },
   "dependencies": {
     "axios": "^0.27.2",
@@ -33,12 +33,12 @@
     "@types/express": "^4.17.13",
     "@types/lodash": "^4.14.182",
     "@types/react": "^18.0.9",
-    "@typescript-eslint/eslint-plugin": "^5.23.0",
+    "@typescript-eslint/eslint-plugin": "^5.25.0",
     "eslint": "^8.15.0",
     "eslint-config-next": "^12.1.6",
     "eslint-plugin-promise": "^6.0.0",
     "node-sass": "^7.0.1",
-    "sass": "^1.51.0",
+    "sass": "^1.52.0",
     "ts-node": "^10.7.0",
     "typescript": "^4.6.4"
   }

@@ -1,6 +1,5 @@
 import express from 'express';
-
-import { generateUUId } from '../utils';
+import http from 'http';
 
 const router = express.Router();
 
@@ -8,7 +7,8 @@ router.post('/facetec', async (_req, res, _next) =>
   res.json({
     ProductionKey: '',
     BaseURL: 'https://api.facetec.com/api/v3.1/biometrics',
-    DeviceKeyIdentifier: 'd24ELvA8jZOV4c8HHb4WoP1MSxEX3s0U',
+    // DeviceKeyIdentifier: 'd24ELvA8jZOV4c8HHb4WoP1MSxEX3s0U',
+    DeviceKeyIdentifier: 'dAVhYPNGPVRnbjLJRjDJhg1c7oJgl1Js',
     PublicFaceScanEncryptionKey: `-----BEGIN PUBLIC KEY-----
       MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA5PxZ3DLj+zP6T6HFgzzk
       M77LdzP3fojBoLasw7EfzvLMnJNUlyRb5m8e5QyyJxI+wRjsALHvFgLzGwxM8ehz
@@ -18,9 +18,47 @@ router.post('/facetec', async (_req, res, _next) =>
       ceUaqkL2DZUvgN0efEJjnWy5y1/Gkq5GGWCROI9XG/SwXJ30BbVUehTbVcD70+ZF
       8QIDAQAB
       -----END PUBLIC KEY-----`,
-    sessionId: generateUUId(),
-    flow: 1, // 0 - Enroll User, 1 - Photo ID Match
   })
 );
+
+router.post('/getOperation', async (_req, res, _next) => {
+  http
+    .request(
+      {
+        protocol: 'http:',
+        host: 'ec2-3-73-76-117.eu-central-1.compute.amazonaws.com',
+        port: 20305,
+        path: '/api/operation/init',
+        method: 'post',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: 'Basic bWRmaW46cXdlcnR5MTIzNDU=',
+        },
+      },
+      (response) => {
+        // response.setEncoding('utf8');
+        response.on('data', (chunk) => res.json(JSON.parse(chunk)));
+        response.on('end', () =>
+          console.log('HTTP request "Operation init" end')
+        );
+      }
+    )
+    .on('error', (err) => console.log(err))
+    .end();
+});
+
+router.post('/getLink', async (req, res, _next) => {
+  const { body } = req;
+
+  http
+    .request(body.operation_url, (response) => {
+      const { headers } = response;
+
+      res.json(headers.location);
+      console.log('HTTP request "Get link" end');
+    })
+    .on('error', (err) => console.log(err))
+    .end();
+});
 
 export default router;

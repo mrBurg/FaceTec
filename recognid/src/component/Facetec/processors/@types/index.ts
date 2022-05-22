@@ -7,4 +7,11 @@ export type TLatestNetworkRequestParams = Record<
   string
 > & {
   minMatchLevel: number;
-};
+} & Record<
+    | 'faceScan'
+    | 'auditTrailImage'
+    | 'lowQualityAuditTrailImage'
+    | 'sessionId'
+    | 'externalDatabaseRefID',
+    string
+  >;

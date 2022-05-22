@@ -1,1 +1,1 @@
-export { Facetec } from './Facetec';
+export { Facetec, FLOW } from './Facetec';

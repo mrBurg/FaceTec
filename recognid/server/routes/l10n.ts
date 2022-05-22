@@ -1,23 +1,23 @@
 import express from 'express';
 
-import faceTecStrings from './../FaceTecStrings.json';
-import faceTecOCRCustomization from './../FaceTecOCRCustomization.json';
+import stringsCustomization from './../data/stringsCustomization.json';
+import OCRCustomization from './../data/OCRCustomization.json';
 
 const router = express.Router();
 
 router.get('/home', async (_req, res, _next) =>
   res.json({
     title: 'Recognid:Home',
-    pageTitle: 'FaceTec Application',
+    pageTitle: 'Click for start FaceTec Application',
   })
 );
 
-router.get('/faceTecStrings', async (_req, res, _next) =>
-  res.json(faceTecStrings)
+router.get('/stringsCustomization', async (_req, res, _next) =>
+  res.json(stringsCustomization)
 );
 
-router.get('/faceTecOCRCustomization', async (_req, res, _next) =>
-  res.json(faceTecOCRCustomization)
+router.get('/OCRCustomization', async (_req, res, _next) =>
+  res.json(OCRCustomization)
 );
 
 export default router;

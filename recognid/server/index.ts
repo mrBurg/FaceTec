@@ -18,7 +18,8 @@ const handle = nextApp.getRequestHandler();
   await nextApp.prepare();
   const server = express();
   server
-    .use(express.json())
+    .use(express.json({ limit: '50mb' }))
+    // .use(express.urlencoded({ limit: '50mb' }))
     .use(cors())
     .use('/api/config', configHandler)
     .use('/api/static', l10nHandler)

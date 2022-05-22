@@ -31,11 +31,27 @@ HomeComponent.getLayout = (children: ReactElement) => {
 export default HomeComponent;
 
 export async function getStaticProps(context: GetStaticPropsContext) {
-  const response = await axios.get('/api/static/home');
+  try {
+    const response = await axios.get('/api/static/home');
 
-  if (response.status == 200) {
-    return { props: { context, staticData: response.data } };
+    if (response.status == 200) {
+      return {
+        props: {
+          context,
+          staticData: response.data,
+        },
+      };
+    }
+  } catch (err) {
+    console.log(err);
+
+    return {
+      props: {
+        staticData: {
+          title: 'Recognid:Home',
+          pageTitle: 'Click for start FaceTec Application',
+        },
+      },
+    };
   }
-
-  return { props: {} };
 }

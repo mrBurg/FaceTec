@@ -1,6 +1,4 @@
-import { TFacetecSdk } from '../@types';
-import { Config } from '../config/Config';
-import { Controller } from '../controllers';
+import { MATCH_3D_2D_IDSCAN } from '../constants';
 import {
   FaceTecIDScanProcessor,
   FaceTecIDScanResult,
@@ -14,30 +12,6 @@ export class PhotoIDMatchProcessor
   implements FaceTecIDScanProcessor
 {
   latestIDScanResult = null;
-
-  constructor(
-    sessionToken: string,
-    sdk: TFacetecSdk,
-    cfg: Config,
-    controller: Controller
-  ) {
-    super(sessionToken, sdk, cfg, controller);
-
-    this.sdk.FaceTecCustomization.setIDScanUploadMessageOverrides(
-      'Uploading<br/>Encrypted<br/>ID Scan',
-      'Still Uploading...<br/>Slow Connection',
-      'Upload Complete',
-      'Processing ID Scan',
-      'Uploading<br/>Encrypted<br/>Back of ID',
-      'Still Uploading...<br/>Slow Connection',
-      'Upload Complete',
-      'Processing Back of ID',
-      'Uploading<br/>Your Confirmed Info',
-      'Still Uploading...<br/>Slow Connection',
-      'Upload Complete',
-      'Processing'
-    );
-  }
 
   onFaceTecSDKCompletelyDone() {
     if (this.latestIDScanResult) {
@@ -85,70 +59,11 @@ export class PhotoIDMatchProcessor
       parameters.idScanBackImage = idScanResult.backImages[0];
     }
 
-    this.latestNetworkRequest = new XMLHttpRequest();
-
-    this.latestNetworkRequest.open(
-      'POST',
-      this.cfg.BaseURL + '/match-3d-2d-idscan'
+    this.prepareRequest(
+      MATCH_3D_2D_IDSCAN,
+      idScanResult.sessionId,
+      parameters,
+      callback
     );
-
-    this.latestNetworkRequest.setRequestHeader(
-      'Content-Type',
-      'application/json'
-    );
-
-    this.latestNetworkRequest.setRequestHeader(
-      'X-Device-Key',
-      this.cfg.DeviceKeyIdentifier
-    );
-
-    this.latestNetworkRequest.setRequestHeader(
-      'X-User-Agent',
-      this.sdk.createFaceTecAPIUserAgentString(idScanResult.sessionId)
-    );
-
-    this.latestNetworkRequest.onreadystatechange = () => {
-      if (this.latestNetworkRequest.readyState === XMLHttpRequest.DONE) {
-        try {
-          const responseJSON = JSON.parse(
-            this.latestNetworkRequest.responseText
-          );
-          const scanResultBlob = responseJSON.scanResultBlob;
-
-          if (responseJSON.wasProcessed === true) {
-            this.sdk.FaceTecCustomization.setIDScanResultScreenMessageOverrides(
-              'Your 3D Face<br/>Matched Your ID',
-              'Your 3D Face<br/>Matched Your ID',
-              'Back of ID Captured',
-              'ID Verification<br/>Complete',
-              "Face Didn't Match<br/>Highly Enough",
-              'ID Document<br/>Not Fully Visible',
-              'ID Text Not Legible',
-              'ID Type Not Supported<br/>Please Use a Different ID'
-            );
-            callback.proceedToNextStep(scanResultBlob);
-          } else {
-            console.log('Unexpected API response, cancelling out.');
-            callback.cancel();
-          }
-        } catch (_a) {
-          console.log('Exception while handling API response, cancelling out.');
-          callback.cancel();
-        }
-      }
-    };
-
-    this.latestNetworkRequest.onerror = function () {
-      console.log('XHR error, cancelling.');
-      callback.cancel();
-    };
-
-    this.latestNetworkRequest.upload.onprogress = function (event) {
-      const progress = event.loaded / event.total;
-
-      callback.uploadProgress(progress);
-    };
-
-    this.latestNetworkRequest.send(JSON.stringify(parameters));
   }
 }

@@ -5,25 +5,27 @@ import {
 } from '../@types';
 
 import faceTecStrings from './FaceTecStrings.json';
-import ocrLocalizationJSON from './FaceTecOCRCustomization.json';
+import ocrLocalization from './FaceTecOCRCustomization.json';
 import { Theme } from '../themes';
 export class Config {
   ProductionKey: string;
   DeviceKeyIdentifier: string;
   BaseURL: string;
   PublicFaceScanEncryptionKey: string;
-  sessionId: string;
-  idScanId: string;
   flow: number;
+  id: string;
+  session: string;
+  partner: string;
 
   constructor(private sdk: TFacetecSdk, props: TConfigProps) {
+    this.id = props.id;
+    this.session = props.session;
+    this.partner = props.partner;
+    this.flow = props.flow;
     this.ProductionKey = props.ProductionKey;
     this.DeviceKeyIdentifier = props.DeviceKeyIdentifier;
     this.BaseURL = props.BaseURL;
     this.PublicFaceScanEncryptionKey = props.PublicFaceScanEncryptionKey;
-    this.sessionId = props.sessionId;
-    this.idScanId = props.idScanId;
-    this.flow = props.flow;
 
     this.sdk.setResourceDirectory('/facetec/resources');
     this.sdk.setImagesDirectory('/facetec/images');
@@ -49,6 +51,6 @@ export class Config {
     }
 
     this.sdk.configureLocalization(faceTecStrings);
-    this.sdk.configureOCRLocalization(ocrLocalizationJSON);
+    this.sdk.configureOCRLocalization(ocrLocalization);
   }
 }

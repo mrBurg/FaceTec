@@ -4,11 +4,12 @@
     "http": 80,
     "https": 443
   },
-  "redirect": {
+  "status": {
     "ok": 200,
     "movedPermanently": 301,
     "badRequest": 400,
     "unauthorized": 401,
-    "notFound": 404
+    "notFound": 404,
+    "internalServerError": 500
   }
 }

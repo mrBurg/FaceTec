@@ -1,13 +1,13 @@
 import axios from 'axios';
 
-import { generateUUId } from '../utils';
 import { EnrollmentProcessor, PhotoIDMatchProcessor } from '../processors';
 import { TFacetecSdk } from '../@types';
 import {
   TControllerProps,
   TLatestNetworkResponseStatus,
   TLatestProcessor,
-  TSessionTokenCallback,
+  TProcessor,
+  // TSessionTokenCallback,
 } from './@types';
 import {
   FaceTecIDScanResult,
@@ -37,9 +37,6 @@ export class Controller {
           case 1:
             this.onPhotoIDMatchPressed();
             break;
-          default:
-            console.log('No suitable configuration');
-            console.log('0 - Enroll User, 1 - Photo ID Match');
         }
 
         // AppUtilities.setVocalGuidanceSoundFiles();
@@ -51,32 +48,34 @@ export class Controller {
     });
   }
 
-  onEnrollUserPressed() {
+  private startProcess(Processor: TProcessor) {
     // AppUtilities.fadeOutMainUIAndPrepareForSession();
 
-    this.getSessionToken((sessionToken: string) => {
-      this.latestEnrollmentIdentifier = this.cfg.sessionId || generateUUId();
-      this.latestProcessor = new EnrollmentProcessor(
+    this.latestEnrollmentIdentifier = this.cfg.id;
+    this.latestProcessor = new Processor(
+      this.cfg.session,
+      this.sdk,
+      this.cfg,
+      this
+    );
+
+    /* this.getSessionToken((sessionToken: string) => {
+      this.latestEnrollmentIdentifier = this.cfg.session;
+      this.latestProcessor = new Processor(
         sessionToken,
         this.sdk,
         this.cfg,
         this
       );
-    });
+    }); */
+  }
+
+  onEnrollUserPressed() {
+    this.startProcess(EnrollmentProcessor);
   }
 
   onPhotoIDMatchPressed() {
-    // AppUtilities.fadeOutMainUIAndPrepareForSession();
-
-    this.getSessionToken((sessionToken: string) => {
-      this.latestEnrollmentIdentifier = this.cfg.sessionId || generateUUId();
-      this.latestProcessor = new PhotoIDMatchProcessor(
-        sessionToken,
-        this.sdk,
-        this.cfg,
-        this
-      );
-    });
+    this.startProcess(PhotoIDMatchProcessor);
   }
 
   onVocalGuidanceSettingsButtonPressed() {
@@ -87,14 +86,14 @@ export class Controller {
 
   async onViewAuditTrailPressed() {
     try {
-      const scanResultBlob = await axios.post('/api/facetec/scanResultBlob');
-      const SessionResult = await axios.post('/api/facetec/SessionResult');
+      const SessionResult = await axios.post('/api/facetec/sessionResult');
       const IDScanResult = await axios.post('/api/facetec/IDScanResult');
+      const documentData = await axios.post('/api/facetec/documentData');
 
       this.controller.setAuditTrail({
-        scanResultBlob: scanResultBlob.data,
         SessionResult: SessionResult.data,
         IDScanResult: IDScanResult.data,
+        documentData: documentData.data,
       });
     } catch (err) {
       console.log(err);
@@ -117,8 +116,8 @@ export class Controller {
 
     // showAdditionalScreensServerIsDown();
 
-    console.log(this.latestSessionResult);
-    console.log(this.latestIDScanResult);
+    // console.log(this.latestSessionResult);
+    // console.log(this.latestIDScanResult);
 
     if (this.latestProcessor.isSuccess()) {
       // AppUtilities.displayStatus('Success');
@@ -136,7 +135,7 @@ export class Controller {
     // AppUtilities.showMainUI();
   }
 
-  getSessionToken(sessionTokenCallback: TSessionTokenCallback) {
+  /* getSessionToken(sessionTokenCallback: TSessionTokenCallback) {
     const controller = this;
     const XHR = new XMLHttpRequest();
     let sessionTokenErrorHasBeenHandled = false;
@@ -201,7 +200,7 @@ export class Controller {
         // AppUtilities.showLoadingSessionToken();
       }
     }, 3000);
-  }
+  } */
 
   isNetworkResponseServerIsOffline(networkResponseStatus: number) {
     return networkResponseStatus >= 500;

@@ -1,4 +1,4 @@
-import axios from 'axios';
+import Router from 'next/router';
 
 import { EnrollmentProcessor, PhotoIDMatchProcessor } from '../processors';
 import { TFacetecSdk } from '../@types';
@@ -7,13 +7,13 @@ import {
   TLatestNetworkResponseStatus,
   TLatestProcessor,
   TProcessor,
-  // TSessionTokenCallback,
 } from './@types';
 import {
   FaceTecIDScanResult,
   FaceTecSessionResult,
 } from '../declarations/FaceTecPublicApi';
 import { Config } from '../config/Config';
+import { URIS } from '@root/routes';
 
 export class Controller {
   latestEnrollmentIdentifier = '';
@@ -58,16 +58,6 @@ export class Controller {
       this.cfg,
       this
     );
-
-    /* this.getSessionToken((sessionToken: string) => {
-      this.latestEnrollmentIdentifier = this.cfg.session;
-      this.latestProcessor = new Processor(
-        sessionToken,
-        this.sdk,
-        this.cfg,
-        this
-      );
-    }); */
   }
 
   onEnrollUserPressed() {
@@ -85,25 +75,9 @@ export class Controller {
   }
 
   async onViewAuditTrailPressed() {
-    try {
-      const SessionResult = await axios.post('/api/facetec/sessionResult');
-      const IDScanResult = await axios.post('/api/facetec/IDScanResult');
-      const documentData = await axios.post('/api/facetec/documentData');
-
-      this.controller.setAuditTrail({
-        SessionResult: SessionResult.data,
-        IDScanResult: IDScanResult.data,
-        documentData: documentData.data,
-      });
-    } catch (err) {
-      console.log(err);
-    }
+    Router.push(URIS.AUDIT_TRAIL);
 
     // AppUtilities.showAuditTrailImages(latestSessionResult, latestIDScanResult);
-  }
-
-  closeAuditTrail() {
-    this.controller.setAuditTrail(null);
   }
 
   onComplete(
@@ -134,73 +108,6 @@ export class Controller {
 
     // AppUtilities.showMainUI();
   }
-
-  /* getSessionToken(sessionTokenCallback: TSessionTokenCallback) {
-    const controller = this;
-    const XHR = new XMLHttpRequest();
-    let sessionTokenErrorHasBeenHandled = false;
-
-    XHR.open('GET', this.cfg.BaseURL + '/session-token');
-    XHR.setRequestHeader('X-Device-Key', this.cfg.DeviceKeyIdentifier);
-    XHR.setRequestHeader(
-      'X-User-Agent',
-      this.sdk.createFaceTecAPIUserAgentString('')
-    );
-
-    XHR.onreadystatechange = function () {
-      if (this.readyState === XMLHttpRequest.DONE) {
-        let sessionToken = '';
-
-        try {
-          sessionToken = JSON.parse(this.responseText).sessionToken;
-          if (typeof sessionToken !== 'string') {
-            if (sessionTokenErrorHasBeenHandled === false) {
-              sessionTokenErrorHasBeenHandled = true;
-              if (controller.isNetworkResponseServerIsOffline(XHR.status)) {
-                controller.showAdditionalScreensServerIsDown();
-              } else {
-                controller.onServerSessionTokenError();
-              }
-            }
-
-            return;
-          }
-        } catch (_a) {
-          if (sessionTokenErrorHasBeenHandled === false) {
-            sessionTokenErrorHasBeenHandled = true;
-            if (controller.isNetworkResponseServerIsOffline(XHR.status)) {
-              controller.showAdditionalScreensServerIsDown();
-            } else {
-              controller.onServerSessionTokenError();
-            }
-          }
-
-          return;
-        }
-        // AppUtilities.hideLoadingSessionToken();
-        sessionTokenCallback(sessionToken);
-      }
-    };
-
-    XHR.onerror = function () {
-      if (sessionTokenErrorHasBeenHandled === false) {
-        sessionTokenErrorHasBeenHandled = true;
-        if (controller.isNetworkResponseServerIsOffline(XHR.status)) {
-          controller.showAdditionalScreensServerIsDown();
-        } else {
-          controller.onServerSessionTokenError();
-        }
-      }
-    };
-
-    XHR.send();
-
-    window.setTimeout(function () {
-      if (XHR.readyState !== XMLHttpRequest.DONE) {
-        // AppUtilities.showLoadingSessionToken();
-      }
-    }, 3000);
-  } */
 
   isNetworkResponseServerIsOffline(networkResponseStatus: number) {
     return networkResponseStatus >= 500;

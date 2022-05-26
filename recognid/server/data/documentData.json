@@ -1,0 +1,50 @@
+{
+  "additionalSessionData": {
+    "isAdditionalDataPartiallyIncomplete": false,
+    "platform": "web",
+    "appID": "localhost",
+    "installationID": "d1019952-4e80-44a2-9f50-7cc6cdb2b613",
+    "deviceModel": "Windows NT 10.0",
+    "deviceSDKVersion": "9.4.8",
+    "sessionID": "9c70ec44-dc58-48c7-b44a-9529e0a9a2b9",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:100.0) Gecko/20100101 Firefox/100.0",
+    "ipAddress": "37.115.147.160"
+  },
+  "barcodeStatusEnumInt": 0,
+  "callData": {
+    "tid": "znS2H4apUdea492ba-d4ec-11ec-b4e0-020da0aadf87",
+    "path": "/match-3d-2d-idscan",
+    "date": "May 16, 2022 07:50:35 AM",
+    "epochSecond": 1652687435,
+    "requestMethod": "POST"
+  },
+  "digitalIDSpoofStatusEnumInt": 0,
+  "documentData": "{\"mrzValues\":{\"groups\":[{\"fields\":[{\"fieldKey\":\"lastName\",\"uiFieldType\":\"Alphabetic\",\"value\":\"WTVALDOI\"},{\"fieldKey\":\"dateOfBirth\",\"uiFieldType\":\"dd mm yyyy\",\"value\":\"31 08 1901\"}],\"groupFriendlyName\":\"Your Information\",\"groupKey\":\"userInfo\"},{\"fields\":[{\"fieldKey\":\"idNumber\",\"uiFieldType\":\"Numeric\",\"value\":\"002024587\"},{\"fieldKey\":\"dateOfExpiration\",\"uiFieldType\":\"dd mm yyyy\",\"value\":\"02 07 2022\"}],\"groupFriendlyName\":\"Photo ID Details\",\"groupKey\":\"idInfo\"}]},\"scannedValues\":{\"groups\":[{\"fields\":[{\"fieldKey\":\"firstName\",\"uiFieldType\":\"Alphabetic\",\"value\":\"DENYS\"},{\"fieldKey\":\"lastName\",\"nonMRZValue\":\"BROMO\",\"uiFieldType\":\"Alphabetic\",\"value\":\"WTVALDOI\"},{\"fieldKey\":\"dateOfBirth\",\"nonMRZValue\":\"10 51 001\",\"uiFieldType\":\"dd mm yyyy\",\"value\":\"31 08 1901\"}],\"groupFriendlyName\":\"Your Information\",\"groupKey\":\"userInfo\"},{\"fields\":[{\"fieldKey\":\"idNumber\",\"nonMRZValue\":\"000024587\",\"uiFieldType\":\"Numeric\",\"value\":\"002024587\"},{\"fieldKey\":\"dateOfExpiration\",\"nonMRZValue\":\"02 01 0922\",\"uiFieldType\":\"dd mm yyyy\",\"value\":\"02 07 2022\"},{\"fieldKey\":\"mrzLine1\",\"uiFieldType\":\"Alphanumeric\",\"value\":\"IBUC800202458782001083108892<<\"},{\"fieldKey\":\"mrzLine2\",\"uiFieldType\":\"Alphanumeric\",\"value\":\"0108319X2207021UKR<<<<<<<<<<<2\"},{\"fieldKey\":\"mrzLine3\",\"uiFieldType\":\"Alphanumeric\",\"value\":\"WTVALD0I<<<<<\"}],\"groupFriendlyName\":\"Photo ID Details\",\"groupKey\":\"idInfo\"}]},\"templateInfo\":{\"templateName\":\"Ukraine - National ID Card - 2016 - Horizontal\",\"templateType\":\"Government Issued Photo ID\"},\"userConfirmedValues\":{\"groups\":[{\"fields\":[{\"fieldKey\":\"firstName\",\"uiFieldType\":\"Alphabetic\",\"value\":\"DENYS\"},{\"fieldKey\":\"lastName\",\"uiFieldType\":\"Alphabetic\",\"value\":\"WTVALDOI\"},{\"fieldKey\":\"dateOfBirth\",\"uiFieldType\":\"dd mm yyyy\",\"value\":\"31 08 1901\"}],\"groupFriendlyName\":\"Your Information\",\"groupKey\":\"userInfo\"},{\"fields\":[{\"fieldKey\":\"idNumber\",\"uiFieldType\":\"Numeric\",\"value\":\"002024587\"},{\"fieldKey\":\"dateOfExpiration\",\"uiFieldType\":\"dd mm yyyy\",\"value\":\"02 07 2022\"},{\"fieldKey\":\"mrzLine1\",\"uiFieldType\":\"Alphanumeric\",\"value\":\"IBUC800202458782001083108892<<\"},{\"fieldKey\":\"mrzLine2\",\"uiFieldType\":\"Alphanumeric\",\"value\":\"0108319X2207021UKR<<<<<<<<<<<2\"},{\"fieldKey\":\"mrzLine3\",\"uiFieldType\":\"Alphanumeric\",\"value\":\"WTVALD0I<<<<<\"},{\"fieldKey\":\"dateOfIssue\",\"uiFieldType\":\"dd mm yyyy\",\"value\":\"\"}],\"groupFriendlyName\":\"Photo ID Details\",\"groupKey\":\"idInfo\"}]}}",
+  "error": false,
+  "externalDatabaseRefID": "40a9b795-33e7-471f-90f7-2c0ddd472ea2",
+  "extractedNFCImage": "",
+  "extractedTextBase64JSON": null,
+  "faceOnDocumentStatusEnumInt": 1,
+  "fullIDStatusEnumInt": 0,
+  "idScanAgeEstimateGroupEnumInt": 4,
+  "matchLevel": 7,
+  "matchLevelNFCToFaceMap": 0,
+  "nfcStatusEnumInt": 1,
+  "ocrResults": "{\"ocrResults\":{\"scanned\":{\"groups\":[{\"fields\":[{\"fieldKey\":\"firstName\",\"uiFieldType\":\"Alphabetic\",\"value\":\"DENYS\"},{\"fieldKey\":\"lastName\",\"uiFieldType\":\"Alphabetic\",\"value\":\"WTVALDOI\"},{\"fieldKey\":\"dateOfBirth\",\"uiFieldType\":\"dd mm yyyy\",\"value\":\"31 08 1901\"}],\"groupFriendlyName\":\"Your Information\",\"groupKey\":\"userInfo\"},{\"fields\":[{\"fieldKey\":\"idNumber\",\"uiFieldType\":\"Numeric\",\"value\":\"002024587\"},{\"fieldKey\":\"dateOfExpiration\",\"uiFieldType\":\"dd mm yyyy\",\"value\":\"02 07 2022\"},{\"fieldKey\":\"mrzLine1\",\"uiFieldType\":\"Alphanumeric\",\"value\":\"IBUC800202458782001083108892<<\"},{\"fieldKey\":\"mrzLine2\",\"uiFieldType\":\"Alphanumeric\",\"value\":\"0108319X2207021UKR<<<<<<<<<<<2\"},{\"fieldKey\":\"mrzLine3\",\"uiFieldType\":\"Alphanumeric\",\"value\":\"WTVALD0I<<<<<\"},{\"fieldKey\":\"dateOfIssue\",\"uiFieldType\":\"dd mm yyyy\",\"value\":\"\"}],\"groupFriendlyName\":\"Photo ID Details\",\"groupKey\":\"idInfo\"},{\"fields\":[],\"groupFriendlyName\":\"Your Address\",\"groupKey\":\"addressInfo\"},{\"fields\":[],\"groupFriendlyName\":\"Physical Traits & Misc\",\"groupKey\":\"secondaryUserInfo\"},{\"fields\":[],\"groupFriendlyName\":\"Additional Info\",\"groupKey\":\"customFields\"}]},\"templateName\":\"Ukraine - National ID Card - 2016 - Horizontal\",\"templateType\":\"Government Issued Photo ID\",\"userConfirmed\":{\"groups\":[{\"fields\":[{\"fieldKey\":\"firstName\",\"uiFieldType\":\"Alphabetic\",\"value\":\"DENYS\"},{\"fieldKey\":\"lastName\",\"uiFieldType\":\"Alphabetic\",\"value\":\"WTVALDOI\"},{\"fieldKey\":\"dateOfBirth\",\"uiFieldType\":\"dd mm yyyy\",\"value\":\"31 08 1901\"}],\"groupFriendlyName\":\"Your Information\",\"groupKey\":\"userInfo\"},{\"fields\":[{\"fieldKey\":\"idNumber\",\"uiFieldType\":\"Numeric\",\"value\":\"002024587\"},{\"fieldKey\":\"dateOfExpiration\",\"uiFieldType\":\"dd mm yyyy\",\"value\":\"02 07 2022\"},{\"fieldKey\":\"mrzLine1\",\"uiFieldType\":\"Alphanumeric\",\"value\":\"IBUC800202458782001083108892<<\"},{\"fieldKey\":\"mrzLine2\",\"uiFieldType\":\"Alphanumeric\",\"value\":\"0108319X2207021UKR<<<<<<<<<<<2\"},{\"fieldKey\":\"mrzLine3\",\"uiFieldType\":\"Alphanumeric\",\"value\":\"WTVALD0I<<<<<\"},{\"fieldKey\":\"dateOfIssue\",\"uiFieldType\":\"dd mm yyyy\",\"value\":\"\"}],\"groupFriendlyName\":\"Photo ID Details\",\"groupKey\":\"idInfo\"},{\"fields\":[],\"groupFriendlyName\":\"Your Address\",\"groupKey\":\"addressInfo\"},{\"fields\":[],\"groupFriendlyName\":\"Physical Traits & Misc\",\"groupKey\":\"secondaryUserInfo\"},{\"fields\":[],\"groupFriendlyName\":\"Additional Info\",\"groupKey\":\"customFields\"}]}}}",
+  "photoIDBackCrop": "",
+  "photoIDFaceCrop": "",
+  "photoIDFrontCrop": "",
+  "photoIDPrimarySignatureCrop": "",
+  "photoIDSecondarySignatureCrop": "",
+  "photoIDTamperingEvidenceBackImage": "",
+  "photoIDTamperingEvidenceFrontImage": "",
+  "scanResultBlob": "AAEAAAC9AAAAAAAAAAwEDUjRksgMQm+ug9ScvfnpuT2a5+U46TIObgKiec0cF5rVS5xVOqHn8B+3g1oqgHBNS9EzyYGO9C88mO1BWpwWAYcG23pF/wCyGeqIrb56pdVkRWQMC6mINhc7ezainFK+g3t9dldPWH9RIT4mV/fYWsxCZQMnld2Pzs82isxh3Qjapd3zigwp7nbv2VpRttSKCSMaaabtjawnAPrO7O2RjRdcuWUaEbMI2cLJce9LyU9VbLYd1oyd1KfMIA==",
+  "serverInfo": {
+    "version": "9.4.5-dev-2022051305",
+    "mode": "Development Only",
+    "notice": "You should only be reading this if you are in server-side code.  Please make sure you do not allow the FaceTec Server to be called from the public internet."
+  },
+  "success": true,
+  "textOnDocumentStatusEnumInt": 1,
+  "wasProcessed": true
+}

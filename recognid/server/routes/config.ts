@@ -1,5 +1,6 @@
 import express from 'express';
 import http from 'http';
+// import https from 'https';
 
 const router = express.Router();
 
@@ -22,43 +23,43 @@ router.post('/facetec', async (_req, res, _next) =>
 );
 
 router.post('/getOperation', async (_req, res, _next) => {
-  http
-    .request(
-      {
-        protocol: 'http:',
-        host: 'ec2-3-73-76-117.eu-central-1.compute.amazonaws.com',
-        port: 20305,
-        path: '/api/operation/init',
-        method: 'post',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: 'Basic bWRmaW46cXdlcnR5MTIzNDU=',
-        },
+  const httpReq = http.request(
+    {
+      protocol: 'http:',
+      host: 'ec2-3-73-76-117.eu-central-1.compute.amazonaws.com',
+      port: 20305,
+      path: '/api/operation/init',
+      method: 'post',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: 'Basic bWRmaW46cXdlcnR5MTIzNDU=',
       },
-      (response) => {
-        // response.setEncoding('utf8');
-        response.on('data', (chunk) => res.json(JSON.parse(chunk)));
-        response.on('end', () =>
-          console.log('HTTP request "Operation init" end')
-        );
-      }
-    )
-    .on('error', (err) => console.log(err))
-    .end();
+    },
+    (response) => {
+      // response.setEncoding('utf8');
+      response.on('data', (chunk) => res.json(JSON.parse(chunk)));
+      response.on('end', () =>
+        console.log('HTTP request "Operation init" end')
+      );
+    }
+  );
+
+  httpReq.on('error', (err) => console.log(err));
+  httpReq.end();
 });
 
 router.post('/getLink', async (req, res, _next) => {
   const { body } = req;
 
-  http
-    .request(body.operation_url, (response) => {
-      const { headers } = response;
+  const httpReq = http.request(body.operation_url, (response) => {
+    const { headers } = response;
 
-      res.json(headers.location);
-      console.log('HTTP request "Get link" end');
-    })
-    .on('error', (err) => console.log(err))
-    .end();
+    res.json(headers.location);
+    console.log('HTTP request "Get link" end');
+  });
+
+  httpReq.on('error', (err) => console.log(err));
+  httpReq.end();
 });
 
 export default router;

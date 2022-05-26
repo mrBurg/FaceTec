@@ -56,7 +56,7 @@
       "files": [
         "server/utils.ts",
         "declarations/*",
-        "src/component/Facetec/utils/utils.ts",
+        "src/component/Facetec/utils/*",
         "src/component/Facetec/declarations/*"
       ],
       "rules": {

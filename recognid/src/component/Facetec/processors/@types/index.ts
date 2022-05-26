@@ -1,17 +1,11 @@
 export type TLatestNetworkRequestParams = Record<
-  | 'idScan'
-  | 'sessionId'
-  | 'externalDatabaseRefID'
-  | 'idScanFrontImage'
-  | 'idScanBackImage',
+  'sessionId' | 'externalDatabaseRefID',
   string
-> & {
-  minMatchLevel: number;
-} & Record<
-    | 'faceScan'
-    | 'auditTrailImage'
-    | 'lowQualityAuditTrailImage'
-    | 'sessionId'
-    | 'externalDatabaseRefID',
+> &
+  Record<'idScan' | 'idScanFrontImage' | 'idScanBackImage', string> &
+  Record<
+    'faceScan' | 'auditTrailImage' | 'lowQualityAuditTrailImage',
     string
-  >;
+  > & {
+    minMatchLevel: number;
+  };

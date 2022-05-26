@@ -18,4 +18,16 @@ router.post('/documentData', async (_req, res, _next) =>
   res.send(documentData)
 );
 
+router.post('/enrollment-3d', async (req, res, _next) => {
+  console.log(req.body);
+
+  res.send(req.body);
+});
+
+router.post('/match-3d-2d-idscan', async (req, res, _next) => {
+  console.log(req.body);
+
+  res.send(req.body);
+});
+
 export default router;

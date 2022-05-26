@@ -79,31 +79,3 @@
     border-radius: 5px;
   }
 }
-
-.auditTrail {
-  .descriptionList {
-    color: $white;
-  }
-  /* .resultTable {
-    border-collapse: collapse;
-    width: 100%;
-
-    td {
-      border: solid $white 1px;
-      padding: 0.5em;
-    }
-  } */
-
-  form {
-    width: 50%;
-  }
-
-  .field {
-    display: flex;
-    flex-direction: column;
-
-    input {
-      margin-top: 0.5em;
-    }
-  }
-}

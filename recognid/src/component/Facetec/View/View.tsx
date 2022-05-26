@@ -1,11 +1,12 @@
 import React from 'react';
 import classNames from 'classnames';
+
 import { TViewProps } from './@types';
 
 import style from './Facetec.module.scss';
 
 function ViewComponent(props: TViewProps) {
-  const { controller } = props;
+  const { controller, initialized } = props;
 
   return (
     <div className={style.mainView}>
@@ -60,7 +61,7 @@ function ViewComponent(props: TViewProps) {
                 controller.onEnrollUserPressed();
               }}
               className={classNames(style.button, style.buttonBig)}
-              disabled={!props.initialized}
+              disabled={!initialized}
             >
               Enroll User
             </button>
@@ -71,7 +72,7 @@ function ViewComponent(props: TViewProps) {
                 controller.onPhotoIDMatchPressed();
               }}
               className={classNames(style.button, style.buttonBig)}
-              disabled={!props.initialized}
+              disabled={!initialized}
             >
               Photo ID Match
             </button>
@@ -82,7 +83,7 @@ function ViewComponent(props: TViewProps) {
                 controller.onViewAuditTrailPressed();
               }}
               className={classNames(style.button, style.buttonMedium)}
-              disabled={!props.initialized}
+              disabled={!initialized}
             >
               View Audit Trail
             </button>

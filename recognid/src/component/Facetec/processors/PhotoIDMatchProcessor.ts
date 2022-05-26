@@ -1,4 +1,4 @@
-import { MATCH_3D_2D_IDSCAN } from '../constants';
+import { MATCH_3D_2D_IDSCAN } from '..';
 import {
   FaceTecIDScanProcessor,
   FaceTecIDScanResult,

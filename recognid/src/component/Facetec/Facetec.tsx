@@ -5,8 +5,6 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { Preloader } from '@component/Preloader';
 import { View } from './View';
 import { Controller } from './controllers';
-import { ViewAuditTrail } from './View/ViewAuditTrail';
-import { TauditTrail } from './View/@types';
 import { Config } from './config/Config';
 import { TFacetecProps } from './@types';
 import { API_URIS, URLS } from '@root/routes';
@@ -19,7 +17,6 @@ export enum FLOW {
 function FacetecComponent(props: TFacetecProps) {
   const [faceTecSDK, setFaceTecSDK] = useState(null as typeof FaceTecSDK);
   const [controller, setController] = useState(null as Controller);
-  const [auditTrail, setAuditTrail] = useState(null as TauditTrail);
   const [initialized, setInitialized] = useState(false);
 
   useEffect(() => {
@@ -43,15 +40,7 @@ function FacetecComponent(props: TFacetecProps) {
               ProductionKey: '',
               BaseURL: data.base_url,
               DeviceKeyIdentifier: data.device_key,
-              PublicFaceScanEncryptionKey: `-----BEGIN PUBLIC KEY-----
-              MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA5PxZ3DLj+zP6T6HFgzzk
-              M77LdzP3fojBoLasw7EfzvLMnJNUlyRb5m8e5QyyJxI+wRjsALHvFgLzGwxM8ehz
-              DqqBZed+f4w33GgQXFZOS4AOvyPbALgCYoLehigLAbbCNTkeY5RDcmmSI/sbp+s6
-              mAiAKKvCdIqe17bltZ/rfEoL3gPKEfLXeN549LTj3XBp0hvG4loQ6eC1E1tRzSkf
-              GJD4GIVvR+j12gXAaftj3ahfYxioBH7F7HQxzmWkwDyn3bqU54eaiB7f0ftsPpWM
-              ceUaqkL2DZUvgN0efEJjnWy5y1/Gkq5GGWCROI9XG/SwXJ30BbVUehTbVcD70+ZF
-              8QIDAQAB
-              -----END PUBLIC KEY-----`,
+              PublicFaceScanEncryptionKey: data.ssh_public_key,
             };
 
             const { config, ...restProps } = props;
@@ -63,7 +52,6 @@ function FacetecComponent(props: TFacetecProps) {
 
             setController(
               new Controller(faceTecSDK, cfg, {
-                setAuditTrail,
                 setInitialized,
               })
             );
@@ -75,24 +63,13 @@ function FacetecComponent(props: TFacetecProps) {
     }
   }, [faceTecSDK, props]);
 
-  const renderAuditTrail = useCallback(() => {
-    if (auditTrail) {
-      return <ViewAuditTrail auditTrail={auditTrail} controller={controller} />;
-    }
-  }, [auditTrail, controller]);
-
   const renderFacetec = useCallback(() => {
     if (controller) {
-      return (
-        <>
-          <View initialized={initialized} controller={controller} />
-          {renderAuditTrail()}
-        </>
-      );
+      return <View initialized={initialized} controller={controller} />;
     }
 
     return <Preloader />;
-  }, [controller, initialized, renderAuditTrail]);
+  }, [controller, initialized]);
 
   return (
     <>

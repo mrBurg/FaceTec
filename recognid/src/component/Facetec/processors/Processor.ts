@@ -1,8 +1,10 @@
+import { API_URIS } from '@root/routes';
 import axios from 'axios';
+import _ from 'lodash';
+import { ENROLLMENT_3D } from '..';
 
 import { TFacetecSdk } from '../@types';
 import { Config } from '../config/Config';
-import { ENROLLMENT_3D } from '../constants';
 import { Controller } from '../controllers';
 import {
   FaceTecFaceScanProcessor,
@@ -29,38 +31,65 @@ export class Processor {
     );
   }
 
-  async prepareRequest(
+  protected async prepareRequest(
     url: string,
     apiUserAgentString: string,
     parameters: TLatestNetworkRequestParams,
     callback: FaceTecIDScanResultCallback
   ) {
-    const serviceUrl = this.cfg.BaseURL + url;
+    this.latestNetworkRequest = new XMLHttpRequest();
+    this.latestNetworkRequest.open('POST', this.cfg.BaseURL + url);
 
-    // console.log('parameters', parameters);
+    const headers = {
+      'Content-Type': 'application/json',
+      'X-Device-Key': this.cfg.DeviceKeyIdentifier,
+      'X-User-Agent':
+        this.sdk.createFaceTecAPIUserAgentString(apiUserAgentString),
+    };
 
-    try {
-      const response = await axios.post(serviceUrl, parameters, {
-        headers: {
-          'Content-Type': 'application/json',
-          'X-Device-Key': this.cfg.DeviceKeyIdentifier,
-          'X-User-Agent':
-            this.sdk.createFaceTecAPIUserAgentString(apiUserAgentString),
-        },
-      });
+    _.each(headers, (item, index) =>
+      this.latestNetworkRequest.setRequestHeader(index, item)
+    );
 
-      console.log('response', response);
+    this.latestNetworkRequest.onreadystatechange = async () => {
+      if (this.latestNetworkRequest.readyState === XMLHttpRequest.DONE) {
+        try {
+          const responseJSON = JSON.parse(
+            this.latestNetworkRequest.responseText
+          );
 
-      if (response.data.wasProcessed) {
-        callback.proceedToNextStep(response.data.scanResultBlob);
-      } else {
-        console.log('Unexpected API response, cancelling out.');
-        callback.cancel();
+          const response = await axios.post(
+            API_URIS.UPLOAD_DATA + url, // Указать реальный URL нашего сервиса
+            {
+              ...responseJSON,
+              wasProcessed: responseJSON.wasProcessed,
+              scanResultBlob: responseJSON.scanResultBlob,
+            },
+            { headers }
+          );
+
+          if (response.data.wasProcessed) {
+            callback.proceedToNextStep(response.data.scanResultBlob);
+          } else {
+            console.log('Unexpected API response, cancelling out.');
+            callback.cancel();
+          }
+        } catch (err) {
+          console.log('Exception while handling API response, cancelling out.');
+          callback.cancel();
+        }
       }
-    } catch (_a) {
-      console.log('Exception while handling API response, cancelling out.');
+    };
+
+    this.latestNetworkRequest.onerror = () => {
+      console.log('XHR error, cancelling.');
       callback.cancel();
-    }
+    };
+
+    this.latestNetworkRequest.upload.onprogress = (event) =>
+      callback.uploadProgress(event.loaded / event.total);
+
+    this.latestNetworkRequest.send(JSON.stringify(parameters));
   }
 
   isSuccess() {

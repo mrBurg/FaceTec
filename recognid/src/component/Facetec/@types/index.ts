@@ -7,3 +7,7 @@ export type TFacetecProps = {
   config: TConfigGetProps;
   flow: FLOW;
 };
+
+export type TProcessingGetProps = {
+  id: string;
+};

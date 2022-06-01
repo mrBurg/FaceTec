@@ -1,19 +1,18 @@
 import Router from 'next/router';
 
 import { EnrollmentProcessor, PhotoIDMatchProcessor } from '../processors';
-import { TFacetecSdk } from '../@types';
 import {
   TControllerProps,
+  TFacetecSdk,
   TLatestNetworkResponseStatus,
   TLatestProcessor,
   TProcessor,
-} from './@types';
+} from '../@types';
 import {
   FaceTecIDScanResult,
   FaceTecSessionResult,
 } from '../declarations/FaceTecPublicApi';
 import { Config } from '../config/Config';
-import { URIS } from '@root/routes';
 
 export class Controller {
   latestEnrollmentIdentifier = '';
@@ -52,12 +51,7 @@ export class Controller {
     // AppUtilities.fadeOutMainUIAndPrepareForSession();
 
     this.latestEnrollmentIdentifier = this.cfg.id;
-    this.latestProcessor = new Processor(
-      this.cfg.session,
-      this.sdk,
-      this.cfg,
-      this
-    );
+    this.latestProcessor = new Processor(this.sdk, this.cfg, this);
   }
 
   onEnrollUserPressed() {
@@ -75,7 +69,11 @@ export class Controller {
   }
 
   async onViewAuditTrailPressed() {
-    Router.push(URIS.AUDIT_TRAIL);
+    if (this.cfg.paths.auditTrail) {
+      return Router.push(this.cfg.paths.auditTrail);
+    }
+
+    console.log('Audit trail path not found');
 
     // AppUtilities.showAuditTrailImages(latestSessionResult, latestIDScanResult);
   }
@@ -109,6 +107,10 @@ export class Controller {
     // AppUtilities.showMainUI();
   }
 
+  clearLatestEnrollmentIdentifier() {
+    this.latestEnrollmentIdentifier = '';
+  }
+
   isNetworkResponseServerIsOffline(networkResponseStatus: number) {
     return networkResponseStatus >= 500;
   }
@@ -123,13 +125,5 @@ export class Controller {
     console.log('showAdditionalScreensServerIsDown');
 
     // AdditionalScreens.showServerUpGradeView();
-  }
-
-  getLatestEnrollmentIdentifier() {
-    return this.latestEnrollmentIdentifier;
-  }
-
-  clearLatestEnrollmentIdentifier() {
-    this.latestEnrollmentIdentifier = '';
   }
 }

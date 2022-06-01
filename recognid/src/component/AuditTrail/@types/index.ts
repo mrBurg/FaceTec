@@ -19,8 +19,12 @@ export type TFaceTecAuditTrail = {
   sessionId: string | null;
 };
 
-export type TauditTrail = {
+export type TAuditTrail = {
   SessionResult: TFaceTecAuditTrail & TFaceTecSessionResult;
   IDScanResult: TFaceTecAuditTrail & TFaceTecIDScanResult;
   documentData: TJSON;
+};
+
+export type TViewAuditTrailProps = {
+  auditTrail: TAuditTrail;
 };

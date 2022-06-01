@@ -1,7 +1,7 @@
 import { Dispatch, SetStateAction } from 'react';
 
-import { Processor } from './../../processors/Processor';
-import { EnrollmentProcessor, PhotoIDMatchProcessor } from '../../processors';
+import { EnrollmentProcessor, PhotoIDMatchProcessor } from '../processors';
+import { Processor } from '../processors/Processor';
 
 export type TLatestProcessor = EnrollmentProcessor | PhotoIDMatchProcessor;
 export type TLatestNetworkResponseStatus = number;

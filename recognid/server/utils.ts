@@ -55,3 +55,42 @@ export function generateUUId() {
     (c ^ (getRandomValues(new Uint8Array(1))[0] & (15 >> (c / 4)))).toString(16)
   );
 }
+
+export function jsonToQueryString(
+  json: Record<string, unknown>,
+  ...restProps: (boolean | string)[]
+) {
+  let encode = false;
+  let symbol = '?';
+
+  _.each(restProps, (item) => {
+    switch (true) {
+      case _.isBoolean(item):
+        encode = item as boolean;
+
+        break;
+      case _.isString(item):
+        symbol = item as string;
+
+        break;
+    }
+  });
+
+  return (
+    symbol +
+    _.map(json, (value: string, key: string) => {
+      if (!value) {
+        return false;
+      }
+
+      if (encode) {
+        key = encodeURIComponent(key);
+        value = encodeURIComponent(value);
+      }
+
+      return `${key}=${value}`;
+    })
+      .filter((value) => value)
+      .join('&')
+  );
+}

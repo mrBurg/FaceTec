@@ -1,8 +1,8 @@
 {
   "versionIP": "IPv4",
   "port": {
-    "http": 80,
-    "https": 443
+    "http": 8080,
+    "https": 8443
   },
   "status": {
     "ok": 200,
@@ -11,5 +11,10 @@
     "unauthorized": 401,
     "notFound": 404,
     "internalServerError": 500
+  },
+  "certificate": {
+    "key": "./certificates/localhost.key",
+    "cert": "./certificates/localhost.cert",
+    "encoding": "utf8"
   }
 }

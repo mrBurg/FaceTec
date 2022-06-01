@@ -1,5 +1,8 @@
+/**
+ * @param operationId тоже самое что и externalDatabaseRefID для Facetec
+ */
 export type TLatestNetworkRequestParams = Record<
-  'sessionId' | 'externalDatabaseRefID',
+  'sessionId' | 'operationId',
   string
 > &
   Record<'idScan' | 'idScanFrontImage' | 'idScanBackImage', string> &
@@ -7,5 +10,5 @@ export type TLatestNetworkRequestParams = Record<
     'faceScan' | 'auditTrailImage' | 'lowQualityAuditTrailImage',
     string
   > & {
-    minMatchLevel: number;
+    minMatchLevel?: number;
   };

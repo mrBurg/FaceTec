@@ -2,12 +2,10 @@ import axios from 'axios';
 import Script from 'next/script';
 import React, { useCallback, useEffect, useState } from 'react';
 
-import { Preloader } from '@component/Preloader';
 import { View } from './View';
 import { Controller } from './controllers';
 import { Config } from './config/Config';
-import { TFacetecProps } from './@types';
-import { API_URIS, URLS } from '@root/routes';
+import { TFacetecProps, TGetConfigProps } from './@types';
 
 export enum FLOW {
   ENROLL = 0, // Enroll User,
@@ -15,18 +13,24 @@ export enum FLOW {
 }
 
 function FacetecComponent(props: TFacetecProps) {
+  const { paths } = props;
+
   const [faceTecSDK, setFaceTecSDK] = useState(null as typeof FaceTecSDK);
   const [controller, setController] = useState(null as Controller);
   const [initialized, setInitialized] = useState(false);
 
   useEffect(() => {
     if (faceTecSDK) {
+      const { config, paths, ...restProps } = props;
+
+      console.log('Partner key ' + config.partner); // Используется для получения логотипа и локализации
+
       const getConfig = async () => {
         try {
-          const response = await axios.get(URLS.DOMAIN + API_URIS.GET_CONFIG);
+          const response = await axios.get(paths.getConfig);
 
           if (response.status == 200) {
-            return response.data.value;
+            return response.data.value as TGetConfigProps;
           }
         } catch (err) {
           console.log(err);
@@ -37,13 +41,16 @@ function FacetecComponent(props: TFacetecProps) {
         .then((data) => {
           if (data) {
             const facetecConfig = {
-              ProductionKey: '',
-              BaseURL: data.base_url,
+              ProductionKey: data.production_key,
               DeviceKeyIdentifier: data.device_key,
               PublicFaceScanEncryptionKey: data.ssh_public_key,
+              paths: {
+                ...paths,
+                base_url: data.base_url,
+                enrollment_path: data.enrollment_path,
+                id_scan_path: data.id_scan_path,
+              },
             };
-
-            const { config, ...restProps } = props;
 
             const cfg = new Config(
               faceTecSDK,
@@ -68,14 +75,14 @@ function FacetecComponent(props: TFacetecProps) {
       return <View initialized={initialized} controller={controller} />;
     }
 
-    return <Preloader />;
-  }, [controller, initialized]);
+    return props.preloader;
+  }, [controller, initialized, props.preloader]);
 
   return (
     <>
       <Script
         strategy="afterInteractive"
-        src="/facetec/FaceTecSDK.js"
+        src={paths.facetecSDK}
         onLoad={() => setFaceTecSDK(FaceTecSDK)}
       />
       {renderFacetec()}

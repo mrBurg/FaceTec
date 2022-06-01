@@ -1,10 +1,9 @@
-import { MATCH_3D_2D_IDSCAN } from '..';
 import {
   FaceTecIDScanProcessor,
   FaceTecIDScanResult,
   FaceTecIDScanResultCallback,
 } from '../declarations/FaceTecPublicApi';
-import { TLatestNetworkRequestParams } from './@types';
+import { TLatestNetworkRequestParams } from '../@types/processors';
 import { Processor } from './Processor';
 
 export class PhotoIDMatchProcessor
@@ -47,8 +46,8 @@ export class PhotoIDMatchProcessor
     const parameters = {
       idScan: idScanResult.idScan,
       sessionId: idScanResult.sessionId,
-      externalDatabaseRefID: this.controller.getLatestEnrollmentIdentifier(),
-      minMatchLevel: 3,
+      operationId: this.cfg.id,
+      // minMatchLevel: 3,
     } as TLatestNetworkRequestParams;
 
     if (idScanResult.frontImages && idScanResult.frontImages[0]) {
@@ -60,7 +59,7 @@ export class PhotoIDMatchProcessor
     }
 
     this.prepareRequest(
-      MATCH_3D_2D_IDSCAN,
+      this.cfg.paths.id_scan_path,
       idScanResult.sessionId,
       parameters,
       callback

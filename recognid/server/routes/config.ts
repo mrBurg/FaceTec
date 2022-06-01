@@ -1,6 +1,6 @@
 import express from 'express';
 import http from 'http';
-// import https from 'https';
+import https from 'https';
 
 const router = express.Router();
 
@@ -50,16 +50,35 @@ router.post('/getOperation', async (_req, res, _next) => {
 
 router.post('/getLink', async (req, res, _next) => {
   const { body } = req;
+  const url = new URL(body.operation_url);
 
-  const httpReq = http.request(body.operation_url, (response) => {
-    const { headers } = response;
+  let protocol = null as typeof http | typeof https;
 
-    res.json(headers.location);
-    console.log('HTTP request "Get link" end');
-  });
+  switch (url.protocol) {
+    case 'http:':
+      protocol = http;
+      break;
+    case 'https:':
+      protocol = https;
+      break;
+  }
 
-  httpReq.on('error', (err) => console.log(err));
-  httpReq.end();
+  if (protocol) {
+    const request = protocol.request(body.operation_url, (response) => {
+      const { headers } = response;
+
+      res.send(headers.location);
+      console.log(url.protocol + ' request "Get link" end');
+    });
+
+    request.on('error', (err) => console.log(err));
+    request.end();
+
+    return;
+  }
+
+  res.status(400);
+  res.end();
 });
 
 export default router;

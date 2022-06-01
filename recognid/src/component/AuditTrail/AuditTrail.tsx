@@ -6,18 +6,25 @@ import { View } from './view';
 // import style from './AuditTrail.module.scss';
 
 import { Preloader } from '@component/Preloader';
-import { TauditTrail } from './@types';
+import { TAuditTrail } from './@types';
+import { API_URIS, URLS } from '@root/routes';
+import { makeUrl } from '@root/utils';
 
 function AuditTrailComponent() {
-  const [auditTrail, setAuditTrail] = useState(null as TauditTrail);
-  // const { staticData } = props;
+  const [auditTrail, setAuditTrail] = useState(null as TAuditTrail);
 
   useEffect(() => {
     const getAuditTrail = async () => {
       try {
-        const SessionResult = await axios.post('/api/facetec/sessionResult');
-        const IDScanResult = await axios.post('/api/facetec/IDScanResult');
-        const documentData = await axios.post('/api/facetec/documentData');
+        const SessionResult = await axios.post(
+          makeUrl(API_URIS.SESSION_RESULT, URLS.BASE_HTTP_URL)
+        );
+        const IDScanResult = await axios.post(
+          makeUrl(API_URIS.ID_SCAN_RESULT, URLS.BASE_HTTP_URL)
+        );
+        const documentData = await axios.post(
+          makeUrl(API_URIS.DOCUMENT_DATA, URLS.BASE_HTTP_URL)
+        );
 
         return {
           SessionResult: SessionResult.data,

@@ -1,21 +1,30 @@
 import express from 'express';
 
+import { jsonToQueryString } from './../utils';
+
 const router = express.Router();
 
-let counter = 0;
+let counter = 5;
 
 router.get('/start', async (req, res, _next) => {
-  counter++;
+  const { query } = req;
 
-  console.log(`${counter}:${JSON.stringify(req.query)}`);
+  if (counter) {
+    counter--;
 
-  if (counter >= 5) {
-    counter = 0;
-    res.status(301);
+    // res.status(301);
     // res.location('/');
-    res.redirect('/');
+    console.log('Remaining tries ' + (counter + 1));
     res.end();
+
+    return;
   }
+
+  counter = 5;
+  res.send({
+    status: 'ok',
+    location: '/' + jsonToQueryString(query),
+  });
 });
 
 export default router;

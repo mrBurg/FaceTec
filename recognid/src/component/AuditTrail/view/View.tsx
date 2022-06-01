@@ -1,11 +1,11 @@
+import _ from 'lodash';
 import React, { Fragment, useCallback } from 'react';
 import Image from 'next/image';
+import { useRouter } from 'next/router';
 
 import style from './View.module.scss';
 
-import _ from 'lodash';
-import { TViewAuditTrailProps } from './@types';
-import { useRouter } from 'next/router';
+import { TViewAuditTrailProps } from '../@types';
 
 function ViewComponent(props: TViewAuditTrailProps) {
   const { auditTrail } = props;

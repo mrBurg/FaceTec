@@ -1,13 +1,16 @@
+import { ReactElement } from 'react';
 import { FLOW } from '..';
-import { TConfigGetProps } from './config';
+import { TConfigGetProps, TPaths } from './config';
 
 export * from './config';
+export * from './controller';
+export * from './processors';
+export * from './view';
 export type TFacetecSdk = typeof FaceTecSDK;
+
 export type TFacetecProps = {
   config: TConfigGetProps;
   flow: FLOW;
-};
-
-export type TProcessingGetProps = {
-  id: string;
+  paths: TPaths;
+  preloader?: ReactElement;
 };

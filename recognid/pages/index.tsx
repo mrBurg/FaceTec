@@ -6,6 +6,8 @@ import Head from 'next/head';
 import { Home } from '@component/Home';
 import { Preloader } from '@component/Preloader';
 import { TPageProps } from '@interface/page';
+import { API_URIS, URIS, URLS } from '@root/routes';
+import { makeUrl } from '@root/utils';
 
 function HomeComponent(props: TPageProps) {
   if (props.staticData) {
@@ -32,7 +34,9 @@ export default HomeComponent;
 
 export async function getStaticProps(context: GetStaticPropsContext) {
   try {
-    const response = await axios.get('/api/static/home');
+    const response = await axios.get(
+      makeUrl(API_URIS.STATIC + URIS.HOME, URLS.BASE_HTTP_URL)
+    );
 
     if (response.status == 200) {
       return {
@@ -43,13 +47,11 @@ export async function getStaticProps(context: GetStaticPropsContext) {
       };
     }
   } catch (err) {
-    console.log(err);
-
     return {
       props: {
         staticData: {
-          title: 'Recognid:Home',
-          pageTitle: 'Click for start FaceTec Application',
+          title: String(void 0),
+          pageTitle: String(void 0),
         },
       },
     };

@@ -7,11 +7,10 @@ import style from './Home.module.scss';
 import { THomeComponentProps } from './@types';
 import { Preloader } from '@component/Preloader';
 import { API_URIS, URLS } from '@root/routes';
-import { replaceString } from '@root/utils';
+import { makeUrl, replaceString } from '@root/utils';
+import { TOperationData } from '@component/Facetec/@types';
 
 function HomeComponent(props: THomeComponentProps) {
-  const { staticData } = props;
-
   const [url, setUrl] = useState('');
 
   useEffect(() => {
@@ -25,13 +24,13 @@ function HomeComponent(props: THomeComponentProps) {
 
       try {
         const response = await axios.post(
-          URLS.DOMAIN + API_URIS.OPERATION_INIT,
+          makeUrl(API_URIS.OPERATION_INIT, URLS.DOMAIN), // TODO удалить параметр URLS.DOMAIN
           null,
           options
         );
 
         if (response.status == 200) {
-          return response.data;
+          return response.data as TOperationData;
         }
       } catch (err) {
         console.log(err);
@@ -41,19 +40,10 @@ function HomeComponent(props: THomeComponentProps) {
     getOperation()
       .then(async (data) => {
         try {
-          const response = await axios.post(API_URIS.GET_LINK, {
-            // Заменить на объект с оригинальным доменом
-            ...data,
-            operation_url: replaceString(
-              // Заменяет оригинайльный URL на контейнер
-              data.operation_url,
-              URLS.ORIGIN,
-              URLS.CONTAINER
-            ),
-          });
+          const response = await axios.post(API_URIS.GET_LINK, data);
 
           if (response.status == 200) {
-            return response.data;
+            return response.data as string;
           }
         } catch (err) {
           console.log(err);
@@ -66,8 +56,8 @@ function HomeComponent(props: THomeComponentProps) {
           replaceString(
             // Заменяет оригинайльный URL на локальный
             data,
-            URLS.ORIGIN,
-            URLS.LOCAL
+            URLS.DOMAIN,
+            URLS.BASE_HTTPS_URL
           )
         )
       )
@@ -75,6 +65,8 @@ function HomeComponent(props: THomeComponentProps) {
   }, []);
 
   if (url) {
+    const { staticData } = props;
+
     return (
       <div className={style.container}>
         <Link href={url}>

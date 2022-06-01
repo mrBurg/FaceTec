@@ -1,7 +1,4 @@
-import { API_URIS } from '@root/routes';
-import axios from 'axios';
 import _ from 'lodash';
-import { ENROLLMENT_3D } from '..';
 
 import { TFacetecSdk } from '../@types';
 import { Config } from '../config/Config';
@@ -12,7 +9,7 @@ import {
   FaceTecIDScanResultCallback,
   FaceTecSessionResult,
 } from '../declarations/FaceTecPublicApi';
-import { TLatestNetworkRequestParams } from './@types';
+import { TLatestNetworkRequestParams } from '../@types/processors';
 
 export class Processor {
   success = false;
@@ -20,14 +17,13 @@ export class Processor {
   latestNetworkRequest = new XMLHttpRequest();
 
   constructor(
-    protected sessionToken: string,
     protected sdk: TFacetecSdk,
     protected cfg: Config,
     protected controller: Controller
   ) {
     new this.sdk.FaceTecSession(
       this as unknown as FaceTecFaceScanProcessor,
-      this.sessionToken
+      this.cfg.session
     );
   }
 
@@ -38,11 +34,13 @@ export class Processor {
     callback: FaceTecIDScanResultCallback
   ) {
     this.latestNetworkRequest = new XMLHttpRequest();
-    this.latestNetworkRequest.open('POST', this.cfg.BaseURL + url);
+    console.log();
+
+    this.latestNetworkRequest.open('POST', this.cfg.paths.operation + url);
 
     const headers = {
       'Content-Type': 'application/json',
-      'X-Device-Key': this.cfg.DeviceKeyIdentifier,
+      // 'X-Device-Key': this.cfg.DeviceKeyIdentifier,
       'X-User-Agent':
         this.sdk.createFaceTecAPIUserAgentString(apiUserAgentString),
     };
@@ -58,18 +56,8 @@ export class Processor {
             this.latestNetworkRequest.responseText
           );
 
-          const response = await axios.post(
-            API_URIS.UPLOAD_DATA + url, // Указать реальный URL нашего сервиса
-            {
-              ...responseJSON,
-              wasProcessed: responseJSON.wasProcessed,
-              scanResultBlob: responseJSON.scanResultBlob,
-            },
-            { headers }
-          );
-
-          if (response.data.wasProcessed) {
-            callback.proceedToNextStep(response.data.scanResultBlob);
+          if (responseJSON.scanResultBlob) {
+            callback.proceedToNextStep(responseJSON.scanResultBlob);
           } else {
             console.log('Unexpected API response, cancelling out.');
             callback.cancel();
@@ -120,12 +108,12 @@ export class Processor {
       faceScan: sessionResult.faceScan,
       auditTrailImage: sessionResult.auditTrail[0],
       lowQualityAuditTrailImage: sessionResult.lowQualityAuditTrail[0],
+      operationId: this.cfg.id,
       sessionId: sessionResult.sessionId,
-      externalDatabaseRefID: this.controller.getLatestEnrollmentIdentifier(),
     } as TLatestNetworkRequestParams;
 
     this.prepareRequest(
-      ENROLLMENT_3D,
+      this.cfg.paths.enrollment_path,
       sessionResult.sessionId,
       parameters,
       callback

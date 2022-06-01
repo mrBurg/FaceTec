@@ -1,9 +1,9 @@
 import React from 'react';
 import classNames from 'classnames';
 
-import { TViewProps } from './@types';
-
 import style from './Facetec.module.scss';
+
+import { TViewProps } from '../@types';
 
 function ViewComponent(props: TViewProps) {
   const { controller, initialized } = props;

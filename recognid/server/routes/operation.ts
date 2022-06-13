@@ -1,29 +1,20 @@
 import express from 'express';
-
-import { jsonToQueryString } from './../utils';
+import cfg from './../config.json';
 
 const router = express.Router();
 
-let counter = 5;
+let counter = 0;
 
 router.get('/start', async (req, res, _next) => {
   const { query } = req;
+  counter++;
 
-  if (counter) {
-    counter--;
+  console.log(
+    `Number of tries ${counter} with params ${JSON.stringify(query)}`
+  );
 
-    // res.status(301);
-    // res.location('/');
-    console.log('Remaining tries ' + (counter + 1));
-    res.end();
-
-    return;
-  }
-
-  counter = 5;
-  res.send({
-    status: 'ok',
-    location: '/' + jsonToQueryString(query),
+  return res.status(cfg.status.temporaryRedirect).json({
+    location: `/processing?id=${Math.round(Math.random() * 1000000)}`,
   });
 });
 

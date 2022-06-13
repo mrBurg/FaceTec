@@ -9,16 +9,19 @@
     "next:build": "next build",
     "next:start": "next start",
     "next:lint": "next lint",
-    ":server": "ts-node server",
-    ":prebuild": "yarn next:build",
-    ":dev": "yarn :server",
     "lint": "eslint -c .eslintrc --ext js,jsx,ts,tsx",
-    "lint:fix": "eslint -c .eslintrc --fix --ext js,jsx,ts,tsx"
+    "lint:fix": "eslint -c .eslintrc --fix --ext js,jsx,ts,tsx",
+    ":prebuild": "yarn next:build",
+    ":server": "ts-node server",
+    ":dev": "cross-env ENVIRONMENT=development yarn :server",
+    ":development": "ts-node server/development.ts",
+    ":preprod": "yarn next:build & yarn :server"
   },
   "dependencies": {
     "axios": "^0.27.2",
     "classnames": "^2.3.1",
     "cors": "^2.8.5",
+    "cross-env": "^7.0.3",
     "express": "^4.18.1",
     "get-random-values": "^1.2.2",
     "html-react-parser": "^1.4.12",

@@ -8,8 +8,15 @@
   height: 100%;
 }
 
-.title {
+.title,
+.button {
   text-align: center;
   color: $white;
   font-size: 2em;
+}
+
+.button {
+  color: $black;
+  padding: 0.5em;
+  cursor: pointer;
 }

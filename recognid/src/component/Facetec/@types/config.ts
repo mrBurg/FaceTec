@@ -8,16 +8,13 @@ import { FLOW } from '../Facetec';
 export type TConfigGetProps = Record<'id' | 'session' | 'partner', string>;
 
 export type TPaths = Record<
-  'getConfig' | 'operation' | 'facetecSDK',
+  'getConfig' | 'enrollmentUpload' | 'idScanUpload' | 'facetecSDK',
   string
 > & {
-  auditTrail?: string;
+  auditTrailPath?: string;
 };
 
-type TReceivedPaths = Record<
-  'base_url' | 'enrollment_path' | 'id_scan_path',
-  string
->;
+type TReceivedPaths = { base_url: string };
 
 export type TConfigPaths = TPaths & TReceivedPaths;
 

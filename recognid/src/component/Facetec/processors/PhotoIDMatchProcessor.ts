@@ -59,7 +59,7 @@ export class PhotoIDMatchProcessor
     }
 
     this.prepareRequest(
-      this.cfg.paths.id_scan_path,
+      this.cfg.paths.idScanUpload,
       idScanResult.sessionId,
       parameters,
       callback

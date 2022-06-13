@@ -1,0 +1,41 @@
+{
+  "additionalSessionData": {
+    "isAdditionalDataPartiallyIncomplete": false,
+    "platform": "web",
+    "appID": "localhost",
+    "installationID": "78eef359-b302-4e87-9de4-714040f899c5",
+    "deviceModel": "Windows NT 10.0",
+    "deviceSDKVersion": "9.4.10",
+    "sessionID": "80494d9a-089f-4709-b2e7-89d5bd8101ec",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:100.0) Gecko/20100101 Firefox/100.0",
+    "ipAddress": "37.115.147.160"
+  },
+  "ageEstimateGroupEnumInt": 4,
+  "callData": {
+    "tid": "OeGAcbnPC25af94e4-e1d6-11ec-b4e0-020da0aadf87",
+    "path": "/enrollment-3d",
+    "date": "Jun 01, 2022 18:10:41 PM",
+    "epochSecond": 1654107041,
+    "requestMethod": "POST"
+  },
+  "documentData": null,
+  "error": false,
+  "externalDatabaseRefID": "browser_sample_app_0a947df9-8ad5-460e-b4b7-fba4457d0ef2",
+  "faceScanSecurityChecks": {
+    "auditTrailVerificationCheckSucceeded": true,
+    "faceScanLivenessCheckSucceeded": true,
+    "replayCheckSucceeded": true,
+    "sessionTokenCheckSucceeded": true
+  },
+  "faceTecRetryScreen": 0,
+  "ocrResults": null,
+  "retryScreenEnumInt": 0,
+  "scanResultBlob": "AAEAAABTAAAAAAAAAIPtzGVmlhCZyBSw2qVg6CoaBQmtUEs+BgnkwEEn2PosXF8E1BnGHQJQUHZpj0FKHGbkwi31E4wByg8yF7m0CqTqaAMfqwAYabA9vR0Dl8TX8lfl",
+  "serverInfo": {
+    "version": "9.4.5-dev-2022052401",
+    "mode": "Development Only",
+    "notice": "You should only be reading this if you are in server-side code.  Please make sure you do not allow the FaceTec Server to be called from the public internet."
+  },
+  "success": true,
+  "wasProcessed": true
+}

@@ -1,0 +1,380 @@
+{
+  "additionalSessionData": {
+    "isAdditionalDataPartiallyIncomplete": false,
+    "platform": "web",
+    "appID": "localhost",
+    "installationID": "78eef359-b302-4e87-9de4-714040f899c5",
+    "deviceModel": "Windows NT 10.0",
+    "deviceSDKVersion": "9.4.10",
+    "sessionID": "4361ba15-bd53-42d7-8847-600043b94d25",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:100.0) Gecko/20100101 Firefox/100.0",
+    "ipAddress": "37.115.147.160"
+  },
+  "barcodeStatusEnumInt": 0,
+  "callData": {
+    "tid": "YcgYSSwlB742378d5-e1d6-11ec-b4e0-020da0aadf87",
+    "path": "/match-3d-2d-idscan",
+    "date": "Jun 01, 2022 18:12:52 PM",
+    "epochSecond": 1654107172,
+    "requestMethod": "POST"
+  },
+  "digitalIDSpoofStatusEnumInt": 0,
+  "documentData": {
+    "mrzValues": {
+      "groups": [
+        {
+          "fields": [
+            {
+              "fieldKey": "firstName",
+              "uiFieldType": "Alphabetic",
+              "value": "DENYS"
+            },
+            {
+              "fieldKey": "lastName",
+              "uiFieldType": "Alphabetic",
+              "value": "BURHONOV"
+            },
+            {
+              "fieldKey": "dateOfBirth",
+              "uiFieldType": "dd mm yyyy",
+              "value": "31 08 1901"
+            }
+          ],
+          "groupFriendlyName": "Your Information",
+          "groupKey": "userInfo"
+        },
+        {
+          "fields": [
+            {
+              "fieldKey": "idNumber",
+              "uiFieldType": "Numeric",
+              "value": "002024587"
+            },
+            {
+              "fieldKey": "dateOfExpiration",
+              "uiFieldType": "dd mm yyyy",
+              "value": "02 07 2022"
+            }
+          ],
+          "groupFriendlyName": "Photo ID Details",
+          "groupKey": "idInfo"
+        }
+      ]
+    },
+    "scannedValues": {
+      "groups": [
+        {
+          "fields": [
+            {
+              "fieldKey": "firstName",
+              "nonMRZValue": "DENYS",
+              "uiFieldType": "Alphabetic",
+              "value": "DENYS"
+            },
+            {
+              "fieldKey": "lastName",
+              "nonMRZValue": "BURHONOV",
+              "uiFieldType": "Alphabetic",
+              "value": "BURHONOV"
+            },
+            {
+              "fieldKey": "dateOfBirth",
+              "nonMRZValue": "31 08 2001",
+              "uiFieldType": "dd mm yyyy",
+              "value": "31 08 1901"
+            }
+          ],
+          "groupFriendlyName": "Your Information",
+          "groupKey": "userInfo"
+        },
+        {
+          "fields": [
+            {
+              "fieldKey": "idNumber",
+              "nonMRZValue": "002024587",
+              "uiFieldType": "Numeric",
+              "value": "002024587"
+            },
+            {
+              "fieldKey": "dateOfExpiration",
+              "nonMRZValue": "02 07 2022",
+              "uiFieldType": "dd mm yyyy",
+              "value": "02 07 2022"
+            },
+            {
+              "fieldKey": "mrzLine1",
+              "uiFieldType": "Alphanumeric",
+              "value": "IDUKR00202458782001083108892<<"
+            },
+            {
+              "fieldKey": "mrzLine2",
+              "uiFieldType": "Alphanumeric",
+              "value": "0108319M2207021UKR<<<<<<<<<<<2"
+            },
+            {
+              "fieldKey": "mrzLine3",
+              "uiFieldType": "Alphanumeric",
+              "value": "BURHONOV<<DENYS<<<<<<<<<<<<<<<"
+            },
+            {
+              "fieldKey": "dateOfIssue",
+              "uiFieldType": "dd mm yyyy",
+              "value": "08 20 72018"
+            }
+          ],
+          "groupFriendlyName": "Photo ID Details",
+          "groupKey": "idInfo"
+        }
+      ]
+    },
+    "templateInfo": {
+      "templateName": "Ukraine - National ID Card - 2016 - Horizontal",
+      "templateType": "Government Issued Photo ID"
+    },
+    "userConfirmedValues": {
+      "groups": [
+        {
+          "fields": [
+            {
+              "fieldKey": "firstName",
+              "uiFieldType": "Alphabetic",
+              "value": "ASD"
+            },
+            {
+              "fieldKey": "lastName",
+              "uiFieldType": "Alphabetic",
+              "value": "ASD"
+            },
+            {
+              "fieldKey": "dateOfBirth",
+              "uiFieldType": "dd mm yyyy",
+              "value": "31 08 1901"
+            }
+          ],
+          "groupFriendlyName": "Your Information",
+          "groupKey": "userInfo"
+        },
+        {
+          "fields": [
+            {
+              "fieldKey": "idNumber",
+              "uiFieldType": "Numeric",
+              "value": "000000000"
+            },
+            {
+              "fieldKey": "dateOfExpiration",
+              "uiFieldType": "dd mm yyyy",
+              "value": "00000000"
+            },
+            {
+              "fieldKey": "mrzLine1",
+              "uiFieldType": "Alphanumeric",
+              "value": "ASD<<"
+            },
+            {
+              "fieldKey": "mrzLine2",
+              "uiFieldType": "Alphanumeric",
+              "value": "ASD<<<<<<<<<<<2"
+            },
+            {
+              "fieldKey": "mrzLine3",
+              "uiFieldType": "Alphanumeric",
+              "value": "ASD<<ASD<<<<<<<<<<<<<<<"
+            },
+            {
+              "fieldKey": "dateOfIssue",
+              "uiFieldType": "dd mm yyyy",
+              "value": "08 20 72018"
+            }
+          ],
+          "groupFriendlyName": "Photo ID Details",
+          "groupKey": "idInfo"
+        }
+      ]
+    }
+  },
+  "error": false,
+  "externalDatabaseRefID": "browser_sample_app_0a947df9-8ad5-460e-b4b7-fba4457d0ef2",
+  "extractedNFCImage": "",
+  "extractedTextBase64JSON": null,
+  "faceOnDocumentStatusEnumInt": 2,
+  "fullIDStatusEnumInt": 0,
+  "idScanAgeEstimateGroupEnumInt": 4,
+  "matchLevel": 7,
+  "matchLevelNFCToFaceMap": 0,
+  "nfcStatusEnumInt": 1,
+  "ocrResults": {
+    "ocrResults": {
+      "scanned": {
+        "groups": [
+          {
+            "fields": [
+              {
+                "fieldKey": "firstName",
+                "uiFieldType": "Alphabetic",
+                "value": "DENYS"
+              },
+              {
+                "fieldKey": "lastName",
+                "uiFieldType": "Alphabetic",
+                "value": "BURHONOV"
+              },
+              {
+                "fieldKey": "dateOfBirth",
+                "uiFieldType": "dd mm yyyy",
+                "value": "31 08 1901"
+              }
+            ],
+            "groupFriendlyName": "Your Information",
+            "groupKey": "userInfo"
+          },
+          {
+            "fields": [
+              {
+                "fieldKey": "idNumber",
+                "uiFieldType": "Numeric",
+                "value": "002024587"
+              },
+              {
+                "fieldKey": "dateOfExpiration",
+                "uiFieldType": "dd mm yyyy",
+                "value": "02 07 2022"
+              },
+              {
+                "fieldKey": "mrzLine1",
+                "uiFieldType": "Alphanumeric",
+                "value": "IDUKR00202458782001083108892<<"
+              },
+              {
+                "fieldKey": "mrzLine2",
+                "uiFieldType": "Alphanumeric",
+                "value": "0108319M2207021UKR<<<<<<<<<<<2"
+              },
+              {
+                "fieldKey": "mrzLine3",
+                "uiFieldType": "Alphanumeric",
+                "value": "BURHONOV<<DENYS<<<<<<<<<<<<<<<"
+              },
+              {
+                "fieldKey": "dateOfIssue",
+                "uiFieldType": "dd mm yyyy",
+                "value": "08 20 72018"
+              }
+            ],
+            "groupFriendlyName": "Photo ID Details",
+            "groupKey": "idInfo"
+          },
+          {
+            "fields": [],
+            "groupFriendlyName": "Your Address",
+            "groupKey": "addressInfo"
+          },
+          {
+            "fields": [],
+            "groupFriendlyName": "Physical Traits & Misc",
+            "groupKey": "secondaryUserInfo"
+          },
+          {
+            "fields": [],
+            "groupFriendlyName": "Additional Info",
+            "groupKey": "customFields"
+          }
+        ]
+      },
+      "templateName": "Ukraine - National ID Card - 2016 - Horizontal",
+      "templateType": "Government Issued Photo ID",
+      "userConfirmed": {
+        "groups": [
+          {
+            "fields": [
+              {
+                "fieldKey": "firstName",
+                "uiFieldType": "Alphabetic",
+                "value": "ASD"
+              },
+              {
+                "fieldKey": "lastName",
+                "uiFieldType": "Alphabetic",
+                "value": "ASD"
+              },
+              {
+                "fieldKey": "dateOfBirth",
+                "uiFieldType": "dd mm yyyy",
+                "value": "31 08 1901"
+              }
+            ],
+            "groupFriendlyName": "Your Information",
+            "groupKey": "userInfo"
+          },
+          {
+            "fields": [
+              {
+                "fieldKey": "idNumber",
+                "uiFieldType": "Numeric",
+                "value": "000000000"
+              },
+              {
+                "fieldKey": "dateOfExpiration",
+                "uiFieldType": "dd mm yyyy",
+                "value": "00000000"
+              },
+              {
+                "fieldKey": "mrzLine1",
+                "uiFieldType": "Alphanumeric",
+                "value": "ASD<<"
+              },
+              {
+                "fieldKey": "mrzLine2",
+                "uiFieldType": "Alphanumeric",
+                "value": "ASD<<<<<<<<<<<2"
+              },
+              {
+                "fieldKey": "mrzLine3",
+                "uiFieldType": "Alphanumeric",
+                "value": "ASD<<ASD<<<<<<<<<<<<<<<"
+              },
+              {
+                "fieldKey": "dateOfIssue",
+                "uiFieldType": "dd mm yyyy",
+                "value": "08 20 72018"
+              }
+            ],
+            "groupFriendlyName": "Photo ID Details",
+            "groupKey": "idInfo"
+          },
+          {
+            "fields": [],
+            "groupFriendlyName": "Your Address",
+            "groupKey": "addressInfo"
+          },
+          {
+            "fields": [],
+            "groupFriendlyName": "Physical Traits & Misc",
+            "groupKey": "secondaryUserInfo"
+          },
+          {
+            "fields": [],
+            "groupFriendlyName": "Additional Info",
+            "groupKey": "customFields"
+          }
+        ]
+      }
+    }
+  },
+  "photoIDBackCrop": "",
+  "photoIDFaceCrop": "",
+  "photoIDFrontCrop": "",
+  "photoIDPrimarySignatureCrop": "",
+  "photoIDSecondarySignatureCrop": "",
+  "photoIDTamperingEvidenceBackImage": "",
+  "photoIDTamperingEvidenceFrontImage": "",
+  "scanResultBlob": "AAEAAAC9AAAAAAAAAGYlE41n+iBei8A8oDxoayIndEfPAiVk530SlQJ27nU6WADL0potn/pylC7JDuLBjk0kjSj1jPUTqXyTtckvkh/ronALMSsqMfb8TNnu41Nv54Q/3TqonbipSpGiY56arJM3FvxcThYNBl4X7zVSYFP2di/qhnYBJ6YtCzCpkrNoyBtIDQTP6JA7lhFFdEuU9tjlYOENJIzf5Cv6KlQKcUM4byHKiYUyXAH7lWsLLkVjgqB/6cajVOKzbz+nxA==",
+  "serverInfo": {
+    "version": "9.4.5-dev-2022052401",
+    "mode": "Development Only",
+    "notice": "You should only be reading this if you are in server-side code.  Please make sure you do not allow the FaceTec Server to be called from the public internet."
+  },
+  "success": true,
+  "textOnDocumentStatusEnumInt": 1,
+  "wasProcessed": true
+}

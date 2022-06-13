@@ -7,7 +7,7 @@ import { View } from './view';
 
 import { Preloader } from '@component/Preloader';
 import { TAuditTrail } from './@types';
-import { API_URIS, URLS } from '@root/routes';
+import { API_URIS } from '@root/routes';
 import { makeUrl } from '@root/utils';
 
 function AuditTrailComponent() {
@@ -15,15 +15,17 @@ function AuditTrailComponent() {
 
   useEffect(() => {
     const getAuditTrail = async () => {
+      console.log(makeUrl(process.env.HTTPS_SERVER, API_URIS.SESSION_RESULT));
+
       try {
         const SessionResult = await axios.post(
-          makeUrl(API_URIS.SESSION_RESULT, URLS.BASE_HTTP_URL)
+          makeUrl(process.env.HTTPS_SERVER, API_URIS.SESSION_RESULT)
         );
         const IDScanResult = await axios.post(
-          makeUrl(API_URIS.ID_SCAN_RESULT, URLS.BASE_HTTP_URL)
+          makeUrl(process.env.HTTPS_SERVER, API_URIS.ID_SCAN_RESULT)
         );
         const documentData = await axios.post(
-          makeUrl(API_URIS.DOCUMENT_DATA, URLS.BASE_HTTP_URL)
+          makeUrl(process.env.HTTPS_SERVER, API_URIS.DOCUMENT_DATA)
         );
 
         return {

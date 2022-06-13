@@ -1,12 +1,15 @@
 {
   "versionIP": "IPv4",
   "port": {
-    "http": 8080,
-    "https": 8443
+    "http": 80,
+    "https": 443,
+    "developmentHttp": 8080,
+    "developmentHttps": 8443
   },
   "status": {
     "ok": 200,
     "movedPermanently": 301,
+    "temporaryRedirect": 307,
     "badRequest": 400,
     "unauthorized": 401,
     "notFound": 404,

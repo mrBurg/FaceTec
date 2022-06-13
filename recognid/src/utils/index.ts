@@ -1,5 +1,5 @@
 import { TJSON } from '@interface/common';
-import { API_URIS, URIS, URLS } from '@root/routes';
+import { API_URIS, URIS } from '@root/routes';
 import _ from 'lodash';
 
 export function jsonToQueryString(
@@ -45,9 +45,6 @@ export function replaceString(data: string, which: string, to: string) {
   return String(data).replace(which, to);
 }
 
-export function makeUrl(
-  url: string,
-  host: URLS | URIS | API_URIS | string = '' // URLS.DOMAIN
-) {
-  return host + url;
+export function makeUrl(...args: (URIS | API_URIS | string)[]) {
+  return args.join('');
 }

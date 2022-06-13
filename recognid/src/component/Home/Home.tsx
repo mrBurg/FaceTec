@@ -1,19 +1,20 @@
+import { useRouter } from 'next/router';
 import axios from 'axios';
-import Link from 'next/link';
-import React, { useEffect, useState } from 'react';
+import React, { useCallback } from 'react';
 
 import style from './Home.module.scss';
 
 import { THomeComponentProps } from './@types';
-import { Preloader } from '@component/Preloader';
-import { API_URIS, URLS } from '@root/routes';
+import { API_URIS } from '@root/routes';
 import { makeUrl, replaceString } from '@root/utils';
 import { TOperationData } from '@component/Facetec/@types';
 
 function HomeComponent(props: THomeComponentProps) {
-  const [url, setUrl] = useState('');
+  const { staticData } = props;
 
-  useEffect(() => {
+  const router = useRouter();
+
+  const getLink = useCallback(() => {
     const getOperation = async () => {
       const options = {
         headers: {
@@ -24,7 +25,7 @@ function HomeComponent(props: THomeComponentProps) {
 
       try {
         const response = await axios.post(
-          makeUrl(API_URIS.OPERATION_INIT, URLS.DOMAIN), // TODO удалить параметр URLS.DOMAIN
+          makeUrl(process.env.DOMAIN, API_URIS.OPERATION_INIT),
           null,
           options
         );
@@ -40,45 +41,38 @@ function HomeComponent(props: THomeComponentProps) {
     getOperation()
       .then(async (data) => {
         try {
-          const response = await axios.post(API_URIS.GET_LINK, data);
+          const response = await axios.post(
+            makeUrl(process.env.DEVELOPMENT_HTTP_SERVER, API_URIS.GET_LINK),
+            data
+          );
 
           if (response.status == 200) {
             return response.data as string;
           }
         } catch (err) {
           console.log(err);
+          throw new Error(
+            'You need to run the developer\u2019s server in a separate process. Execute the command "yarn :development" at the root of the project then try again'
+          );
         }
 
         return;
       })
       .then((data) =>
-        setUrl(
-          replaceString(
-            // Заменяет оригинайльный URL на локальный
-            data,
-            URLS.DOMAIN,
-            URLS.BASE_HTTPS_URL
-          )
+        router.push(
+          replaceString(data, process.env.DOMAIN, process.env.HTTPS_SERVER)
         )
       )
       .catch((err) => console.log(err));
-  }, []);
+  }, [router]);
 
-  if (url) {
-    const { staticData } = props;
-
-    return (
-      <div className={style.container}>
-        <Link href={url}>
-          <a className={style.title} href={url}>
-            {staticData.pageTitle as string}
-          </a>
-        </Link>
-      </div>
-    );
-  }
-
-  return <Preloader />;
+  return (
+    <div className={style.container}>
+      <button className={style.button} type="button" onClick={() => getLink()}>
+        {staticData.button as string}
+      </button>
+    </div>
+  );
 }
 
 export const Home = HomeComponent;

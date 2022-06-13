@@ -5,7 +5,7 @@ import React, { /* useEffect, */ useMemo } from 'react';
 import { Preloader } from '@component/Preloader';
 import { Facetec, FLOW } from '@component/Facetec';
 import { TConfigGetProps } from '@component/Facetec/@types';
-import { API_URIS, URIS, URLS } from '@root/routes';
+import { API_URIS, URIS } from '@root/routes';
 import { makeUrl } from '@root/utils';
 
 function FacetecComponent() {
@@ -33,9 +33,13 @@ function FacetecComponent() {
         config={query}
         paths={{
           facetecSDK: '/facetec/FaceTecSDK.js',
-          getConfig: makeUrl(API_URIS.GET_CONFIG, URLS.DOMAIN), // TODO удалить параметр URLS.DOMAIN
-          operation: makeUrl(API_URIS.OPERATION, URLS.DOMAIN), // TODO удалить параметр URLS.DOMAIN
-          auditTrail: URIS.AUDIT_TRAIL,
+          getConfig: makeUrl(process.env.DOMAIN, API_URIS.GET_CONFIG),
+          enrollmentUpload: makeUrl(
+            process.env.DOMAIN,
+            API_URIS.OPERATION_ENROLLMENT
+          ),
+          idScanUpload: makeUrl(process.env.DOMAIN, API_URIS.OPERATION_IDSCAN),
+          auditTrailPath: URIS.AUDIT_TRAIL,
         }}
         preloader={<Preloader />}
       />

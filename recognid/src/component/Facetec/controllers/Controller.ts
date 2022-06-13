@@ -69,8 +69,8 @@ export class Controller {
   }
 
   async onViewAuditTrailPressed() {
-    if (this.cfg.paths.auditTrail) {
-      return Router.push(this.cfg.paths.auditTrail);
+    if (this.cfg.paths.auditTrailPath) {
+      return Router.push(this.cfg.paths.auditTrailPath);
     }
 
     console.log('Audit trail path not found');

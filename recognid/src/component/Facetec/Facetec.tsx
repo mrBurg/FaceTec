@@ -27,7 +27,9 @@ function FacetecComponent(props: TFacetecProps) {
 
       const getConfig = async () => {
         try {
-          const response = await axios.get(paths.getConfig);
+          const response = await axios.get(paths.getConfig, {
+            params: { id: config.id },
+          });
 
           if (response.status == 200) {
             return response.data.value as TGetConfigProps;
@@ -47,8 +49,6 @@ function FacetecComponent(props: TFacetecProps) {
               paths: {
                 ...paths,
                 base_url: data.base_url,
-                enrollment_path: data.enrollment_path,
-                id_scan_path: data.id_scan_path,
               },
             };
 

@@ -10,6 +10,8 @@ import {
   FaceTecSessionResult,
 } from '../declarations/FaceTecPublicApi';
 import { TLatestNetworkRequestParams } from '../@types/processors';
+import {URIS} from "@root/routes";
+import {makeUrl} from "@root/utils";
 
 export class Processor {
   success = false;
@@ -34,9 +36,7 @@ export class Processor {
     callback: FaceTecIDScanResultCallback
   ) {
     this.latestNetworkRequest = new XMLHttpRequest();
-    console.log();
-
-    this.latestNetworkRequest.open('POST', this.cfg.paths.operation + url);
+    this.latestNetworkRequest.open('POST', url);
 
     const headers = {
       'Content-Type': 'application/json',
@@ -51,20 +51,23 @@ export class Processor {
 
     this.latestNetworkRequest.onreadystatechange = async () => {
       if (this.latestNetworkRequest.readyState === XMLHttpRequest.DONE) {
+        const processingUri = makeUrl(URIS.PROCESSING, '?id=', parameters.operationId);
         try {
           const responseJSON = JSON.parse(
             this.latestNetworkRequest.responseText
           );
 
-          if (responseJSON.scanResultBlob) {
+          if (responseJSON.wasProcessed) {
             callback.proceedToNextStep(responseJSON.scanResultBlob);
           } else {
-            console.log('Unexpected API response, cancelling out.');
+            console.log('finish. check next stage');
             callback.cancel();
+            location.replace(processingUri);
           }
         } catch (err) {
-          console.log('Exception while handling API response, cancelling out.');
+          console.log('check operation stage');
           callback.cancel();
+          location.replace(processingUri);
         }
       }
     };
@@ -113,7 +116,7 @@ export class Processor {
     } as TLatestNetworkRequestParams;
 
     this.prepareRequest(
-      this.cfg.paths.enrollment_path,
+      this.cfg.paths.enrollmentUpload,
       sessionResult.sessionId,
       parameters,
       callback
